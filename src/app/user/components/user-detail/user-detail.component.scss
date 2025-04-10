@@ -1,0 +1,27 @@
+.user-detail {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #fdfdfd;
+  border-left: 4px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: Arial, sans-serif;
+}
+
+.user-detail h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  color: #007bff;
+}
+
+.user-detail p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.user-detail p:last-child {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #28a745; /* green for admin message */
+}

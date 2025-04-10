@@ -1,0 +1,25 @@
+.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  a.mat-button {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+  }
+  
+  .active-link {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .main-container {
+    padding: 2rem;
+  }
+  

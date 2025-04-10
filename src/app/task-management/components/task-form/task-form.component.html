@@ -1,0 +1,58 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSave()" class="task-form">
+  <input
+ type="hidden"
+  formControlName="id"
+/>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Task title</mat-label>
+    <input matInput formControlName="title" required />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Task Description</mat-label>
+    <input matInput formControlName="description" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Due Date</mat-label>
+    <input
+      matInput
+      formControlName="dueDate"
+      [matDatepicker]="picker"
+      required
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority">
+      <mat-option *ngFor="let priority of priorities" [value]="priority">
+        {{ priority }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let status of statuses" [value]="status">
+        {{ status }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="taskForm.invalid"
+    >
+      Save
+    </button>
+    <button mat-stroked-button type="button" (click)="onCancel()">
+      Cancel
+    </button>
+  </div>
+</form>

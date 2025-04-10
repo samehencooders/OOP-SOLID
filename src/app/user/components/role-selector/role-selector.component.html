@@ -1,0 +1,13 @@
+<div class="role-selector">
+  <label for="role_id">Select Role:</label>
+  <select
+    [value]="selectedRole"
+    (change)="selectRole($event.target)"
+    name="role"
+    id="role_id"
+  >
+    <option *ngFor="let role of roles" [value]="role">
+      {{ role }}
+    </option>
+  </select>
+</div>

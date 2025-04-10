@@ -1,0 +1,13 @@
+<div>
+  <h1>Product Management</h1>
+  <app-product-list
+    [products]="products"
+    (productSelected)="onProductSelected($event)"
+  ></app-product-list>
+  <div *ngIf="selectedProduct">
+    <h2>Selected Product</h2>
+    <p>Name : {{ selectedProduct.name }}</p>
+    <p>Description : {{ selectedProduct.description }}</p>
+    <p>Price : {{ selectedProduct.price | currency }}</p>
+  </div>
+</div>

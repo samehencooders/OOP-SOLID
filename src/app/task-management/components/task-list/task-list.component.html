@@ -1,0 +1,41 @@
+<div class="task-list">
+  <h2>Task List</h2>
+
+  <button mat-flat-button color="primary" (click)="openFormForNew()">
+    Add New Task
+  </button>
+
+  <app-task-filter
+    (statusChange)="onStatusFilterChange($event)"
+    (priorityChange)="onPriorityFilterChange($event)"
+  ></app-task-filter>
+
+  <ul>
+    <li
+      *ngFor="let task of filteredTasks"
+      class="task-item"
+      (click)="onSelectedTask(task)"
+    >
+      <div class="task-info">
+        {{ task.title }} ({{ task.priority | lowercase }} -
+        {{ task.status | lowercase }})
+      </div>
+
+      <div class="task-actions">
+      
+        <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <app-task-detail [task]="selectedTaskForEdit"></app-task-detail>
+
+  <app-task-form
+    *ngIf="showForm"
+    [task]="selectedTaskForEdit"
+    (save)="onTaskFormSave($event)"
+    (cancel)="onTaskFormCancel()"
+  ></app-task-form>
+</div>

@@ -1,0 +1,7 @@
+<div *ngIf="user" class="user-detail">
+    <h2>{{ user.name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Role: {{ user.role }}</p>
+    <p>Status: {{ user.isActive ? 'Active' : 'Inactive' }}</p>
+    <p *ngIf="isAdmin()">This user is an Admin.</p>
+  </div>
