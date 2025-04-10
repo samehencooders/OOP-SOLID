@@ -1,0 +1,12 @@
+.chart-container {
+  height: 400px;
+  position: relative;
+}
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  color: rgba(0, 0, 0, 0.54);
+}

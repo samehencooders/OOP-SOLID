@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="filter-header">
+        <span>Filters</span>
+        <button mat-icon-button (click)="toggleExpand()">
+          <mat-icon>{{ isExpanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content [class.expanded]="isExpanded">
+    <form [formGroup]="filterForm" class="filter-form">
+      <!-- Date Range -->
+      <div formGroupName="dateRange" class="filter-section">
+        <h4>Date Range</h4>
+        <div class="date-range-inputs">
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startPicker" formControlName="start" [min]="dateRange.min" [max]="dateRange.max">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endPicker" formControlName="end" [min]="dateRange.min" [max]="dateRange.max">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <!-- Categories -->
+      <div class="filter-section">
+        <h4>Categories</h4>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Select Categories</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <!-- Regions -->
+      <div class="filter-section">
+        <h4>Regions</h4>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Select Regions</mat-label>
+          <mat-select formControlName="regions" multiple>
+            <mat-option *ngFor="let region of regions" [value]="region">
+              {{ region }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <!-- Status -->
+      <div class="filter-section">
+        <h4>Status</h4>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Select Status</mat-label>
+          <mat-select formControlName="status" multiple>
+            <mat-option *ngFor="let status of statuses" [value]="status">
+              {{ status | titlecase }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <!-- Amount Range -->
+      <div class="filter-section">
+        <h4>Amount Range</h4>
+        <div class="amount-range-inputs">
+          <mat-form-field appearance="outline">
+            <mat-label>Min Amount</mat-label>
+            <input matInput type="number" formControlName="minAmount" [min]="amountRange.min" [max]="amountRange.max">
+            <span matPrefix>$&nbsp;</span>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Max Amount</mat-label>
+            <input matInput type="number" formControlName="maxAmount" [min]="amountRange.min" [max]="amountRange.max">
+            <span matPrefix>$&nbsp;</span>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <!-- Search Term -->
+      <div class="filter-section">
+        <h4>Search</h4>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Search Term</mat-label>
+          <input matInput formControlName="searchTerm" placeholder="Search products, categories, etc.">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      
+      <!-- Actions -->
+      <div class="filter-actions">
+        <button mat-raised-button color="primary" type="button" (click)="onResetFilters()">
+          Reset Filters
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Performance Metrics</mat-card-title>
+    <mat-card-subtitle>Key performance indicators for your business</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <div class="metrics-container">
+      <div *ngFor="let metric of metrics" class="metric-item">
+        <div class="metric-header">
+          <h3>{{ metric.name }}</h3>
+          <div [class]="'change-indicator ' + getChangeClass(metric.trend)">
+            <mat-icon>{{ getChangeIcon(metric.trend) }}</mat-icon>
+            <span>{{ metric.percentageChange | number:'1.1-1' }}%</span>
+          </div>
+        </div>
+        
+        <div class="metric-value">
+          {{ metric.unit }}{{ metric.value | number:'1.0-0' }}
+        </div>
+        
+        <div class="metric-previous">
+          Previous: {{ metric.unit }}{{ metric.previousValue | number:'1.0-0' }}
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
