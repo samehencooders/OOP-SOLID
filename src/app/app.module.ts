@@ -8,12 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { ListComponent } from './inventory/components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
   ],
   imports: [
     BrowserModule,
