@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from './shared.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [

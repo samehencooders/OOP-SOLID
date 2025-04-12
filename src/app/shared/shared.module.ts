@@ -33,11 +33,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 // Shared Components
 
 @NgModule({
-  declarations: [],
+  declarations: [ConfirmDialogComponent],
   imports: [
     // Angular Modules
     CommonModule,
@@ -83,7 +84,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
     // Material Modules
     MatButtonModule,
     MatCardModule,

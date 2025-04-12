@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
 import { SupplierRoutingModule } from './supplier-routing.module';
-import { SharedModule } from '../shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [SupplierListComponent],
