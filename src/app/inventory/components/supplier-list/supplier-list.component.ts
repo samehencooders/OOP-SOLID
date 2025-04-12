@@ -14,6 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SupplierFormDialogComponent } from '../../modals/supplier-form-dialog/supplier-form-dialog.component';
 @Component({
   selector: 'app-supplier-list',
   templateUrl: './supplier-list.component.html',
@@ -90,12 +91,23 @@ export class SupplierListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  opednAddDialog() {
+    const dialogRef = this.dialg.open(SupplierFormDialogComponent, {
+      width: '800px',
+      data: { title: 'Add Supplier', supplier: null },
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destrory$))
+      .subscribe((result) => {
+        this.loadSuppliers();
+      });
+  }
+  openEditDialog(supplier: Supplier) {}
   refresh() {}
-  opednAddDialog() {}
   getDisplayRating(rating: string) {}
   toggleActiveStatus(supplier: Supplier, event: any) {}
   viewSupplierDetails(id: string) {}
-  openEditDialog(supplier: Supplier) {}
   openDeleteDialog(supplier: Supplier) {}
   openAddDialog() {}
 }
