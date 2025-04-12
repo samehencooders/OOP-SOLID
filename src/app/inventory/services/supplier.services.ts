@@ -21,7 +21,6 @@ export class SupplierService {
   constructor(private http: HttpClient) {
     this.loadSuppliers();
   }
-
   loadSuppliers(): Observable<Supplier[]> {
     return this.http.get<Supplier[]>(this.apiUrl).pipe(
       map((suppliers) =>

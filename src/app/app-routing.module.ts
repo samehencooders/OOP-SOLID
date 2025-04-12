@@ -16,6 +16,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./task-management/task-management.module').then((m) => m.TaskManagementModule),
   },
+  {
+    path: 'supplier', //replace it with inventory
+    loadChildren: () =>
+      import('./inventory/supplier.module').then((m) => m.SupplierModule),
+  },
   // {
   //   path: 'dashbaord',
   //   loadChildren: () =>
