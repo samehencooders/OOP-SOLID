@@ -1,52 +1,124 @@
 {
-    "suppliers": [
-      {
-        "id": "1",
-        "name": "Supplier A",
-        "contactPerson": "John Doe",
-        "emial": "john.doe@example.com",
-        "phone": "123-456-7890",
-        "address": {
-          "street": "123 Main St",
-          "city": "Anytown",
-          "state": "CA",
-          "zipCode": "12345",
-          "country": "USA"
-        },
-        "website": "http://supplier-a.com",
-        "taxId": "123456789",
-        "paymentTerms": "Net 30",
-        "leadTime": 5,
-        "minimumOrderQuantity": 10,
-        "notes": "Reliable supplier",
-        "rating": 4.5,
-        "isActive": true,
-        "createdAt": "2025-01-01T00:00:00.000Z",
-        "updatedAt": "2025-04-10T00:00:00.000Z"
+  "suppliers": [
+    {
+      "id": "1",
+      "name": "Supplier A",
+      "contactPerson": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zipCode": "12345",
+        "country": "USA"
       },
-      {
-        "id": "2",
-        "name": "Supplier B",
-        "contactPerson": "Jane Smith",
-        "emial": "jane.smith@example.com",
-        "phone": "098-765-4321",
-        "address": {
-          "street": "456 Elm St",
-          "city": "Othertown",
-          "state": "NY",
-          "zipCode": "67890",
-          "country": "USA"
-        },
-        "website": "http://supplier-b.com",
-        "taxId": "987654321",
-        "paymentTerms": "Net 60",
-        "leadTime": 10,
-        "minimumOrderQuantity": 5,
-        "notes": "Fast delivery",
-        "rating": 4.0,
-        "isActive": true,
-        "createdAt": "2025-02-01T00:00:00.000Z",
-        "updatedAt": "2025-04-11T00:00:00.000Z"
-      }
-    ]
-  }
+      "website": "http://supplier-a.com",
+      "taxId": "123456789",
+      "paymentTerms": "Net 30",
+      "leadTime": 7,
+      "minimumOrderQuantity": 10,
+      "notes": "Reliable supplier",
+      "rating": 4.5,
+      "isActive": true,
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Supplier B",
+      "contactPerson": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "098-765-4321",
+      "address": {
+        "street": "456 Elm St",
+        "city": "Othertown",
+        "state": "NY",
+        "zipCode": "67890",
+        "country": "USA"
+      },
+      "website": "http://supplier-b.com",
+      "taxId": "987654321",
+      "paymentTerms": "Net 60",
+      "leadTime": 10,
+      "minimumOrderQuantity": 5,
+      "notes": "Fast delivery",
+      "rating": 4,
+      "isActive": true,
+      "createdAt": "2025-02-01T00:00:00.000Z",
+      "updatedAt": "2025-04-11T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Supplier C",
+      "contactPerson": "Adam Lee",
+      "email": "adam.lee@example.com",
+      "phone": "123-111-2222",
+      "address": {
+        "street": "789 Maple St",
+        "city": "Smallville",
+        "state": "TX",
+        "zipCode": "22222",
+        "country": "USA"
+      },
+      "website": "http://supplier-c.com",
+      "taxId": "456789123",
+      "paymentTerms": "Net 45",
+      "leadTime": 20,
+      "minimumOrderQuantity": 15,
+      "notes": "Best price guarantee",
+      "rating": 3.8,
+      "isActive": false,
+      "createdAt": "2024-12-01T00:00:00.000Z",
+      "updatedAt": "2025-02-20T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "Supplier D",
+      "contactPerson": "Emily Clarke",
+      "email": "emily.clarke@example.com",
+      "phone": "321-555-6789",
+      "address": {
+        "street": "159 Grove St",
+        "city": "Metropolis",
+        "state": "WA",
+        "zipCode": "98989",
+        "country": "USA"
+      },
+      "website": "http://supplier-d.com",
+      "taxId": "321654987",
+      "paymentTerms": "Prepaid",
+      "leadTime": 5,
+      "minimumOrderQuantity": 50,
+      "notes": "Specializes in electronics",
+      "rating": 4.8,
+      "isActive": true,
+      "createdAt": "2025-03-10T00:00:00.000Z",
+      "updatedAt": "2025-04-01T00:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "name": "Supplier E",
+      "contactPerson": "Samuel Gray",
+      "email": "sam.gray@example.com",
+      "phone": "789-555-3333",
+      "address": {
+        "street": "753 Willow St",
+        "city": "Gotham",
+        "state": "NJ",
+        "zipCode": "77777",
+        "country": "USA"
+      },
+      "website": "http://supplier-e.com",
+      "taxId": "654321987",
+      "paymentTerms": "Net 15",
+      "leadTime": 12,
+      "minimumOrderQuantity": 20,
+      "notes": "Free shipping for bulk orders",
+      "rating": 4.2,
+      "isActive": true,
+      "createdAt": "2025-04-05T00:00:00.000Z",
+      "updatedAt": "2025-04-15T00:00:00.000Z"
+    }
+  ]
+}

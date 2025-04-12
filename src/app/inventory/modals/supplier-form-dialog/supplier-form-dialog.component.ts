@@ -25,7 +25,7 @@ export class SupplierFormDialogComponent implements OnInit {
       id: [data?.supplier?.id || ''],
       name: [data?.supplier?.name || '', [Validators.required]],
       contactPerson: [data?.supplier?.contactPerson || '', [Validators.required]],
-      emial: [data?.supplier?.emial || '', [Validators.email]],
+      email: [data?.supplier?.email || '', [Validators.email]],
       phone: [data?.supplier?.phone || '', [Validators.pattern(/^[0-9\+\-\(\)\s]+$/)]],
       address: this.fb.group({
         street: [data?.supplier?.address?.street || ''],

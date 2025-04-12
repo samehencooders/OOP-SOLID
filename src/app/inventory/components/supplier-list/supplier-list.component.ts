@@ -15,6 +15,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SupplierFormDialogComponent } from '../../modals/supplier-form-dialog/supplier-form-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 @Component({
   selector: 'app-supplier-list',
   templateUrl: './supplier-list.component.html',
@@ -91,23 +92,103 @@ export class SupplierListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  opednAddDialog() {
+  addOrUpdate(supplierToEdit?: Supplier) {
+    const title = supplierToEdit ? 'Edit Supplier ' : 'Add Supplier';
+    const data = { title: title, supplier: supplierToEdit ?? null };
     const dialogRef = this.dialg.open(SupplierFormDialogComponent, {
       width: '800px',
-      data: { title: 'Add Supplier', supplier: null },
+      data: data,
     });
     dialogRef
       .afterClosed()
       .pipe(takeUntil(this.destrory$))
       .subscribe((result) => {
-        this.loadSuppliers();
+        if (result) this.loadSuppliers();
       });
   }
-  openEditDialog(supplier: Supplier) {}
-  refresh() {}
-  getDisplayRating(rating: string) {}
-  toggleActiveStatus(supplier: Supplier, event: any) {}
-  viewSupplierDetails(id: string) {}
-  openDeleteDialog(supplier: Supplier) {}
-  openAddDialog() {}
+  openDeleteDialog(supplier: Supplier) {
+    const dialogRef = this.dialg.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Delete Supplier',
+        message: `Are you sure you want to delete ${supplier.name}?`,
+        confirmText: 'Delete',
+        cancelText: 'Cancel',
+      },
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destrory$))
+      .subscribe((result) => {
+        if (result) this.deleteSupplier(supplier.id);
+      });
+  }
+  deleteSupplier(id: string) {
+    this.supplierService
+      .deleteSupplier(id)
+      .pipe(takeUntil(this.destrory$))
+      .subscribe({
+        next: () => {
+          this.loadSuppliers();
+        },
+        error: (err) => {
+          this.error = 'Failed to delete Suppllier , Please Try again.';
+          console.error('Error Deleting Supplier:', err);
+        },
+      });
+  }
+  viewSupplierDetails(id: string): void {
+    this.router.navigate(['/supplier', id]);
+  }
+  getDisplayRating(rating: number): string {
+    const fullStars = '★'.repeat(Math.floor(rating));
+    const emptyStars = '☆'.repeat(5 - Math.floor(rating));
+    return fullStars + emptyStars;
+  }
+  toggleActiveStatus(supplier: Supplier, event: any): void {
+    event.stopPropagation();
+    const updatedSupplier = {
+      ...supplier,
+      isActive: !supplier.isActive,
+    };
+    this.supplierService
+      .updateSupplier(supplier.id, updatedSupplier)
+      .pipe(takeUntil(this.destrory$))
+      .subscribe({
+        next: () => {},
+        error: (err) => {
+          this.error =
+            'Failed to update supplier status, Please Try again later.';
+          console.error(`Failed to update Supplier Status:`, err);
+        },
+      });
+  }
+
+  // openAddDialog() {
+  //   const dialogRef = this.dialg.open(SupplierFormDialogComponent, {
+  //     width: '800px',
+  //     data: { title: 'Add Supplier', supplier: null },
+  //   });
+  //   dialogRef
+  //     .afterClosed()
+  //     .pipe(takeUntil(this.destrory$))
+  //     .subscribe((result) => {
+  //       if (result) this.loadSuppliers();
+  //     });
+  // }
+  // openEditDialog(supplier: Supplier): void {
+  //   const dialogRef = this.dialg.open(SupplierFormDialogComponent, {
+  //     width: '800px',
+  //     data: { title: 'Edit Supplier', supplier },
+  //   });
+  //   dialogRef
+  //     .afterClosed()
+  //     .pipe(takeUntil(this.destrory$))
+  //     .subscribe((result) => {
+  //       if (result) this.loadSuppliers();
+  //     });
+  // }
+  refresh() {
+    this.loadSuppliers();
+  }
 }

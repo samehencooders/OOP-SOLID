@@ -2,7 +2,7 @@ export interface Supplier {
   id: string;
   name: string;
   contactPerson: string;
-  emial: string;
+  email: string;
   phone: string;
   address: {
     street: string;
@@ -26,7 +26,7 @@ export class SupplierModel implements Supplier {
   id: string;
   name: string;
   contactPerson: string;
-  emial: string;
+  email: string;
   phone: string;
   address: {
     street: string;
@@ -49,7 +49,7 @@ export class SupplierModel implements Supplier {
     this.id = supplier.id || '';
     this.name = supplier.name || '';
     this.contactPerson = supplier.contactPerson || '';
-    this.emial = supplier.emial || '';
+    this.email = supplier.email || '';
     this.phone = supplier.phone || '';
     this.address = supplier.address || {
       street: '',
@@ -75,7 +75,7 @@ export class SupplierModel implements Supplier {
   }
 
   hasValidContractInfo(): boolean {
-    return Boolean(this.emial || this.phone);
+    return Boolean(this.email || this.phone);
   }
   getDisplayRating(): string {
     const fullStars = '★'.repeat(Math.floor(this.rating));
