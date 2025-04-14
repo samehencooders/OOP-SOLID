@@ -146,7 +146,6 @@ export class SupplierListComponent implements OnInit, OnDestroy, AfterViewInit {
     return fullStars + emptyStars;
   }
   toggleActiveStatus(supplier: Supplier, event: any): void {
-    event.stopPropagation();
     const updatedSupplier = {
       ...supplier,
       isActive: !supplier.isActive,
