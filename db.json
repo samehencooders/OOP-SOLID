@@ -114,11 +114,10 @@
       "paymentTerms": "30Net",
       "leadTime": 4,
       "minimumOrderQuantity": 2,
-      "notes": "",
+      "notes": "updated note",
       "rating": 0,
       "isActive": true,
-      "createdAt": "2025-04-14T15:45:10.146Z",
-      "updatedAt": "2025-04-14T15:45:10.146Z"
+      "updatedAt": "2025-04-14T15:47:59.752Z"
     }
   ]
 }
