@@ -20,7 +20,7 @@
       "minimumOrderQuantity": 10,
       "notes": "Reliable supplier",
       "rating": 4.5,
-      "isActive": true,
+      "isActive": false,
       "createdAt": "2025-01-01T00:00:00.000Z",
       "updatedAt": "2025-01-15T00:00:00.000Z"
     },
@@ -44,7 +44,7 @@
       "minimumOrderQuantity": 5,
       "notes": "Fast delivery",
       "rating": 4,
-      "isActive": true,
+      "isActive": false,
       "createdAt": "2025-02-01T00:00:00.000Z",
       "updatedAt": "2025-04-11T00:00:00.000Z"
     },
@@ -68,7 +68,7 @@
       "minimumOrderQuantity": 15,
       "notes": "Best price guarantee",
       "rating": 3.8,
-      "isActive": false,
+      "isActive": true,
       "createdAt": "2024-12-01T00:00:00.000Z",
       "updatedAt": "2025-02-20T00:00:00.000Z"
     },
