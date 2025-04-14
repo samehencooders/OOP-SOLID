@@ -34,7 +34,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-
+import { MatSliderModule } from '@angular/material/slider';
 // Shared Components
 
 @NgModule({
@@ -76,6 +76,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatToolbarModule,
     MatTooltipModule,
     MatNativeDateModule,
+    MatSliderModule
   ],
   exports: [
     // Angular Modules
@@ -113,6 +114,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatToolbarModule,
     MatTooltipModule,
     MatNativeDateModule,
+    MatSliderModule
   ],
 })
 export class SharedModule {}

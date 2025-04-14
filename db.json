@@ -1,34 +1,10 @@
 {
   "suppliers": [
     {
-      "id": "1",
-      "name": "Supplier A",
-      "contactPerson": "John Doe",
-      "email": "john.doe@example.com",
-      "phone": "123-456-7890",
-      "address": {
-        "street": "123 Main St",
-        "city": "Anytown",
-        "state": "CA",
-        "zipCode": "12345",
-        "country": "USA"
-      },
-      "website": "http://supplier-a.com",
-      "taxId": "123456789",
-      "paymentTerms": "Net 30",
-      "leadTime": 7,
-      "minimumOrderQuantity": 10,
-      "notes": "Reliable supplier",
-      "rating": 4.5,
-      "isActive": false,
-      "createdAt": "2025-01-01T00:00:00.000Z",
-      "updatedAt": "2025-01-15T00:00:00.000Z"
-    },
-    {
       "id": "2",
-      "name": "Supplier B",
-      "contactPerson": "Jane Smith",
-      "email": "jane.smith@example.com",
+      "name": "Serag Mohema",
+      "contactPerson": "Ayman amer",
+      "email": "test_8675@example.com",
       "phone": "098-765-4321",
       "address": {
         "street": "456 Elm St",
@@ -50,9 +26,9 @@
     },
     {
       "id": "3",
-      "name": "Supplier C",
-      "contactPerson": "Adam Lee",
-      "email": "adam.lee@example.com",
+      "name": "Serag",
+      "contactPerson": "hamed ahmed",
+      "email": "test_1@example.com",
       "phone": "123-111-2222",
       "address": {
         "street": "789 Maple St",
@@ -68,15 +44,15 @@
       "minimumOrderQuantity": 15,
       "notes": "Best price guarantee",
       "rating": 3.8,
-      "isActive": true,
+      "isActive": false,
       "createdAt": "2024-12-01T00:00:00.000Z",
       "updatedAt": "2025-02-20T00:00:00.000Z"
     },
     {
       "id": "4",
-      "name": "Supplier D",
-      "contactPerson": "Emily Clarke",
-      "email": "emily.clarke@example.com",
+      "name": "Test user name",
+      "contactPerson": "ammar",
+      "email": "test_@example.com",
       "phone": "321-555-6789",
       "address": {
         "street": "159 Grove St",
@@ -98,9 +74,9 @@
     },
     {
       "id": "5",
-      "name": "Supplier E",
-      "contactPerson": "Samuel Gray",
-      "email": "sam.gray@example.com",
+      "name": "m.sadek",
+      "contactPerson": "el sayed el badwy",
+      "email": "test_3@example.com",
       "phone": "789-555-3333",
       "address": {
         "street": "753 Willow St",
@@ -119,6 +95,30 @@
       "isActive": true,
       "createdAt": "2025-04-05T00:00:00.000Z",
       "updatedAt": "2025-04-15T00:00:00.000Z"
+    },
+    {
+      "id": "801c",
+      "name": "new supplier",
+      "contactPerson": "contact name example",
+      "email": "email@gmail.com",
+      "phone": "0168165210",
+      "address": {
+        "street": "street",
+        "city": "city",
+        "state": "state",
+        "zipCode": "34322",
+        "country": "cairo"
+      },
+      "website": "www.github.com",
+      "taxId": "321",
+      "paymentTerms": "30Net",
+      "leadTime": 4,
+      "minimumOrderQuantity": 2,
+      "notes": "",
+      "rating": 0,
+      "isActive": true,
+      "createdAt": "2025-04-14T15:45:10.146Z",
+      "updatedAt": "2025-04-14T15:45:10.146Z"
     }
   ]
 }
