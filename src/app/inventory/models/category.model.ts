@@ -25,6 +25,6 @@ export class CategoryModel {
     this.updatedAt = category.updatedAt || new Date();
   }
   isToplevel(): boolean {
-    return !this.isToplevel;
+    return !this.parentCategoryId;
   }
 }
