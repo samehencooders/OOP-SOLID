@@ -15,7 +15,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InventoryService } from '../../services/inventory.service';
-import { finalize, Subject } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  finalize,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -26,24 +32,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class InventoryListComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  clearSearch() {
-    throw new Error('Method not implemented.');
-  }
-  openEditItemDialog(_t126: any) {
-    throw new Error('Method not implemented.');
-  }
-  confirmDelete(_t126: any) {
-    throw new Error('Method not implemented.');
-  }
-  openAddStockDialog(_t126: any) {
-    throw new Error('Method not implemented.');
-  }
-  openRemoveStockDialog(_t126: any) {
-    throw new Error('Method not implemented.');
-  }
-  openAddItemDialog() {
-    throw new Error('Method not implemented.');
-  }
   displayedColumns: string[] = [
     'image',
     'name',
@@ -73,8 +61,32 @@ export class InventoryListComponent
 
   ngOnInit(): void {
     this.loadInventoryItems();
+    this.searchForm
+      .get('searchTerm')
+      ?.valueChanges.pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((query) => {
+        this.applyFilter(query);
+      });
+
+    this.inventoryService.inventoryObservable$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((items: InventoryItem[]) => {
+        this.updateDataSource(items);
+      });
   }
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate = (data: InventoryItem, filter: string) => {
+      const searchTerms = filter.toLowerCase().split(' ');
+      const itemData = `${data.name.toLowerCase()} ${
+        data.category?.name.toLowerCase() || ''
+      } ${data.sku?.toLowerCase() || ''}`;
+
+      return searchTerms.every((term) => itemData.includes(term));
+    };
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
@@ -102,5 +114,33 @@ export class InventoryListComponent
     this.dataSource.data = items;
     this.applyFilter();
   }
-  applyFilter(event?: Event) {}
+  applyFilter(query: string = '') {
+    if (query) {
+      this.dataSource.filter = query;
+    }
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+    this.applyFilterByType();
+  }
+  clearSearch() {
+    this.searchForm.get('searchTrim')?.setValue('');
+    this.applyFilter();
+  }
+  applyFilterByType() {}
+  openEditItemDialog(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  confirmDelete(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  openAddStockDialog(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  openRemoveStockDialog(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  openAddItemDialog() {
+    throw new Error('Method not implemented.');
+  }
 }
