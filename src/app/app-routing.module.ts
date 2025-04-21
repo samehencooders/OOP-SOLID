@@ -19,9 +19,9 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'inventory', //replace it with inventory
+    path: 'inventory',
     loadChildren: () =>
-      import('./inventory/supplier.module').then((m) => m.SupplierModule),
+      import('./inventory/inventory.module').then((m) => m.InventoryModule),
   },
   // {
   //   path: 'dashbaord',
