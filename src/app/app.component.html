@@ -8,10 +8,18 @@
   <a mat-button routerLink="/task-management" routerLinkActive="active-link"
     >Task Management</a
   >
-  <a mat-button routerLink="/inventory" routerLinkActive="active-link"
+  <a
+    mat-button
+    routerLink="/inventory"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active-link"
     >Inventory</a
   >
-  <a mat-button routerLink="/inventory/suppliers" routerLinkActive="active-link"
+  <a
+    mat-button
+    routerLink="/inventory/suppliers"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active-link"
     >Suppliers</a
   >
 </mat-toolbar>

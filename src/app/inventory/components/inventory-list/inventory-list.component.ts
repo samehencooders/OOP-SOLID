@@ -26,24 +26,24 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class InventoryListComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-clearSearch() {
-throw new Error('Method not implemented.');
-}
-openEditItemDialog(_t126: any) {
-throw new Error('Method not implemented.');
-}
-confirmDelete(_t126: any) {
-throw new Error('Method not implemented.');
-}
-openAddStockDialog(_t126: any) {
-throw new Error('Method not implemented.');
-}
-openRemoveStockDialog(_t126: any) {
-throw new Error('Method not implemented.');
-}
-openAddItemDialog() {
-throw new Error('Method not implemented.');
-}
+  clearSearch() {
+    throw new Error('Method not implemented.');
+  }
+  openEditItemDialog(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  confirmDelete(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  openAddStockDialog(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  openRemoveStockDialog(_t126: any) {
+    throw new Error('Method not implemented.');
+  }
+  openAddItemDialog() {
+    throw new Error('Method not implemented.');
+  }
   displayedColumns: string[] = [
     'image',
     'name',
@@ -71,7 +71,9 @@ throw new Error('Method not implemented.');
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadInventoryItems();
+  }
   ngAfterViewInit(): void {}
   ngOnDestroy(): void {
     this.destroy$.next();

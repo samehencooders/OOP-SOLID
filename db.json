@@ -119,5 +119,328 @@
       "isActive": true,
       "updatedAt": "2025-04-14T15:47:59.752Z"
     }
+  ],
+  "inventory": [
+    {
+      "id": "inv-001",
+      "sku": "SKU-001",
+      "name": "Wireless Mouse",
+      "description": "Ergonomic wireless mouse with USB receiver.",
+      "category": { "id": "cat-01", "name": "Computer Accessories" },
+      "price": 25.99,
+      "cost": 15.5,
+      "currentStock": 120,
+      "minimumStock": 20,
+      "reorderPoint": 30,
+      "location": "Warehouse A - Shelf 3",
+      "suppliers": [
+        {
+          "id": "sup-01",
+          "name": "TechSupply Co.",
+          "contactEmail": "support@techsupply.com",
+          "phone": "123-456-7890",
+          "address": "123 Tech Avenue, Silicon City"
+        }
+      ],
+      "stockMovement": [
+        {
+          "id": "mov-001",
+          "date": "2025-04-01T10:30:00Z",
+          "type": "IN",
+          "quantity": 100,
+          "uniCost": 14.75,
+          "note": "Initial stock from supplier"
+        },
+        {
+          "id": "mov-002",
+          "date": "2025-04-10T14:00:00Z",
+          "type": "OUT",
+          "quantity": 20,
+          "uniCost": 14.75,
+          "note": "Sold to customers"
+        }
+      ],
+      "barcode": "0123456789012",
+      "qrCode": "http://example.com/item/inv-001",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["electronics", "mouse", "wireless"],
+      "createdAt": "2025-03-20T08:00:00Z",
+      "updatedAt": "2025-04-10T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-002",
+      "sku": "SKU-002",
+      "name": "Mechanical Keyboard",
+      "description": "RGB mechanical keyboard with blue switches.",
+      "category": { "id": "cat-01", "name": "Computer Accessories" },
+      "price": 59.99,
+      "cost": 40.0,
+      "currentStock": 85,
+      "minimumStock": 10,
+      "reorderPoint": 25,
+      "location": "Warehouse A - Shelf 1",
+      "suppliers": [
+        {
+          "id": "sup-01",
+          "name": "TechSupply Co.",
+          "contactEmail": "support@techsupply.com",
+          "phone": "123-456-7890",
+          "address": "123 Tech Avenue, Silicon City"
+        }
+      ],
+      "stockMovement": [
+        {
+          "id": "mov-003",
+          "date": "2025-03-15T09:00:00Z",
+          "type": "IN",
+          "quantity": 100,
+          "uniCost": 38.5,
+          "note": "New stock delivery"
+        }
+      ],
+      "barcode": "0123456789013",
+      "qrCode": "http://example.com/item/inv-002",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["keyboard", "gaming", "mechanical"],
+      "createdAt": "2025-03-10T07:00:00Z",
+      "updatedAt": "2025-04-05T11:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-003",
+      "sku": "SKU-003",
+      "name": "1080p HD Webcam",
+      "description": "Full HD webcam with built-in microphone.",
+      "category": { "id": "cat-01", "name": "Computer Accessories" },
+      "price": 39.99,
+      "cost": 22.0,
+      "currentStock": 60,
+      "minimumStock": 10,
+      "reorderPoint": 20,
+      "location": "Warehouse B - Rack 4",
+      "suppliers": [
+        {
+          "id": "sup-02",
+          "name": "VisionGear",
+          "contactEmail": "sales@visiongear.com",
+          "phone": "321-654-0987",
+          "address": "456 Vision Blvd, Tech City"
+        }
+      ],
+      "stockMovement": [
+        {
+          "id": "mov-004",
+          "date": "2025-03-25T13:00:00Z",
+          "type": "IN",
+          "quantity": 75,
+          "uniCost": 21.5,
+          "note": "Restocked inventory"
+        }
+      ],
+      "barcode": "0123456789014",
+      "qrCode": "http://example.com/item/inv-003",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["camera", "webcam", "HD"],
+      "createdAt": "2025-03-01T08:00:00Z",
+      "updatedAt": "2025-04-01T12:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-004",
+      "sku": "SKU-004",
+      "name": "USB-C Hub",
+      "description": "7-in-1 USB-C hub with HDMI, USB 3.0, SD card reader.",
+      "category": { "id": "cat-02", "name": "Adapters & Hubs" },
+      "price": 45.5,
+      "cost": 28.0,
+      "currentStock": 40,
+      "minimumStock": 5,
+      "reorderPoint": 10,
+      "location": "Warehouse B - Rack 1",
+      "suppliers": [
+        {
+          "id": "sup-03",
+          "name": "GadgetLinks",
+          "contactEmail": "contact@gadgetlinks.com",
+          "phone": "555-555-5555",
+          "address": "789 Adapter Rd, Port City"
+        }
+      ],
+      "stockMovement": [],
+      "barcode": "0123456789015",
+      "qrCode": "http://example.com/item/inv-004",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["usb", "hub", "adapter"],
+      "createdAt": "2025-02-25T08:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-005",
+      "sku": "SKU-005",
+      "name": "Portable SSD 1TB",
+      "description": "High-speed USB 3.2 portable SSD.",
+      "category": { "id": "cat-03", "name": "Storage Devices" },
+      "price": 119.0,
+      "cost": 90.0,
+      "currentStock": 30,
+      "minimumStock": 5,
+      "reorderPoint": 10,
+      "location": "Warehouse C - Bin 6",
+      "suppliers": [
+        {
+          "id": "sup-04",
+          "name": "StorageMax",
+          "contactEmail": "orders@storagemax.com",
+          "phone": "987-654-3210",
+          "address": "321 SSD Street, Memory Town"
+        }
+      ],
+      "stockMovement": [],
+      "barcode": "0123456789016",
+      "qrCode": "http://example.com/item/inv-005",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["storage", "ssd", "usb"],
+      "createdAt": "2025-02-20T08:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-006",
+      "sku": "SKU-006",
+      "name": "Bluetooth Speaker",
+      "description": "Compact Bluetooth speaker with deep bass.",
+      "category": { "id": "cat-04", "name": "Audio Devices" },
+      "price": 34.95,
+      "cost": 20.0,
+      "currentStock": 75,
+      "minimumStock": 15,
+      "reorderPoint": 25,
+      "location": "Warehouse D - Shelf 2",
+      "suppliers": [
+        {
+          "id": "sup-05",
+          "name": "SoundPro",
+          "contactEmail": "info@soundpro.com",
+          "phone": "444-333-2222",
+          "address": "Audio Street, Sound City"
+        }
+      ],
+      "stockMovement": [],
+      "barcode": "0123456789017",
+      "qrCode": "http://example.com/item/inv-006",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["bluetooth", "speaker", "portable"],
+      "createdAt": "2025-02-01T09:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-007",
+      "sku": "SKU-007",
+      "name": "Gaming Headset",
+      "description": "Over-ear gaming headset with noise-canceling mic.",
+      "category": { "id": "cat-04", "name": "Audio Devices" },
+      "price": 79.99,
+      "cost": 50.0,
+      "currentStock": 50,
+      "minimumStock": 10,
+      "reorderPoint": 20,
+      "location": "Warehouse D - Rack 3",
+      "suppliers": [
+        {
+          "id": "sup-05",
+          "name": "SoundPro",
+          "contactEmail": "info@soundpro.com",
+          "phone": "444-333-2222",
+          "address": "Audio Street, Sound City"
+        }
+      ],
+      "stockMovement": [],
+      "barcode": "0123456789018",
+      "qrCode": "http://example.com/item/inv-007",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["headset", "gaming", "audio"],
+      "createdAt": "2025-01-10T09:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-008",
+      "sku": "SKU-008",
+      "name": "Laptop Stand",
+      "description": "Adjustable aluminum laptop stand.",
+      "category": { "id": "cat-05", "name": "Office Supplies" },
+      "price": 32.5,
+      "cost": 18.0,
+      "currentStock": 95,
+      "minimumStock": 20,
+      "reorderPoint": 30,
+      "location": "Warehouse E - Shelf 4",
+      "suppliers": [],
+      "stockMovement": [],
+      "barcode": "0123456789019",
+      "qrCode": "http://example.com/item/inv-008",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["laptop", "stand", "ergonomic"],
+      "createdAt": "2025-01-01T09:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-009",
+      "sku": "SKU-009",
+      "name": "Ethernet Cable 10m",
+      "description": "Cat6 ethernet cable with gold-plated connectors.",
+      "category": { "id": "cat-02", "name": "Adapters & Hubs" },
+      "price": 12.99,
+      "cost": 6.0,
+      "currentStock": 150,
+      "minimumStock": 30,
+      "reorderPoint": 50,
+      "location": "Warehouse A - Bin 2",
+      "suppliers": [],
+      "stockMovement": [],
+      "barcode": "0123456789020",
+      "qrCode": "http://example.com/item/inv-009",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["ethernet", "cable", "network"],
+      "createdAt": "2025-02-01T08:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    },
+    {
+      "id": "inv-010",
+      "sku": "SKU-010",
+      "name": "Surge Protector Power Strip",
+      "description": "6-outlet surge protector with USB charging ports.",
+      "category": { "id": "cat-06", "name": "Power Accessories" },
+      "price": 29.99,
+      "cost": 19.99,
+      "currentStock": 65,
+      "minimumStock": 10,
+      "reorderPoint": 15,
+      "location": "Warehouse F - Bin 1",
+      "suppliers": [],
+      "stockMovement": [],
+      "barcode": "0123456789021",
+      "qrCode": "http://example.com/item/inv-010",
+      "imageUrl": "https://via.placeholder.com/150",
+      "tags": ["power", "surge protector", "usb"],
+      "createdAt": "2025-01-15T09:00:00Z",
+      "updatedAt": "2025-03-01T10:00:00Z",
+      "expiryDate": null,
+      "isActive": true
+    }
   ]
 }
