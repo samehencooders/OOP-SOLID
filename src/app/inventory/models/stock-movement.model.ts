@@ -54,7 +54,7 @@ export class StockMovementModel implements StockMovement {
       case 'TRANSFER':
         return `Transferred ${this.quantity} units from ${this.locationFrom} to ${this.locationTo}`;
       default:
-        return `Mofied stock by ${this.quantity} units`;
+        return `Modfied stock by ${this.quantity} units`;
     }
   }
   isPositiveMovement(): boolean {

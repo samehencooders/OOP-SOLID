@@ -13,6 +13,10 @@ import {
   InventoryItem,
   InventoryItemModel,
 } from '../models/inventory-item.model';
+import {
+  StockMovement,
+  StockMovementModel,
+} from '../models/stock-movement.model';
 
 @Injectable({
   providedIn: 'root',
@@ -93,26 +97,118 @@ export class InventoryService {
       })
     );
   }
-  deleteInventoryItem(id: string): void {
-    this.http.delete<void>(this.apiUrl).pipe(
-      tap(() => {
+  deleteInventoryItem(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      tap((inventoryItem) => {
         const currentInventories = this.inventorySubject.value;
-        console.log('Before spread operator', currentInventories);
         currentInventories.filter((x) => x.id !== id);
-        this.inventorySubject.next([...currentInventories]);
-        console.log('After spread operator>>>', currentInventories);
+        console.log('before spread Operator >>', currentInventories);
+        const updatedInventories = [...currentInventories];
+        console.log('after spread Operator >>', currentInventories);
+        this.inventorySubject.next(updatedInventories);
       }),
       catchError((err) => {
-        console.error(
-          `unexpected error error while deleting an inventory. Please check your network `,
-          err
-        );
+        console.error(`an error occured when deleting an inventory Item`);
         return throwError(
           () =>
             new Error(
-              `an error occur when deleting an inventory. Please try again later`
+              `an Error Occured when deleting an item with an id : ${id} , ${err}`
             )
         );
+      })
+    );
+  }
+
+  recordStockMovement(
+    movement: Partial<StockMovement>
+  ): Observable<StockMovement> {
+    return this.http
+      .post<StockMovement>(`${this.apiUrl}/${movement.id}/movements`, movement)
+      .pipe(
+        map((movement) => new StockMovementModel(movement)),
+        tap((movement) => {
+          console.log(movement);
+          this.getInventoryItem(movement.inventoryItemId).subscribe((item) => {
+            console.log('item is : >>', item);
+            const inventory = item as InventoryItemModel;
+            console.log(inventory);
+            if (inventory.isLowOnStock()) {
+              // this.notificationService.createLowStockNotification(item);
+            }
+          });
+        }),
+        catchError((err) => {
+          console.error(`an error Occured `, err);
+          return throwError(() => new Error(`Please Try again ${err}`));
+        })
+      );
+  }
+  getStockMovements(itemId: number): Observable<StockMovement[]> {
+    return this.http
+      .get<StockMovement[]>(`${this.apiUrl}/${itemId}/movements`)
+      .pipe(
+        map((movements) =>
+          movements.map((movement) => new StockMovementModel(movement))
+        ),
+        catchError((err) => {
+          console.error(err);
+          return throwError(
+            () => new Error(`an error occured , Please try again,  ${err}`)
+          );
+        })
+      );
+  }
+  searchInventoryItems(query: string): Observable<InventoryItem[]> {
+    return this.http
+      .get<InventoryItem[]>(`${this.apiUrl}/search?q=${query}`)
+      .pipe(
+        map((items) => items.map((item) => new InventoryItemModel(item))),
+        tap((item) => {
+          console.log(`item after transformation`, item);
+        }),
+        catchError((err) => {
+          console.error(
+            `an error occurd from the server side Please try again later`
+          );
+          return throwError(() => new Error(err));
+        })
+      );
+  }
+  getLowStockItems(): Observable<InventoryItem[]> {
+    return this.inventoryObservable$.pipe(
+      map((items) =>
+        items.filter((item) => {
+          item.currentStock <= item.minimumStock;
+        })
+      )
+    );
+  }
+
+  getOutOfStockItems(): Observable<InventoryItem[]> {
+    return this.inventoryObservable$.pipe(
+      map((items) => items.filter((x) => x.currentStock === 0))
+    );
+  }
+  getItemsToReOrder(): Observable<InventoryItem[]> {
+    return this.inventoryObservable$.pipe(
+      map((items) =>
+        items.filter((item) => item.currentStock <= item.reorderPoint)
+      )
+    );
+  }
+  getTotalInventoryValue(): Observable<number> {
+    return this.inventoryObservable$.pipe(
+      map((items) =>
+        items.reduce((total, item) => total + item.price * item.currentStock, 0)
+      )
+    );
+  }
+
+  scanCode(code: string): Observable<InventoryItem | null> {
+    return this.inventoryObservable$.pipe(
+      map((items) => {
+        const item = items.find((x) => x.barcode === code || x.qrCode === code);
+        return item ? new InventoryItemModel(item) : null;
       })
     );
   }
