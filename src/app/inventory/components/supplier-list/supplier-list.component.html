@@ -1,184 +1,205 @@
-<div class="supplier-container">
-  <!-- Header with title and actions -->
-  <div class="header-container">
-    <h1 class="mat-headline-5">Supplier Management</h1>
-    <div class="actions-container">
-      <button mat-raised-button color="primary" (click)="addOrUpdate()">
-        <mat-icon>add</mat-icon>
-        Add Supplier
-      </button>
-      <button mat-icon-button (click)="refresh()" matTooltip="Refresh">
-        <mat-icon>refresh</mat-icon>
-      </button>
-    </div>
-  </div>
+<!-- supplier.component.html -->
+<div class="suppliers-container" @fadeIn>
+  <mat-card class="suppliers-card">
+    <mat-card-header>
+      <div class="header-container">
+        <div class="title-section">
+          <mat-card-title>Supplier Management</mat-card-title>
+          <mat-card-subtitle>Manage your company's suppliers</mat-card-subtitle>
+        </div>
+        <button mat-raised-button color="primary" (click)="openSupplierDialog()" @slideIn>
+          <mat-icon>add</mat-icon>
+          Add Supplier
+        </button>
+      </div>
+    </mat-card-header>
 
-  <!-- Search and filter section -->
-  <div class="search-container">
-    <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Search Suppliers</mat-label>
-      <input
-        matInput
-        [formControl]="searchControl"
-        placeholder="Search by name, contact person, or email"
-      />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-  </div>
+    <mat-card-content>
+      <!-- Search and Filters -->
+      <div class="search-filters-container" @slideIn>
+        <form [formGroup]="searchForm" class="search-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Search suppliers</mat-label>
+            <input matInput formControlName="searchQuery" placeholder="Search by name, email, etc...">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </form>
 
-  <!-- Loading spinner -->
-  <div *ngIf="loading" class="loading-container">
-    <mat-spinner diameter="40"></mat-spinner>
-    <p>Loading suppliers...</p>
-  </div>
-
-  <!-- Error message -->
-  <div *ngIf="error" class="error-container">
-    <mat-icon color="warn">error</mat-icon>
-    <p>{{ error }}</p>
-    <button mat-button color="primary" (click)="loadSuppliers()">
-      Try Again
-    </button>
-  </div>
-
-  <!-- Supplier table -->
-  <div class="table-container" *ngIf="!loading && !error">
-    <table mat-table [dataSource]="dataSource" matSort class="supplier-table">
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let supplier">{{ supplier.name }}</td>
-      </ng-container>
-
-      <!-- Contact Person Column -->
-      <ng-container matColumnDef="contactPerson">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Contact Person
-        </th>
-        <td mat-cell *matCellDef="let supplier">
-          {{ supplier.contactPerson }}
-        </td>
-      </ng-container>
-
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-        <td mat-cell *matCellDef="let supplier">
-          <a
-            [href]="'mailto:' + supplier.email"
-            (click)="$event.stopPropagation()"
-            >{{ supplier.email }}</a
-          >
-        </td>
-      </ng-container>
-
-      <!-- Phone Column -->
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
-        <td mat-cell *matCellDef="let supplier">
-          <a
-            [href]="'tel:' + supplier.phone"
-            (click)="$event.stopPropagation()"
-            >{{ supplier.phone }}</a
-          >
-        </td>
-      </ng-container>
-
-      <!-- Rating Column -->
-      <ng-container matColumnDef="rating">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Rating</th>
-        <td mat-cell *matCellDef="let supplier">
-          <div class="rating">
-            <span class="rating-stars">{{
-              getDisplayRating(supplier.rating)
-            }}</span>
-            <span class="rating-value">({{ supplier.rating }})</span>
-          </div>
-        </td>
-      </ng-container>
-
-      <!-- Lead Time Column -->
-      <ng-container matColumnDef="leadTime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Lead Time</th>
-        <td mat-cell *matCellDef="let supplier">
-          {{ supplier.leadTime }} days
-        </td>
-      </ng-container>
-
-      <!-- Active Status Column -->
-      <ng-container matColumnDef="isActive">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let supplier">
-          <mat-slide-toggle
-            [checked]="supplier.isActive"
-            (change)="toggleActiveStatus(supplier, $event)"
-            color="primary"
-          >
-            {{ supplier.isActive ? "Active" : "Inactive" }}
+        <div class="filter-controls">
+          <mat-slide-toggle [(ngModel)]="filterOptions.showInactive" (change)="applyFilters()">
+            Show Inactive
           </mat-slide-toggle>
-        </td>
-      </ng-container>
-
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let supplier">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Actions"
-          >
-            <mat-icon>more_vert</mat-icon>
+          
+          <mat-slide-toggle [(ngModel)]="filterOptions.showTopRated" (change)="applyFilters()">
+            Top Rated
+          </mat-slide-toggle>
+          
+          <mat-form-field appearance="outline" class="lead-time-select">
+            <mat-label>Max Lead Time (days)</mat-label>
+            <mat-select [(ngModel)]="filterOptions.leadTimeDays" (selectionChange)="applyFilters()">
+              <mat-option [value]="7">7 days</mat-option>
+              <mat-option [value]="14">14 days</mat-option>
+              <mat-option [value]="30">30 days</mat-option>
+              <mat-option [value]="60">60 days</mat-option>
+              <mat-option [value]="999">Any</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <button mat-button color="warn" (click)="resetFilters()">
+            <mat-icon>filter_alt_off</mat-icon> Reset
           </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="viewSupplierDetails(supplier.id)">
-              <mat-icon>visibility</mat-icon>
-              <span>View Details</span>
-            </button>
-            <button mat-menu-item (click)="addOrUpdate(supplier)">
-              <mat-icon>edit</mat-icon>
-              <span>Edit</span>
-            </button>
-            <button mat-menu-item (click)="openDeleteDialog(supplier)">
-              <mat-icon>delete</mat-icon>
-              <span>Delete</span>
-            </button>
-          </mat-menu>
-        </td>
-      </ng-container>
+        </div>
+      </div>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        class="supplier-row"
-        ></tr>
-        <!-- (click)="viewSupplierDetails(row.id)" -->
+      <!-- Loading spinner -->
+      <div *ngIf="isLoading" class="loading-container" @fadeIn>
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
 
-      <!-- Row shown when there is no matching data -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="8">
-          <div class="no-data-container">
-            <mat-icon>business</mat-icon>
-            <p>
-              No suppliers found{{
-                searchControl.value
-                  ? ' matching "' + searchControl.value + '"'
-                  : ""
-              }}
-            </p>
-            <button mat-raised-button color="primary" (click)="addOrUpdate()">
-              Add Supplier
-            </button>
-          </div>
-        </td>
-      </tr>
-    </table>
+      <!-- Table -->
+      <div class="table-container" *ngIf="!isLoading" @fadeIn>
+        <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="supplier-table mat-elevation-z2">
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Supplier </th>
+            <td mat-cell *matCellDef="let supplier"> {{supplier.name}} </td>
+          </ng-container>
 
-    <!-- Paginator -->
-    <mat-paginator
-      [pageSizeOptions]="[10, 25, 50, 100]"
-      showFirstLastButtons
-    ></mat-paginator>
-  </div>
+          <!-- Contact Person Column -->
+          <ng-container matColumnDef="contactPerson">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact Person </th>
+            <td mat-cell *matCellDef="let supplier"> {{supplier.contactPerson}} </td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let supplier"> 
+              <a [href]="'mailto:' + supplier.email" class="email-link">{{supplier.email}}</a> 
+            </td>
+          </ng-container>
+
+          <!-- Phone Column -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+            <td mat-cell *matCellDef="let supplier"> {{supplier.phone}} </td>
+          </ng-container>
+
+          <!-- Rating Column -->
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+            <td mat-cell *matCellDef="let supplier" class="rating-cell"> 
+              <span class="rating-stars">{{supplier.getDisplayRating()}}</span> 
+            </td>
+          </ng-container>
+
+          <!-- Lead Time Column -->
+          <ng-container matColumnDef="leadTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lead Time </th>
+            <td mat-cell *matCellDef="let supplier"> 
+              <span [class.priority-high]="supplier.leadTime <= 7"
+                    [class.priority-medium]="supplier.leadTime > 7 && supplier.leadTime <= 14"
+                    [class.priority-low]="supplier.leadTime > 14">
+                {{supplier.leadTime}} days
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Active Status Column -->
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let supplier"> 
+              <span class="status-badge" [class.active]="supplier.isActive" [class.inactive]="!supplier.isActive">
+                {{supplier.isActive ? 'Active' : 'Inactive'}}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let supplier"> 
+              <div class="action-buttons">
+                <button mat-icon-button color="primary" (click)="openSupplierDialog(supplier)" matTooltip="Edit">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteSupplier(supplier)" matTooltip="Delete">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="toggleExpandRow(supplier)" matTooltip="Details">
+                  <mat-icon>{{expandedSupplier === supplier ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Expanded Content Column -->
+          <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let supplier" [attr.colspan]="displayedColumns.length" 
+                class="expanded-detail-cell">
+              <div class="supplier-detail" [@detailExpand]="supplier == expandedSupplier ? 'expanded' : 'collapsed'">
+                <div class="detail-content" *ngIf="supplier == expandedSupplier">
+                  <div class="detail-section">
+                    <h3>Company Information</h3>
+                    <div class="detail-grid">
+                      <div class="detail-item">
+                        <span class="label">Website:</span>
+                        <a [href]="supplier.website" target="_blank" class="value link">{{supplier.website}}</a>
+                      </div>
+                      <div class="detail-item">
+                        <span class="label">Tax ID:</span>
+                        <span class="value">{{supplier.taxId}}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="label">Payment Terms:</span>
+                        <span class="value">{{supplier.paymentTerms}}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="label">Min. Order Qty:</span>
+                        <span class="value">{{supplier.minimumOrderQuantity}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="detail-section">
+                    <h3>Address</h3>
+                    <p class="address">{{supplier.getFullAddress()}}</p>
+                  </div>
+                  
+                  <div class="detail-section notes-section">
+                    <h3>Notes</h3>
+                    <p class="notes">{{supplier.notes || 'No notes available'}}</p>
+                  </div>
+                  
+                  <div class="detail-footer">
+                    <span class="timestamp">Created: {{supplier.createdAt | date:'medium'}}</span>
+                    <span class="timestamp">Last Updated: {{supplier.updatedAt | date:'medium'}}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Header and row definitions -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let supplier; columns: displayedColumns;"
+              class="supplier-row"
+              [class.expanded-row]="expandedSupplier === supplier"
+              (click)="expandedSupplier = expandedSupplier === supplier ? null : supplier">
+          </tr>
+          <tr mat-row *matRowDef="let supplier; columns: ['expandedDetail']" 
+              class="detail-row"></tr>
+        </table>
+
+        <!-- No data message -->
+        <div *ngIf="dataSource.data.length === 0" class="no-data-message" @fadeIn>
+          <mat-icon>search_off</mat-icon>
+          <p>No suppliers found. Try adjusting your search or filters.</p>
+        </div>
+
+        <!-- Paginator -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

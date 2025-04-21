@@ -1,153 +1,169 @@
-<h2 mat-dialog-title>{{ dialogTitle }}</h2>
-
-<form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
-  <mat-dialog-content>
-    <div class="form-container">
-      <!-- Basic Information -->
-      <div class="section">
-        <h3>Basic Information</h3>
+<!-- supplier-dialog.component.html -->
+<div class="dialog-container" @fadeIn>
+  <h2 mat-dialog-title>{{dialogTitle}}</h2>
+  
+  <form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+      <div class="form-sections">
+        <!-- Basic Information Section -->
+        <div class="form-section" @slideIn>
+          <h3 class="section-title">Basic Information</h3>
+          
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Supplier Name</mat-label>
+              <input matInput formControlName="name" placeholder="Enter supplier company name">
+              <mat-error *ngIf="supplierForm.get('name')?.hasError('required')">
+                Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Contact Person</mat-label>
+              <input matInput formControlName="contactPerson" placeholder="Enter contact person name">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="Enter email address" type="email">
+              <mat-error *ngIf="supplierForm.get('email')?.hasError('email')">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput formControlName="phone" placeholder="Enter phone number">
+              <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Website</mat-label>
+              <input matInput formControlName="website" placeholder="Enter website URL">
+              <mat-icon matSuffix>language</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
         
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Supplier Name</mat-label>
-          <input matInput formControlName="name" placeholder="Enter supplier name">
-          <mat-error *ngIf="supplierForm.get('name')?.hasError('required')">
-            Supplier name is required
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Contact Person</mat-label>
-          <input matInput formControlName="contactPerson" placeholder="Enter contact person name">
-          <mat-error *ngIf="supplierForm.get('contactPerson')?.hasError('required')">
-            Contact person is required
-          </mat-error>
-        </mat-form-field>
-
-        <div class="row">
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Enter email address" type="email">
-            <mat-error *ngIf="supplierForm.get('email')?.hasError('email')">
-              Please enter a valid email address
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Phone</mat-label>
-            <input matInput formControlName="phone" placeholder="Enter phone number">
-            <mat-error *ngIf="supplierForm.get('phone')?.hasError('pattern')">
-              Please enter a valid phone number
-            </mat-error>
-          </mat-form-field>
+        <!-- Address Information Section -->
+        <div class="form-section" @slideIn>
+          <h3 class="section-title">Address Information</h3>
+          
+          <div formGroupName="address">
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="street" placeholder="Enter street address">
+              </mat-form-field>
+            </div>
+            
+            <div class="form-row two-columns">
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city" placeholder="Enter city">
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                <mat-label>State/Province</mat-label>
+                <input matInput formControlName="state" placeholder="Enter state or province">
+              </mat-form-field>
+            </div>
+            
+            <div class="form-row two-columns">
+              <mat-form-field appearance="outline">
+                <mat-label>Postal/ZIP Code</mat-label>
+                <input matInput formControlName="zipCode" placeholder="Enter postal or ZIP code">
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput formControlName="country" placeholder="Enter country">
+              </mat-form-field>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <!-- Address Information -->
-      <div class="section" formGroupName="address">
-        <h3>Address</h3>
         
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Street</mat-label>
-          <input matInput formControlName="street" placeholder="Enter street address">
-        </mat-form-field>
-
-        <div class="row">
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>City</mat-label>
-            <input matInput formControlName="city" placeholder="Enter city">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>State/Province</mat-label>
-            <input matInput formControlName="state" placeholder="Enter state or province">
-          </mat-form-field>
+        <!-- Business Information Section -->
+        <div class="form-section" @slideIn>
+          <h3 class="section-title">Business Information</h3>
+          
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Tax ID</mat-label>
+              <input matInput formControlName="taxId" placeholder="Enter tax ID or VAT number">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Terms</mat-label>
+              <input matInput formControlName="paymentTerms" placeholder="e.g., Net 30, COD">
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Lead Time (days)</mat-label>
+              <input matInput type="number" formControlName="leadTime" placeholder="Enter average lead time in days">
+              <mat-error *ngIf="supplierForm.get('leadTime')?.hasError('required')">
+                Lead time is required
+              </mat-error>
+              <mat-error *ngIf="supplierForm.get('leadTime')?.hasError('min')">
+                Lead time cannot be negative
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Minimum Order Quantity</mat-label>
+              <input matInput type="number" formControlName="minimumOrderQuantity" placeholder="Enter minimum order quantity">
+              <mat-error *ngIf="supplierForm.get('minimumOrderQuantity')?.hasError('min')">
+                Minimum order quantity cannot be negative
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-
-        <div class="row">
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Zip/Postal Code</mat-label>
-            <input matInput formControlName="zipCode" placeholder="Enter zip or postal code">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Country</mat-label>
-            <input matInput formControlName="country" placeholder="Enter country">
-          </mat-form-field>
-        </div>
-      </div>
-
-      <!-- Business Information -->
-      <div class="section">
-        <h3>Business Information</h3>
         
-        <div class="row">
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Website</mat-label>
-            <input matInput formControlName="website" placeholder="Enter website URL">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Tax ID</mat-label>
-            <input matInput formControlName="taxId" placeholder="Enter tax ID">
-          </mat-form-field>
-        </div>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Payment Terms</mat-label>
-          <input matInput formControlName="paymentTerms" placeholder="Enter payment terms">
-        </mat-form-field>
-
-        <div class="row">
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Lead Time (days)</mat-label>
-            <input matInput formControlName="leadTime" type="number" min="0">
-            <mat-error *ngIf="supplierForm.get('leadTime')?.hasError('min')">
-              Lead time cannot be negative
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Minimum Order Quantity</mat-label>
-            <input matInput formControlName="minimumOrderQuantity" type="number" min="0">
-            <mat-error *ngIf="supplierForm.get('minimumOrderQuantity')?.hasError('min')">
-              Minimum order quantity cannot be negative
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <!-- Additional Information -->
-      <div class="section">
-        <h3>Additional Information</h3>
-        
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Notes</mat-label>
-          <textarea matInput formControlName="notes" placeholder="Enter notes" rows="3"></textarea>
-        </mat-form-field>
-
-        <div class="row">
-          <mat-form-field appearance="outline" class="half-width">
-            <mat-label>Rating (0-5)</mat-label>
-            <input matInput formControlName="rating" type="number" min="0" max="5" step="0.5">
-            <mat-error *ngIf="supplierForm.get('rating')?.hasError('min') || supplierForm.get('rating')?.hasError('max')">
-              Rating must be between 0 and 5
-            </mat-error>
-          </mat-form-field>
-
-          <div class="half-width status-toggle">
+        <!-- Additional Information Section -->
+        <div class="form-section" @slideIn>
+          <h3 class="section-title">Additional Information</h3>
+          
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Notes</mat-label>
+              <textarea matInput formControlName="notes" placeholder="Enter additional notes or comments" rows="4"></textarea>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row">
+            <div class="rating-container">
+              <label class="rating-label">Rating:</label>
+              <mat-slider
+                [max]="maxRating"
+                [min]="0"
+                [step]="0.5"
+                class="rating-slider">
+                <input matSliderThumb formControlName="rating">
+              </mat-slider>
+              <span class="rating-stars">{{getStarsDisplay()}}</span>
+            </div>
+          </div>
+          
+          <div class="form-row">
             <mat-slide-toggle formControlName="isActive" color="primary">
               Active Supplier
             </mat-slide-toggle>
           </div>
         </div>
       </div>
-    </div>
-  </mat-dialog-content>
-
-  <mat-dialog-actions align="end">
-    <button mat-button type="button" (click)="onCancel()">Cancel</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="supplierForm.invalid">
-      {{ isEditMode ? 'Update' : 'Create' }}
-    </button>
-  </mat-dialog-actions>
-</form>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions align="end">
+      <button mat-button type="button" (click)="onCancel()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="supplierForm.invalid">
+        {{isEditMode ? 'Update' : 'Create'}}
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

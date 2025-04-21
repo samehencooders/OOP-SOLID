@@ -66,7 +66,7 @@ export class SupplierService {
       tap((updatedSupplier) => {
         const currentSuppliers = this.suppliersSubject.value;
         const index = currentSuppliers.findIndex((x) => x.id === id);
-        if (index < -1) {
+        if (index > -1) {
           const updatedSuppliers = [...currentSuppliers];
           updatedSuppliers[index] = updatedSupplier;
           this.suppliersSubject.next(updatedSuppliers);

@@ -72,7 +72,7 @@ export class InventoryItemModel implements InventoryItem {
     if (this.cost === 0) return 0;
     return ((this.price - this.cost) / this.price) * 100;
   }
-  getTotalvalue(): number {
+  getTotalValue(): number {
     return this.price * this.currentStock;
   }
   isLowOnStock(): boolean {
