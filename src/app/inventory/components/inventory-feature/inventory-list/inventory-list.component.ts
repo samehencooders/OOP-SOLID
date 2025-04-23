@@ -26,32 +26,40 @@ import { InventoryService } from 'src/app/inventory/services/inventory.service';
 })
 export class InventoryListComponent implements OnInit, OnDestroy {
   // Table data source
-  dataSource = new MatTableDataSource<InventoryItem>([])
+  dataSource = new MatTableDataSource<InventoryItem>([]);
 
   // Columns to display in the table
-  displayedColumns: string[] = ["imageUrl", "sku", "name", "category", "currentStock", "price", "actions"]
+  displayedColumns: string[] = [
+    'imageUrl',
+    'sku',
+    'name',
+    'category',
+    'currentStock',
+    'price',
+    'actions',
+  ];
 
   // Search form control
-  searchControl = new FormControl("")
+  searchControl = new FormControl('');
 
   // Loading state
-  loading = true
+  loading = true;
 
   // Error message
-  error: string | null = null
+  error: string | null = null;
 
   // Subject for unsubscribing from observables
-  private destroy$ = new Subject<void>()
+  private destroy$ = new Subject<void>();
 
   // References to Angular Material components
-  @ViewChild(MatPaginator) paginator!: MatPaginator
-  @ViewChild(MatSort) sort!: MatSort
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private inventoryService: InventoryService,
     // private notificationService: NotificationService,
     private dialog: MatDialog,
-    private router: Router,
+    private router: Router
   ) {}
 
   /**
@@ -59,87 +67,73 @@ export class InventoryListComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     // Load inventory items
-    this.loadInventoryItems()
+    this.loadInventoryItems();
 
     // Set up search with debounce
-    this.setupSearch()
+    this.setupSearch();
   }
 
   /**
    * Clean up subscriptions when component is destroyed
    */
   ngOnDestroy(): void {
-    this.destroy$.next()
-    this.destroy$.complete()
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   /**
    * After view initialization, set up the paginator and sort
    */
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator
-    this.dataSource.sort = this.sort
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   /**
    * Load inventory items from the service
    */
   loadInventoryItems(): void {
-    this.loading = true
-    this.error = null
+    this.loading = true;
+    this.error = null;
 
     this.inventoryService
       .loadInventoryItems()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (items) => {
-          this.dataSource.data = items
-          this.loading = false
+          this.dataSource.data = items;
+          this.loading = false;
         },
         error: (err) => {
-          this.error = "Failed to load inventory items. Please try again."
-          this.loading = false
-          console.error("Error loading inventory items:", err)
+          this.error = 'Failed to load inventory items. Please try again.';
+          this.loading = false;
+          console.error('Error loading inventory items:', err);
         },
-      })
+      });
   }
 
-  /**
-   * Set up the search functionality with debounce
-   */
-  setupSearch(): void {
+  setupSearch() {
     this.searchControl.valueChanges
-      .pipe(takeUntil(this.destroy$), debounceTime(300), distinctUntilChanged())
-      .subscribe((value) => {
-        this.applyFilter(value)
-      })
+      .pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe((value: string | null) => {
+        if (value) {
+          const searchValue = value ? value.trim().toLowerCase() : '';
+          this.applyFilter(searchValue);
+        }
+      });
   }
 
-  /**
-   * Apply filter to the table data source
-   * @param filterValue The filter value
-   */
-  applyFilter(filterValue: string |null): void {
-    if (!filterValue) {
-      this.dataSource.filter = ""
-      return
-    }
-    this.dataSource.filter = filterValue.trim().toLowerCase()
-
+  applyFilter(query: string) {
+    this.dataSource.filter = query;
     if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage()
+      this.dataSource.paginator.firstPage();
     }
   }
-
-  /**
-   * Open the dialog to add a new inventory item
-   */
   openAddDialog(): void {
     // const dialogRef = this.dialog.open(InventoryFormDialogComponent, {
     //   width: "800px",
     //   data: { title: "Add Inventory Item", item: null },
     // })
-
     // dialogRef
     //   .afterClosed()
     //   .pipe(takeUntil(this.destroy$))
@@ -159,7 +153,6 @@ export class InventoryListComponent implements OnInit, OnDestroy {
     //   width: "800px",
     //   data: { title: "Edit Inventory Item", item },
     // })
-
     // dialogRef
     //   .afterClosed()
     //   .pipe(takeUntil(this.destroy$))
@@ -184,7 +177,6 @@ export class InventoryListComponent implements OnInit, OnDestroy {
     //     cancelText: "Cancel",
     //   },
     // })
-
     // dialogRef
     //   .afterClosed()
     //   .pipe(takeUntil(this.destroy$))
@@ -205,13 +197,13 @@ export class InventoryListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: () => {
-          this.loadInventoryItems()
+          this.loadInventoryItems();
         },
         error: (err) => {
-          this.error = "Failed to delete inventory item. Please try again."
-          console.error("Error deleting inventory item:", err)
+          this.error = 'Failed to delete inventory item. Please try again.';
+          console.error('Error deleting inventory item:', err);
         },
-      })
+      });
   }
 
   /**
@@ -219,7 +211,7 @@ export class InventoryListComponent implements OnInit, OnDestroy {
    * @param id The ID of the item to view
    */
   viewItemDetails(id: string): void {
-    this.router.navigate(["/inventory", id])
+    this.router.navigate(['/inventory', id]);
   }
 
   /**
@@ -231,7 +223,6 @@ export class InventoryListComponent implements OnInit, OnDestroy {
     //   width: "600px",
     //   data: { item },
     // })
-
     // dialogRef
     //   .afterClosed()
     //   .pipe(takeUntil(this.destroy$))
@@ -249,11 +240,11 @@ export class InventoryListComponent implements OnInit, OnDestroy {
    */
   getStockLevelClass(item: InventoryItem): string {
     if (item.currentStock === 0) {
-      return "out-of-stock"
+      return 'out-of-stock';
     } else if (item.currentStock <= item.minimumStock) {
-      return "low-stock"
+      return 'low-stock';
     } else {
-      return "normal-stock"
+      return 'normal-stock';
     }
   }
 
@@ -261,6 +252,6 @@ export class InventoryListComponent implements OnInit, OnDestroy {
    * Refresh the inventory list
    */
   refresh(): void {
-    this.loadInventoryItems()
+    this.loadInventoryItems();
   }
 }
