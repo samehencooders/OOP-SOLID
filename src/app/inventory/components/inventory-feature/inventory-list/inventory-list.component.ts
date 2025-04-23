@@ -1,8 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -22,105 +25,242 @@ import { InventoryService } from 'src/app/inventory/services/inventory.service';
   styleUrls: ['./inventory-list.component.scss'],
 })
 export class InventoryListComponent implements OnInit, OnDestroy {
-  displayColumns: string[] = [
-    'sku',
-    'name',
-    'category',
-    'currentStock',
-    'price',
-    'totalValue',
-    'status',
-    'actions',
-  ];
-  dataSource = new MatTableDataSource<InventoryItem>();
-  isLoading = true;
-  displayedColumns: any;
-  searchForm!: FormGroup;
-  subject$ = new Subject<void>();
+  // Table data source
+  dataSource = new MatTableDataSource<InventoryItem>([])
+
+  // Columns to display in the table
+  displayedColumns: string[] = ["imageUrl", "sku", "name", "category", "currentStock", "price", "actions"]
+
+  // Search form control
+  searchControl = new FormControl("")
+
+  // Loading state
+  loading = true
+
+  // Error message
+  error: string | null = null
+
+  // Subject for unsubscribing from observables
+  private destroy$ = new Subject<void>()
+
+  // References to Angular Material components
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatSort) sort!: MatSort
+
   constructor(
     private inventoryService: InventoryService,
-    private dialod: MatDialog,
-    private snackbar: MatSnackBar,
-    private fb: FormBuilder
+    // private notificationService: NotificationService,
+    private dialog: MatDialog,
+    private router: Router,
   ) {}
+
+  /**
+   * Initialize the component
+   */
   ngOnInit(): void {
-    this.searchForm = this.fb.group({
-      searchQuery: [''],
-    });
-    this.applyFilter();
-    this.loadInventory();
+    // Load inventory items
+    this.loadInventoryItems()
+
+    // Set up search with debounce
+    this.setupSearch()
   }
+
+  /**
+   * Clean up subscriptions when component is destroyed
+   */
   ngOnDestroy(): void {
-    this.subject$.next();
-    this.subject$.complete();
+    this.destroy$.next()
+    this.destroy$.complete()
   }
-  get searchQueryControl() {
-    return this.searchForm.get('searchQuery');
+
+  /**
+   * After view initialization, set up the paginator and sort
+   */
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator
+    this.dataSource.sort = this.sort
   }
-  loadInventory(): void {
-    this.isLoading = true;
+
+  /**
+   * Load inventory items from the service
+   */
+  loadInventoryItems(): void {
+    this.loading = true
+    this.error = null
+
     this.inventoryService
       .loadInventoryItems()
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (inventories: InventoryItemModel[]) => {
-          this.dataSource.data = inventories;
+        next: (items) => {
+          this.dataSource.data = items
+          this.loading = false
         },
         error: (err) => {
-          this.snackbar.open(
-            'an error occur while loading inventory',
-            'dismiss',
-            {
-              duration: 5000,
-            }
-          );
+          this.error = "Failed to load inventory items. Please try again."
+          this.loading = false
+          console.error("Error loading inventory items:", err)
         },
-      });
+      })
   }
-  applyFilter(): void {
-    this.searchQueryControl?.valueChanges
-      .pipe(takeUntil(this.subject$), debounceTime(500), distinctUntilChanged())
-      .subscribe((value: string) => {
-        this.searchInventory(value);
-        console.log(value);
-      });
+
+  /**
+   * Set up the search functionality with debounce
+   */
+  setupSearch(): void {
+    this.searchControl.valueChanges
+      .pipe(takeUntil(this.destroy$), debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => {
+        this.applyFilter(value)
+      })
   }
-  searchInventory(query: string) {
-    if (query && query.trim() !== '') {
-      this.inventoryService.searchInventoryItems(query).subscribe({
-        next: (res: InventoryItem[]) => {
-          this.dataSource.data = res;
-        },
-        error: (err) => {
-          this.snackbar.open(
-            `an error occur while loading inventory:${err}`,
-            'dismiss',
-            {
-              duration: 5000,
-            }
-          );
-        },
-      });
+
+  /**
+   * Apply filter to the table data source
+   * @param filterValue The filter value
+   */
+  applyFilter(filterValue: string |null): void {
+    if (!filterValue) {
+      this.dataSource.filter = ""
+      return
+    }
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage()
     }
   }
 
-  openAddDialog() {
-    throw new Error('Method not implemented.');
+  /**
+   * Open the dialog to add a new inventory item
+   */
+  openAddDialog(): void {
+    // const dialogRef = this.dialog.open(InventoryFormDialogComponent, {
+    //   width: "800px",
+    //   data: { title: "Add Inventory Item", item: null },
+    // })
+
+    // dialogRef
+    //   .afterClosed()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((result) => {
+    //     if (result) {
+    //       this.loadInventoryItems()
+    //     }
+    //   })
   }
-  getStatusColor(_t113: any) {
-    throw new Error('Method not implemented.');
+
+  /**
+   * Open the dialog to edit an existing inventory item
+   * @param item The inventory item to edit
+   */
+  openEditDialog(item: InventoryItem): void {
+    // const dialogRef = this.dialog.open(InventoryFormDialogComponent, {
+    //   width: "800px",
+    //   data: { title: "Edit Inventory Item", item },
+    // })
+
+    // dialogRef
+    //   .afterClosed()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((result) => {
+    //     if (result) {
+    //       this.loadInventoryItems()
+    //     }
+    //   })
   }
-  getStatusIcon(_t113: any) {
-    throw new Error('Method not implemented.');
+
+  /**
+   * Open the dialog to confirm deletion of an inventory item
+   * @param item The inventory item to delete
+   */
+  openDeleteDialog(item: InventoryItem): void {
+    // const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    //   width: "400px",
+    //   data: {
+    //     title: "Delete Inventory Item",
+    //     message: `Are you sure you want to delete ${item.name}?`,
+    //     confirmText: "Delete",
+    //     cancelText: "Cancel",
+    //   },
+    // })
+
+    // dialogRef
+    //   .afterClosed()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((result) => {
+    //     if (result) {
+    //       this.deleteItem(item.id)
+    //     }
+    //   })
   }
-  openEditDialog(_t126: any) {
-    throw new Error('Method not implemented.');
+
+  /**
+   * Delete an inventory item
+   * @param id The ID of the item to delete
+   */
+  deleteItem(id: string): void {
+    this.inventoryService
+      .deleteInventoryItem(id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () => {
+          this.loadInventoryItems()
+        },
+        error: (err) => {
+          this.error = "Failed to delete inventory item. Please try again."
+          console.error("Error deleting inventory item:", err)
+        },
+      })
   }
-  deleteItem(_t126: any) {
-    throw new Error('Method not implemented.');
+
+  /**
+   * Navigate to the detail view for an inventory item
+   * @param id The ID of the item to view
+   */
+  viewItemDetails(id: string): void {
+    this.router.navigate(["/inventory", id])
+  }
+
+  /**
+   * Open the dialog to record a stock movement
+   * @param item The inventory item for the stock movement
+   */
+  openStockMovementDialog(item: InventoryItem): void {
+    // const dialogRef = this.dialog.open(StockMovementDialogComponent, {
+    //   width: "600px",
+    //   data: { item },
+    // })
+
+    // dialogRef
+    //   .afterClosed()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((result) => {
+    //     if (result) {
+    //       this.loadInventoryItems()
+    //     }
+    //   })
+  }
+
+  /**
+   * Get the CSS class for the stock level
+   * @param item The inventory item
+   * @returns The CSS class name
+   */
+  getStockLevelClass(item: InventoryItem): string {
+    if (item.currentStock === 0) {
+      return "out-of-stock"
+    } else if (item.currentStock <= item.minimumStock) {
+      return "low-stock"
+    } else {
+      return "normal-stock"
+    }
+  }
+
+  /**
+   * Refresh the inventory list
+   */
+  refresh(): void {
+    this.loadInventoryItems()
   }
 }
