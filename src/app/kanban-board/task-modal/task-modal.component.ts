@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Priority, Task, TaskStatus } from '../models/task.model';
@@ -9,7 +9,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 @Component({
   selector: 'app-task-modal',
   templateUrl: './task-modal.component.html',
-  styleUrls: ['./task-modal.component.scss']
+  styleUrls: ['./task-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskModalComponent implements OnInit {
   taskForm!: FormGroup;
@@ -27,7 +28,8 @@ export class TaskModalComponent implements OnInit {
       assignedUserId?: string,
       isSubtask?: boolean,
       parentTask?: Task
-    }
+    },
+    private cdr: ChangeDetectorRef
   ) {
     this.isSubtaskMode = !!data.isSubtask;
   }
@@ -56,6 +58,9 @@ export class TaskModalComponent implements OnInit {
         this.subtasksArray.push(this.createSubtaskGroup(subtask));
       });
     }
+    this.taskForm.valueChanges.subscribe(() => {
+        this.cdr.markForCheck();
+      });
   }
 
   get subtasksArray(): FormArray {
@@ -79,10 +84,12 @@ export class TaskModalComponent implements OnInit {
 
   addSubtask(): void {
     this.subtasksArray.push(this.createSubtaskGroup());
+    this.cdr.markForCheck();
   }
 
   removeSubtask(index: number): void {
     this.subtasksArray.removeAt(index);
+    this.cdr.markForCheck();
   }
 
   onSubmit(): void {
@@ -136,6 +143,7 @@ export class TaskModalComponent implements OnInit {
     
     if (value && !currentTags.includes(value)) {
       this.taskForm.get('tags')?.setValue([...currentTags, value]);
+      this.cdr.markForCheck();
     }
     
     // Clear the input value
@@ -152,6 +160,7 @@ export class TaskModalComponent implements OnInit {
       const updatedTags = [...currentTags];
       updatedTags.splice(index, 1);
       this.taskForm.get('tags')?.setValue(updatedTags);
+      this.cdr.markForCheck();
     }
   }
 }

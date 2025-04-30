@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { KanbanBoardService } from './services/kanban-board.service';
@@ -7,17 +7,18 @@ import { User } from './models/user.model';
 import { TaskModalComponent } from './task-modal/task-modal.component';
 import { WipLimitDialogComponent } from './wip-limit-dialog/wip-limit-dialog.component';
 
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-kanban-board',
   templateUrl: './kanban-board.component.html',
-  styleUrls: ['./kanban-board.component.scss']
+  styleUrls: ['./kanban-board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KanbanBoardComponent implements OnInit {
   @Input() entityId!: string;
-  
+  private destroy$ = new Subject<void>();
   users: User[] = [];
   tasks: Task[] = [];
   filteredTasks: Record<string, Task[]> = {};
@@ -31,7 +32,8 @@ export class KanbanBoardComponent implements OnInit {
 
   constructor(
     private kanbanService: KanbanBoardService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
   // Add a property to track expanded tasks
@@ -46,10 +48,12 @@ export class KanbanBoardComponent implements OnInit {
     
     // Update the tasks observable to include flattened subtasks
     this.kanbanService.tasks$.pipe(
+      takeUntil(this.destroy$),
       map(tasks => this.flattenTasksWithSubtasks(tasks))
     ).subscribe(tasks => {
       this.tasks = tasks;
       this.filterTasks();
+      this.cdr.markForCheck(); // Mark for check after data changes
     });
     
     combineLatest([
@@ -57,6 +61,7 @@ export class KanbanBoardComponent implements OnInit {
       this.kanbanService.users$,
       this.kanbanService.wipLimits$
     ]).pipe(
+      takeUntil(this.destroy$),
       map(([tasks, users, wipLimits]) => {
         this.tasks = tasks;
         this.users = users;
@@ -70,8 +75,15 @@ export class KanbanBoardComponent implements OnInit {
         });
         
         this.filterTasks();
+        this.cdr.markForCheck(); // Mark for check after data changes
       })
     ).subscribe();
+  }
+
+  // Add ngOnDestroy for cleanup
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   loadBoardData(): void {
@@ -105,15 +117,18 @@ export class KanbanBoardComponent implements OnInit {
   
   toggleDragDrop(): void {
     this.enableDragDrop = !this.enableDragDrop;
+    this.cdr.markForCheck();
   }
 
   toggleMinimizeTasks(): void {
     this.minimizeTasks = !this.minimizeTasks;
+    this.cdr.markForCheck();
   }
 
   toggleArchiveView(): void {
     this.showArchived = !this.showArchived;
     this.filterTasks();
+    this.cdr.markForCheck();
   }
 
   isWipLimitExceeded(userId: string): boolean {
@@ -312,7 +327,9 @@ export class KanbanBoardComponent implements OnInit {
         this.kanbanService.createTask({
           ...result,
           entityId: this.entityId
-        }).subscribe();
+        }).subscribe(() => {
+          this.cdr.markForCheck(); // Mark for check after task creation
+        });
       }
     });
   }
@@ -400,8 +417,8 @@ export class KanbanBoardComponent implements OnInit {
     } else {
       this.expandedTasks.add(taskId);
     }
+    this.cdr.markForCheck();
   }
-  
   // Method to check if a task is expanded
   isTaskExpanded(taskId: string): boolean {
     return this.expandedTasks.has(taskId);
@@ -470,6 +487,7 @@ export class KanbanBoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      this.cdr.markForCheck();
     } else {
       // Moving to a different column (user)
       const task = event.previousContainer.data[event.previousIndex];
@@ -491,6 +509,7 @@ export class KanbanBoardComponent implements OnInit {
             event.previousIndex,
             event.currentIndex
           );
+          this.cdr.markForCheck();
         },
         error => {
           console.error('Error moving task:', error);
@@ -499,7 +518,6 @@ export class KanbanBoardComponent implements OnInit {
       );
     }
   }
-
   // Update the imports to include the WipLimitDialogComponent
   
   // Then update the openWipLimitDialog method
