@@ -27,7 +27,7 @@ export class InventoryService {
   public inventoryObservable$ = this.inventorySubject.asObservable();
   constructor(private http: HttpClient) {}
 
-  loadInventoryItems(): Observable<InventoryItem[]> {
+  loadInventoryItems(): Observable<InventoryItemModel[]> {
     return this.http.get<InventoryItem[]>(this.apiUrl).pipe(
       map((items) => items.map((item) => new InventoryItemModel(item))),
       tap((items) => this.inventorySubject.next(items)),

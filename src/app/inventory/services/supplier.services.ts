@@ -53,7 +53,7 @@ export class SupplierService {
       }),
       catchError((err) => {
         console.error(`Error To Create new Supplier`, err);
-        return throwError(() => new Error(`Faild To Create a Supplier ${err}`));
+        return throwError(() => new Error(`Failed To Create a Supplier ${err}`));
       })
     );
   }
