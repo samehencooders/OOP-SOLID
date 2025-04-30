@@ -19,6 +19,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'task-board',
+    loadChildren: () =>
+      import('./kanban-board/kanban-board.module').then(
+        (m) => m.KanbanBoardModule
+      ),
+  },
+  {
     path: 'inventory',
     loadChildren: () =>
       import('./inventory/inventory.module').then((m) => m.InventoryModule),

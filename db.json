@@ -126,7 +126,10 @@
       "sku": "SKU-001",
       "name": "Wireless Mouse",
       "description": "Ergonomic wireless mouse with USB receiver.",
-      "category": { "id": "cat-01", "name": "Computer Accessories" },
+      "category": {
+        "id": "cat-01",
+        "name": "Computer Accessories"
+      },
       "price": 25.99,
       "cost": 15.5,
       "currentStock": 120,
@@ -163,7 +166,11 @@
       "barcode": "0123456789012",
       "qrCode": "http://example.com/item/inv-001",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["electronics", "mouse", "wireless"],
+      "tags": [
+        "electronics",
+        "mouse",
+        "wireless"
+      ],
       "createdAt": "2025-03-20T08:00:00Z",
       "updatedAt": "2025-04-10T10:00:00Z",
       "expiryDate": null,
@@ -174,9 +181,12 @@
       "sku": "SKU-002",
       "name": "Mechanical Keyboard",
       "description": "RGB mechanical keyboard with blue switches.",
-      "category": { "id": "cat-01", "name": "Computer Accessories" },
+      "category": {
+        "id": "cat-01",
+        "name": "Computer Accessories"
+      },
       "price": 59.99,
-      "cost": 40.0,
+      "cost": 40,
       "currentStock": 85,
       "minimumStock": 10,
       "reorderPoint": 25,
@@ -203,7 +213,11 @@
       "barcode": "0123456789013",
       "qrCode": "http://example.com/item/inv-002",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["keyboard", "gaming", "mechanical"],
+      "tags": [
+        "keyboard",
+        "gaming",
+        "mechanical"
+      ],
       "createdAt": "2025-03-10T07:00:00Z",
       "updatedAt": "2025-04-05T11:00:00Z",
       "expiryDate": null,
@@ -214,9 +228,12 @@
       "sku": "SKU-003",
       "name": "1080p HD Webcam",
       "description": "Full HD webcam with built-in microphone.",
-      "category": { "id": "cat-01", "name": "Computer Accessories" },
+      "category": {
+        "id": "cat-01",
+        "name": "Computer Accessories"
+      },
       "price": 39.99,
-      "cost": 22.0,
+      "cost": 22,
       "currentStock": 60,
       "minimumStock": 10,
       "reorderPoint": 20,
@@ -243,7 +260,11 @@
       "barcode": "0123456789014",
       "qrCode": "http://example.com/item/inv-003",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["camera", "webcam", "HD"],
+      "tags": [
+        "camera",
+        "webcam",
+        "HD"
+      ],
       "createdAt": "2025-03-01T08:00:00Z",
       "updatedAt": "2025-04-01T12:00:00Z",
       "expiryDate": null,
@@ -254,9 +275,12 @@
       "sku": "SKU-004",
       "name": "USB-C Hub",
       "description": "7-in-1 USB-C hub with HDMI, USB 3.0, SD card reader.",
-      "category": { "id": "cat-02", "name": "Adapters & Hubs" },
+      "category": {
+        "id": "cat-02",
+        "name": "Adapters & Hubs"
+      },
       "price": 45.5,
-      "cost": 28.0,
+      "cost": 28,
       "currentStock": 40,
       "minimumStock": 5,
       "reorderPoint": 10,
@@ -274,7 +298,11 @@
       "barcode": "0123456789015",
       "qrCode": "http://example.com/item/inv-004",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["usb", "hub", "adapter"],
+      "tags": [
+        "usb",
+        "hub",
+        "adapter"
+      ],
       "createdAt": "2025-02-25T08:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
@@ -285,9 +313,12 @@
       "sku": "SKU-005",
       "name": "Portable SSD 1TB",
       "description": "High-speed USB 3.2 portable SSD.",
-      "category": { "id": "cat-03", "name": "Storage Devices" },
-      "price": 119.0,
-      "cost": 90.0,
+      "category": {
+        "id": "cat-03",
+        "name": "Storage Devices"
+      },
+      "price": 119,
+      "cost": 90,
       "currentStock": 30,
       "minimumStock": 5,
       "reorderPoint": 10,
@@ -305,7 +336,11 @@
       "barcode": "0123456789016",
       "qrCode": "http://example.com/item/inv-005",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["storage", "ssd", "usb"],
+      "tags": [
+        "storage",
+        "ssd",
+        "usb"
+      ],
       "createdAt": "2025-02-20T08:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
@@ -316,9 +351,12 @@
       "sku": "SKU-006",
       "name": "Bluetooth Speaker",
       "description": "Compact Bluetooth speaker with deep bass.",
-      "category": { "id": "cat-04", "name": "Audio Devices" },
+      "category": {
+        "id": "cat-04",
+        "name": "Audio Devices"
+      },
       "price": 34.95,
-      "cost": 20.0,
+      "cost": 20,
       "currentStock": 75,
       "minimumStock": 15,
       "reorderPoint": 25,
@@ -336,7 +374,11 @@
       "barcode": "0123456789017",
       "qrCode": "http://example.com/item/inv-006",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["bluetooth", "speaker", "portable"],
+      "tags": [
+        "bluetooth",
+        "speaker",
+        "portable"
+      ],
       "createdAt": "2025-02-01T09:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
@@ -347,9 +389,12 @@
       "sku": "SKU-007",
       "name": "Gaming Headset",
       "description": "Over-ear gaming headset with noise-canceling mic.",
-      "category": { "id": "cat-04", "name": "Audio Devices" },
+      "category": {
+        "id": "cat-04",
+        "name": "Audio Devices"
+      },
       "price": 79.99,
-      "cost": 50.0,
+      "cost": 50,
       "currentStock": 50,
       "minimumStock": 10,
       "reorderPoint": 20,
@@ -367,7 +412,11 @@
       "barcode": "0123456789018",
       "qrCode": "http://example.com/item/inv-007",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["headset", "gaming", "audio"],
+      "tags": [
+        "headset",
+        "gaming",
+        "audio"
+      ],
       "createdAt": "2025-01-10T09:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
@@ -378,9 +427,12 @@
       "sku": "SKU-008",
       "name": "Laptop Stand",
       "description": "Adjustable aluminum laptop stand.",
-      "category": { "id": "cat-05", "name": "Office Supplies" },
+      "category": {
+        "id": "cat-05",
+        "name": "Office Supplies"
+      },
       "price": 32.5,
-      "cost": 18.0,
+      "cost": 18,
       "currentStock": 95,
       "minimumStock": 20,
       "reorderPoint": 30,
@@ -390,7 +442,11 @@
       "barcode": "0123456789019",
       "qrCode": "http://example.com/item/inv-008",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["laptop", "stand", "ergonomic"],
+      "tags": [
+        "laptop",
+        "stand",
+        "ergonomic"
+      ],
       "createdAt": "2025-01-01T09:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
@@ -401,9 +457,12 @@
       "sku": "SKU-009",
       "name": "Ethernet Cable 10m",
       "description": "Cat6 ethernet cable with gold-plated connectors.",
-      "category": { "id": "cat-02", "name": "Adapters & Hubs" },
+      "category": {
+        "id": "cat-02",
+        "name": "Adapters & Hubs"
+      },
       "price": 12.99,
-      "cost": 6.0,
+      "cost": 6,
       "currentStock": 150,
       "minimumStock": 30,
       "reorderPoint": 50,
@@ -413,7 +472,11 @@
       "barcode": "0123456789020",
       "qrCode": "http://example.com/item/inv-009",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["ethernet", "cable", "network"],
+      "tags": [
+        "ethernet",
+        "cable",
+        "network"
+      ],
       "createdAt": "2025-02-01T08:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
@@ -424,7 +487,10 @@
       "sku": "SKU-010",
       "name": "Surge Protector Power Strip",
       "description": "6-outlet surge protector with USB charging ports.",
-      "category": { "id": "cat-06", "name": "Power Accessories" },
+      "category": {
+        "id": "cat-06",
+        "name": "Power Accessories"
+      },
       "price": 29.99,
       "cost": 19.99,
       "currentStock": 65,
@@ -436,11 +502,4990 @@
       "barcode": "0123456789021",
       "qrCode": "http://example.com/item/inv-010",
       "imageUrl": "https://picsum.photos/200",
-      "tags": ["power", "surge protector", "usb"],
+      "tags": [
+        "power",
+        "surge protector",
+        "usb"
+      ],
       "createdAt": "2025-01-15T09:00:00Z",
       "updatedAt": "2025-03-01T10:00:00Z",
       "expiryDate": null,
       "isActive": true
     }
-  ]
+  ],
+  "users": [
+    {
+      "id": "user1",
+      "name": "User 1",
+      "email": "user1@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=23",
+      "role": "Designer"
+    },
+    {
+      "id": "user2",
+      "name": "User 2",
+      "email": "user2@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=38",
+      "role": "QA Engineer"
+    },
+    {
+      "id": "user3",
+      "name": "User 3",
+      "email": "user3@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=22",
+      "role": "DevOps"
+    },
+    {
+      "id": "user4",
+      "name": "User 4",
+      "email": "user4@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=15",
+      "role": "Developer"
+    },
+    {
+      "id": "user5",
+      "name": "User 5",
+      "email": "user5@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=61",
+      "role": "DevOps"
+    },
+    {
+      "id": "user6",
+      "name": "User 6",
+      "email": "user6@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=26",
+      "role": "QA Engineer"
+    },
+    {
+      "id": "user7",
+      "name": "User 7",
+      "email": "user7@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=41",
+      "role": "QA Engineer"
+    },
+    {
+      "id": "user8",
+      "name": "User 8",
+      "email": "user8@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=8",
+      "role": "Product Manager"
+    },
+    {
+      "id": "user9",
+      "name": "User 9",
+      "email": "user9@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=21",
+      "role": "Designer"
+    },
+    {
+      "id": "user10",
+      "name": "User 10",
+      "email": "user10@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=65",
+      "role": "QA Engineer"
+    },
+    {
+      "id": "user11",
+      "name": "User 11",
+      "email": "user11@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "role": "Developer"
+    },
+    {
+      "id": "user12",
+      "name": "User 12",
+      "email": "user12@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=21",
+      "role": "QA Engineer"
+    },
+    {
+      "id": "user13",
+      "name": "User 13",
+      "email": "user13@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=50",
+      "role": "Developer"
+    },
+    {
+      "id": "user14",
+      "name": "User 14",
+      "email": "user14@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=54",
+      "role": "Designer"
+    },
+    {
+      "id": "user15",
+      "name": "User 15",
+      "email": "user15@example.com",
+      "avatar": "https://i.pravatar.cc/150?img=2",
+      "role": "QA Engineer"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task1",
+      "name": "Task 1",
+      "description": "Description for task 1",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user4",
+      "dueDate": "2025-03-20T23:58:03.178125",
+      "tags": [
+        "Backend"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-03-11T23:58:03.178125",
+      "updatedAt": "2025-03-13T23:58:03.178125",
+      "entityId": "project1"
+    },
+    {
+      "id": "task2",
+      "name": "Task 2",
+      "description": "Description for task 2",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user13",
+      "dueDate": "2025-04-13T23:58:03.178196",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task1"
+      ],
+      "createdAt": "2025-03-05T23:58:03.178196",
+      "updatedAt": "2025-03-20T23:58:03.178196",
+      "entityId": "project1"
+    },
+    {
+      "id": "task3",
+      "name": "Task 3",
+      "description": "Description for task 3",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user13",
+      "dueDate": "2025-05-23T23:58:03.178222",
+      "tags": [
+        "API",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-19T23:58:03.178222",
+      "updatedAt": "2025-05-15T23:58:03.178222",
+      "entityId": "project1"
+    },
+    {
+      "id": "task4",
+      "name": "Task 4",
+      "description": "Description for task 4",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user13",
+      "dueDate": "2025-05-12T23:58:03.178248",
+      "tags": [
+        "API",
+        "Feature",
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task3"
+      ],
+      "createdAt": "2025-04-25T23:58:03.178248",
+      "updatedAt": "2025-05-25T23:58:03.178248",
+      "entityId": "project1"
+    },
+    {
+      "id": "task5",
+      "name": "Task 5",
+      "description": "Description for task 5",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user1",
+      "dueDate": "2025-04-21T23:58:03.178269",
+      "tags": [
+        "API"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task1",
+        "task3",
+        "task4"
+      ],
+      "createdAt": "2025-03-17T23:58:03.178269",
+      "updatedAt": "2025-04-30T00:47:38.870Z",
+      "entityId": "project1"
+    },
+    {
+      "id": "task6",
+      "name": "Task 6",
+      "description": "Description for task 6",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user6",
+      "dueDate": "2025-05-01T23:58:03.178293",
+      "tags": [
+        "Feature"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task2",
+        "task1"
+      ],
+      "createdAt": "2025-03-27T23:58:03.178293",
+      "updatedAt": "2025-04-01T23:58:03.178293",
+      "entityId": "project1"
+    },
+    {
+      "id": "task7",
+      "name": "Task 7",
+      "description": "Description for task 7",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-01T23:58:03.178312",
+      "tags": [
+        "Bug",
+        "Documentation",
+        "API"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task4"
+      ],
+      "createdAt": "2025-02-28T23:58:03.178312",
+      "updatedAt": "2025-03-24T23:58:03.178312",
+      "entityId": "project1"
+    },
+    {
+      "id": "task8",
+      "name": "Task 8",
+      "description": "Description for task 8",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user15",
+      "dueDate": "2025-03-20T23:58:03.178337",
+      "tags": [
+        "UI",
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task1",
+        "task4"
+      ],
+      "createdAt": "2025-03-02T23:58:03.178337",
+      "updatedAt": "2025-03-30T23:58:03.178337",
+      "entityId": "project1"
+    },
+    {
+      "id": "task9",
+      "name": "Task 9",
+      "description": "Description for task 9",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user4",
+      "dueDate": "2025-03-22T23:58:03.178363",
+      "tags": [
+        "Frontend",
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task8",
+        "task1"
+      ],
+      "createdAt": "2025-03-04T23:58:03.178363",
+      "updatedAt": "2025-03-19T23:58:03.178363",
+      "entityId": "project1"
+    },
+    {
+      "id": "task10",
+      "name": "Task 10",
+      "description": "Description for task 10",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user7",
+      "dueDate": "2025-03-13T23:58:03.178386",
+      "tags": [
+        "API",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task3",
+        "task1"
+      ],
+      "createdAt": "2025-03-03T23:58:03.178386",
+      "updatedAt": "2025-03-19T23:58:03.178386",
+      "entityId": "project1"
+    },
+    {
+      "id": "task11",
+      "name": "Task 11",
+      "description": "Description for task 11",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-06-02T23:58:03.178407",
+      "tags": [
+        "Feature",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task4"
+      ],
+      "createdAt": "2025-04-11T23:58:03.178407",
+      "updatedAt": "2025-04-18T23:58:03.178407",
+      "entityId": "project1"
+    },
+    {
+      "id": "task12",
+      "name": "Task 12",
+      "description": "Description for task 12",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user9",
+      "dueDate": "2025-05-13T23:58:03.178427",
+      "tags": [
+        "Urgent",
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task6",
+        "task4"
+      ],
+      "createdAt": "2025-03-27T23:58:03.178427",
+      "updatedAt": "2025-04-05T23:58:03.178427",
+      "entityId": "project1"
+    },
+    {
+      "id": "task13",
+      "name": "Task 13",
+      "description": "Description for task 13",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user15",
+      "dueDate": "2025-04-18T23:58:03.178448",
+      "tags": [
+        "API",
+        "Testing",
+        "Bug"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task1"
+      ],
+      "createdAt": "2025-03-13T23:58:03.178448",
+      "updatedAt": "2025-04-07T23:58:03.178448",
+      "entityId": "project1"
+    },
+    {
+      "id": "task14",
+      "name": "Task 14",
+      "description": "Description for task 14",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user1",
+      "dueDate": "2025-06-06T23:58:03.178469",
+      "tags": [
+        "Urgent",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task6",
+        "task7"
+      ],
+      "createdAt": "2025-04-16T23:58:03.178469",
+      "updatedAt": "2025-04-30T00:42:16.302Z",
+      "entityId": "project1"
+    },
+    {
+      "id": "task15",
+      "name": "Task 15",
+      "description": "Description for task 15",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user14",
+      "dueDate": "2025-05-17T23:58:03.178492",
+      "tags": [
+        "Documentation",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task1",
+        "task9"
+      ],
+      "createdAt": "2025-04-19T23:58:03.178492",
+      "updatedAt": "2025-04-27T23:58:03.178492",
+      "entityId": "project1"
+    },
+    {
+      "id": "task16",
+      "name": "Task 16",
+      "description": "Description for task 16",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user11",
+      "dueDate": "2025-04-11T23:58:03.178526",
+      "tags": [
+        "Backend",
+        "Urgent",
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-09T23:58:03.178526",
+      "updatedAt": "2025-05-08T23:58:03.178526",
+      "entityId": "project1"
+    },
+    {
+      "id": "task17",
+      "name": "Task 17",
+      "description": "Description for task 17",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user6",
+      "dueDate": "2025-04-23T23:58:03.178552",
+      "tags": [
+        "Urgent",
+        "API",
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task11"
+      ],
+      "createdAt": "2025-04-11T23:58:03.178552",
+      "updatedAt": "2025-04-14T23:58:03.178552",
+      "entityId": "project1"
+    },
+    {
+      "id": "task18",
+      "name": "Task 18",
+      "description": "Description for task 18",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-07T23:58:03.178575",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task17"
+      ],
+      "createdAt": "2025-03-09T23:58:03.178575",
+      "updatedAt": "2025-04-05T23:58:03.178575",
+      "entityId": "project1"
+    },
+    {
+      "id": "task19",
+      "name": "Task 19",
+      "description": "Description for task 19",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user11",
+      "dueDate": "2025-05-09T23:58:03.178602",
+      "tags": [
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task13",
+        "task15"
+      ],
+      "createdAt": "2025-03-17T23:58:03.178602",
+      "updatedAt": "2025-03-23T23:58:03.178602",
+      "entityId": "project1"
+    },
+    {
+      "id": "task20",
+      "name": "Task 20",
+      "description": "Description for task 20",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user5",
+      "dueDate": "2025-05-19T23:58:03.178625",
+      "tags": [
+        "UI",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task18",
+        "task4",
+        "task3"
+      ],
+      "createdAt": "2025-04-19T23:58:03.178625",
+      "updatedAt": "2025-04-23T23:58:03.178625",
+      "entityId": "project1"
+    },
+    {
+      "id": "task21",
+      "name": "Task 21",
+      "description": "Description for task 21",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user3",
+      "dueDate": "2025-05-04T23:58:03.178646",
+      "tags": [
+        "Documentation"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task20",
+        "task2"
+      ],
+      "createdAt": "2025-03-15T23:58:03.178646",
+      "updatedAt": "2025-03-19T23:58:03.178646",
+      "entityId": "project1"
+    },
+    {
+      "id": "task22",
+      "name": "Task 22",
+      "description": "Description for task 22",
+      "status": "IN_PROGRESS",
+      "priority": "MEDIUM",
+      "assignedTo": "user4",
+      "dueDate": "2025-03-13T23:58:03.178665",
+      "tags": [
+        "Urgent",
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-01T23:58:03.178665",
+      "updatedAt": "2025-03-08T23:58:03.178665",
+      "entityId": "project1"
+    },
+    {
+      "id": "task23",
+      "name": "Task 23",
+      "description": "Description for task 23",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user6",
+      "dueDate": "2025-05-18T23:58:03.178684",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task2",
+        "task21",
+        "task8"
+      ],
+      "createdAt": "2025-04-19T23:58:03.178684",
+      "updatedAt": "2025-04-21T23:58:03.178684",
+      "entityId": "project1"
+    },
+    {
+      "id": "task24",
+      "name": "Task 24",
+      "description": "Description for task 24",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-08T23:58:03.178706",
+      "tags": [
+        "Urgent",
+        "Bug"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task3",
+        "task23"
+      ],
+      "createdAt": "2025-03-30T23:58:03.178706",
+      "updatedAt": "2025-04-13T23:58:03.178706",
+      "entityId": "project1"
+    },
+    {
+      "id": "task25",
+      "name": "Task 25",
+      "description": "Description for task 25",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user10",
+      "dueDate": "2025-04-14T23:58:03.178731",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task6",
+        "task19"
+      ],
+      "createdAt": "2025-03-29T23:58:03.178731",
+      "updatedAt": "2025-04-20T23:58:03.178731",
+      "entityId": "project1"
+    },
+    {
+      "id": "task26",
+      "name": "Task 26",
+      "description": "Description for task 26",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user6",
+      "dueDate": "2025-03-12T23:58:03.178762",
+      "tags": [
+        "Research",
+        "API",
+        "Bug"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-03T23:58:03.178762",
+      "updatedAt": "2025-03-10T23:58:03.178762",
+      "entityId": "project1"
+    },
+    {
+      "id": "task27",
+      "name": "Task 27",
+      "description": "Description for task 27",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user9",
+      "dueDate": "2025-05-22T23:58:03.178788",
+      "tags": [
+        "Bug",
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-04-21T23:58:03.178788",
+      "updatedAt": "2025-05-03T23:58:03.178788",
+      "entityId": "project1"
+    },
+    {
+      "id": "task28",
+      "name": "Task 28",
+      "description": "Description for task 28",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user8",
+      "dueDate": "2025-04-23T23:58:03.178808",
+      "tags": [
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-19T23:58:03.178808",
+      "updatedAt": "2025-04-09T23:58:03.178808",
+      "entityId": "project1"
+    },
+    {
+      "id": "task29",
+      "name": "Task 29",
+      "description": "Description for task 29",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user14",
+      "dueDate": "2025-03-29T23:58:03.178827",
+      "tags": [
+        "Frontend",
+        "Testing",
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task6"
+      ],
+      "createdAt": "2025-03-15T23:58:03.178827",
+      "updatedAt": "2025-03-26T23:58:03.178827",
+      "entityId": "project1"
+    },
+    {
+      "id": "task30",
+      "name": "Task 30",
+      "description": "Description for task 30",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user8",
+      "dueDate": "2025-05-08T23:58:03.178847",
+      "tags": [
+        "UI",
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-10T23:58:03.178847",
+      "updatedAt": "2025-03-28T23:58:03.178847",
+      "entityId": "project1"
+    },
+    {
+      "id": "task31",
+      "name": "Task 31",
+      "description": "Description for task 31",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user13",
+      "dueDate": "2025-06-18T23:58:03.178868",
+      "tags": [
+        "API",
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task19",
+        "task10"
+      ],
+      "createdAt": "2025-04-23T23:58:03.178868",
+      "updatedAt": "2025-05-12T23:58:03.178868",
+      "entityId": "project1"
+    },
+    {
+      "id": "task32",
+      "name": "Task 32",
+      "description": "Description for task 32",
+      "status": "IN_PROGRESS",
+      "priority": "MEDIUM",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-04T23:58:03.178895",
+      "tags": [
+        "Feature",
+        "Bug"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task3"
+      ],
+      "createdAt": "2025-03-12T23:58:03.178895",
+      "updatedAt": "2025-04-08T23:58:03.178895",
+      "entityId": "project1"
+    },
+    {
+      "id": "task33",
+      "name": "Task 33",
+      "description": "Description for task 33",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user10",
+      "dueDate": "2025-05-12T23:58:03.178927",
+      "tags": [
+        "Feature",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task6",
+        "task18",
+        "task1"
+      ],
+      "createdAt": "2025-04-02T23:58:03.178927",
+      "updatedAt": "2025-04-24T23:58:03.178927",
+      "entityId": "project1"
+    },
+    {
+      "id": "task34",
+      "name": "Task 34",
+      "description": "Description for task 34",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-05-04T23:58:03.178962",
+      "tags": [
+        "Testing",
+        "Feature",
+        "Bug"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task21"
+      ],
+      "createdAt": "2025-04-16T23:58:03.178962",
+      "updatedAt": "2025-05-07T23:58:03.178962",
+      "entityId": "project1"
+    },
+    {
+      "id": "task35",
+      "name": "Task 35",
+      "description": "Description for task 35",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user14",
+      "dueDate": "2025-04-20T23:58:03.178992",
+      "tags": [
+        "Urgent",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-22T23:58:03.178992",
+      "updatedAt": "2025-03-25T23:58:03.178992",
+      "entityId": "project1"
+    },
+    {
+      "id": "task36",
+      "name": "Task 36",
+      "description": "Description for task 36",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user15",
+      "dueDate": "2025-03-22T23:58:03.179014",
+      "tags": [
+        "Documentation",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-19T23:58:03.179014",
+      "updatedAt": "2025-03-30T23:58:03.179014",
+      "entityId": "project1"
+    },
+    {
+      "id": "task37",
+      "name": "Task 37",
+      "description": "Description for task 37",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user4",
+      "dueDate": "2025-04-25T23:58:03.179038",
+      "tags": [
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task35",
+        "task17"
+      ],
+      "createdAt": "2025-04-16T23:58:03.179038",
+      "updatedAt": "2025-04-26T23:58:03.179038",
+      "entityId": "project1"
+    },
+    {
+      "id": "task38",
+      "name": "Task 38",
+      "description": "Description for task 38",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user10",
+      "dueDate": "2025-04-08T23:58:03.179070",
+      "tags": [
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-27T23:58:03.179070",
+      "updatedAt": "2025-03-30T23:58:03.179070",
+      "entityId": "project1"
+    },
+    {
+      "id": "task39",
+      "name": "Task 39",
+      "description": "Description for task 39",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user8",
+      "dueDate": "2025-03-29T23:58:03.179093",
+      "tags": [
+        "Backend",
+        "Feature",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task8"
+      ],
+      "createdAt": "2025-03-24T23:58:03.179093",
+      "updatedAt": "2025-04-12T23:58:03.179093",
+      "entityId": "project1"
+    },
+    {
+      "id": "task40",
+      "name": "Task 40",
+      "description": "Description for task 40",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user12",
+      "dueDate": "2025-04-11T23:58:03.179117",
+      "tags": [
+        "API",
+        "Testing"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task33",
+        "task4"
+      ],
+      "createdAt": "2025-04-09T23:58:03.179117",
+      "updatedAt": "2025-05-07T23:58:03.179117",
+      "entityId": "project1"
+    },
+    {
+      "id": "task41",
+      "name": "Task 41",
+      "description": "Description for task 41",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user12",
+      "dueDate": "2025-04-05T23:58:03.179138",
+      "tags": [
+        "Research",
+        "Backend",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-03T23:58:03.179138",
+      "updatedAt": "2025-04-04T23:58:03.179138",
+      "entityId": "project1"
+    },
+    {
+      "id": "task42",
+      "name": "Task 42",
+      "description": "Description for task 42",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user14",
+      "dueDate": "2025-03-19T23:58:03.179333",
+      "tags": [
+        "Frontend",
+        "API"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task1",
+        "task7"
+      ],
+      "createdAt": "2025-03-08T23:58:03.179333",
+      "updatedAt": "2025-03-20T23:58:03.179333",
+      "entityId": "project1"
+    },
+    {
+      "id": "task43",
+      "name": "Task 43",
+      "description": "Description for task 43",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user4",
+      "dueDate": "2025-05-15T23:58:03.179357",
+      "tags": [
+        "Frontend",
+        "Feature",
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task27",
+        "task19",
+        "task11"
+      ],
+      "createdAt": "2025-04-17T23:58:03.179357",
+      "updatedAt": "2025-05-06T23:58:03.179357",
+      "entityId": "project1"
+    },
+    {
+      "id": "task44",
+      "name": "Task 44",
+      "description": "Description for task 44",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user12",
+      "dueDate": "2025-06-10T23:58:03.179381",
+      "tags": [
+        "Bug"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task29",
+        "task42",
+        "task33"
+      ],
+      "createdAt": "2025-04-14T23:58:03.179381",
+      "updatedAt": "2025-04-29T23:58:03.179381",
+      "entityId": "project1"
+    },
+    {
+      "id": "task45",
+      "name": "Task 45",
+      "description": "Description for task 45",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user5",
+      "dueDate": "2025-05-05T23:58:03.179403",
+      "tags": [
+        "Frontend",
+        "Bug",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task26",
+        "task44",
+        "task32"
+      ],
+      "createdAt": "2025-04-02T23:58:03.179403",
+      "updatedAt": "2025-04-26T23:58:03.179403",
+      "entityId": "project1"
+    },
+    {
+      "id": "task46",
+      "name": "Task 46",
+      "description": "Description for task 46",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user14",
+      "dueDate": "2025-05-06T23:58:03.179423",
+      "tags": [
+        "Bug"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task32",
+        "task14",
+        "task27"
+      ],
+      "createdAt": "2025-03-15T23:58:03.179423",
+      "updatedAt": "2025-04-14T23:58:03.179423",
+      "entityId": "project1"
+    },
+    {
+      "id": "task47",
+      "name": "Task 47",
+      "description": "Description for task 47",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user2",
+      "dueDate": "2025-04-28T23:58:03.179447",
+      "tags": [
+        "UI",
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task37",
+        "task3",
+        "task23"
+      ],
+      "createdAt": "2025-04-18T23:58:03.179447",
+      "updatedAt": "2025-04-29T23:58:03.179447",
+      "entityId": "project1"
+    },
+    {
+      "id": "task48",
+      "name": "Task 48",
+      "description": "Description for task 48",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user11",
+      "dueDate": "2025-05-11T23:58:03.179467",
+      "tags": [
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-19T23:58:03.179467",
+      "updatedAt": "2025-04-05T23:58:03.179467",
+      "entityId": "project1"
+    },
+    {
+      "id": "task49",
+      "name": "Task 49",
+      "description": "Description for task 49",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user13",
+      "dueDate": "2025-05-21T23:58:03.179488",
+      "tags": [
+        "Bug",
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-20T23:58:03.179488",
+      "updatedAt": "2025-05-18T23:58:03.179488",
+      "entityId": "project1"
+    },
+    {
+      "id": "task50",
+      "name": "Task 50",
+      "description": "Description for task 50",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user12",
+      "dueDate": "2025-03-20T23:58:03.179509",
+      "tags": [
+        "Research",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-02T23:58:03.179509",
+      "updatedAt": "2025-03-10T23:58:03.179509",
+      "entityId": "project1"
+    },
+    {
+      "id": "task51",
+      "name": "Task 51",
+      "description": "Description for task 51",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user1",
+      "dueDate": "2025-05-02T23:58:03.179551",
+      "tags": [
+        "API",
+        "Documentation"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-17T23:58:03.179551",
+      "updatedAt": "2025-04-06T23:58:03.179551",
+      "entityId": "project1"
+    },
+    {
+      "id": "task52",
+      "name": "Task 52",
+      "description": "Description for task 52",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user14",
+      "dueDate": "2025-04-07T23:58:03.179574",
+      "tags": [
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task14",
+        "task49"
+      ],
+      "createdAt": "2025-03-15T23:58:03.179574",
+      "updatedAt": "2025-03-23T23:58:03.179574",
+      "entityId": "project1"
+    },
+    {
+      "id": "task53",
+      "name": "Task 53",
+      "description": "Description for task 53",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user9",
+      "dueDate": "2025-05-14T23:58:03.179607",
+      "tags": [
+        "Bug"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task48"
+      ],
+      "createdAt": "2025-04-19T23:58:03.179607",
+      "updatedAt": "2025-05-16T23:58:03.179607",
+      "entityId": "project1"
+    },
+    {
+      "id": "task54",
+      "name": "Task 54",
+      "description": "Description for task 54",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user14",
+      "dueDate": "2025-04-09T23:58:03.179638",
+      "tags": [
+        "Testing"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-01T23:58:03.179638",
+      "updatedAt": "2025-03-18T23:58:03.179638",
+      "entityId": "project1"
+    },
+    {
+      "id": "task55",
+      "name": "Task 55",
+      "description": "Description for task 55",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user12",
+      "dueDate": "2025-04-20T23:58:03.179670",
+      "tags": [
+        "Urgent",
+        "Research",
+        "Backend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task37",
+        "task18"
+      ],
+      "createdAt": "2025-03-21T23:58:03.179670",
+      "updatedAt": "2025-04-11T23:58:03.179670",
+      "entityId": "project1"
+    },
+    {
+      "id": "task56",
+      "name": "Task 56",
+      "description": "Description for task 56",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user14",
+      "dueDate": "2025-03-30T23:58:03.179703",
+      "tags": [
+        "API",
+        "Bug",
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task9"
+      ],
+      "createdAt": "2025-03-07T23:58:03.179703",
+      "updatedAt": "2025-03-07T23:58:03.179703",
+      "entityId": "project1"
+    },
+    {
+      "id": "task57",
+      "name": "Task 57",
+      "description": "Description for task 57",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user12",
+      "dueDate": "2025-03-30T23:58:03.179730",
+      "tags": [
+        "UI",
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task37",
+        "task24",
+        "task1"
+      ],
+      "createdAt": "2025-03-19T23:58:03.179730",
+      "updatedAt": "2025-04-16T23:58:03.179730",
+      "entityId": "project1"
+    },
+    {
+      "id": "task58",
+      "name": "Task 58",
+      "description": "Description for task 58",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user15",
+      "dueDate": "2025-04-22T23:58:03.179751",
+      "tags": [
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-03T23:58:03.179751",
+      "updatedAt": "2025-03-23T23:58:03.179751",
+      "entityId": "project1"
+    },
+    {
+      "id": "task59",
+      "name": "Task 59",
+      "description": "Description for task 59",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user2",
+      "dueDate": "2025-03-26T23:58:03.179774",
+      "tags": [
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task35",
+        "task51",
+        "task9"
+      ],
+      "createdAt": "2025-03-07T23:58:03.179774",
+      "updatedAt": "2025-04-02T23:58:03.179774",
+      "entityId": "project1"
+    },
+    {
+      "id": "task60",
+      "name": "Task 60",
+      "description": "Description for task 60",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user1",
+      "dueDate": "2025-03-23T23:58:03.179795",
+      "tags": [
+        "Feature",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-22T23:58:03.179795",
+      "updatedAt": "2025-03-29T23:58:03.179795",
+      "entityId": "project1"
+    },
+    {
+      "id": "task61",
+      "name": "Task 61",
+      "description": "Description for task 61",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user12",
+      "dueDate": "2025-05-22T23:58:03.179817",
+      "tags": [
+        "Backend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task23"
+      ],
+      "createdAt": "2025-04-12T23:58:03.179817",
+      "updatedAt": "2025-04-23T23:58:03.179817",
+      "entityId": "project1"
+    },
+    {
+      "id": "task62",
+      "name": "Task 62",
+      "description": "Description for task 62",
+      "status": "IN_PROGRESS",
+      "priority": "MEDIUM",
+      "assignedTo": "user13",
+      "dueDate": "2025-04-04T23:58:03.179841",
+      "tags": [
+        "Research",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task21",
+        "task44"
+      ],
+      "createdAt": "2025-03-16T23:58:03.179841",
+      "updatedAt": "2025-03-31T23:58:03.179841",
+      "entityId": "project1"
+    },
+    {
+      "id": "task63",
+      "name": "Task 63",
+      "description": "Description for task 63",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user11",
+      "dueDate": "2025-04-24T23:58:03.179862",
+      "tags": [
+        "Testing",
+        "Feature",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task53",
+        "task34",
+        "task46"
+      ],
+      "createdAt": "2025-04-07T23:58:03.179862",
+      "updatedAt": "2025-04-29T23:58:03.179862",
+      "entityId": "project1"
+    },
+    {
+      "id": "task64",
+      "name": "Task 64",
+      "description": "Description for task 64",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-28T23:58:03.179886",
+      "tags": [
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-10T23:58:03.179886",
+      "updatedAt": "2025-04-24T23:58:03.179886",
+      "entityId": "project1"
+    },
+    {
+      "id": "task65",
+      "name": "Task 65",
+      "description": "Description for task 65",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user12",
+      "dueDate": "2025-05-16T23:58:03.179907",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-03T23:58:03.179907",
+      "updatedAt": "2025-04-06T23:58:03.179907",
+      "entityId": "project1"
+    },
+    {
+      "id": "task66",
+      "name": "Task 66",
+      "description": "Description for task 66",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user2",
+      "dueDate": "2025-04-15T23:58:03.179932",
+      "tags": [
+        "UI",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task48",
+        "task31"
+      ],
+      "createdAt": "2025-03-25T23:58:03.179932",
+      "updatedAt": "2025-04-04T23:58:03.179932",
+      "entityId": "project1"
+    },
+    {
+      "id": "task67",
+      "name": "Task 67",
+      "description": "Description for task 67",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-03T23:58:03.179961",
+      "tags": [
+        "Testing",
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task10",
+        "task18",
+        "task42"
+      ],
+      "createdAt": "2025-03-08T23:58:03.179961",
+      "updatedAt": "2025-03-16T23:58:03.179961",
+      "entityId": "project1"
+    },
+    {
+      "id": "task68",
+      "name": "Task 68",
+      "description": "Description for task 68",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user14",
+      "dueDate": "2025-05-03T23:58:03.179991",
+      "tags": [
+        "Frontend",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task46"
+      ],
+      "createdAt": "2025-03-19T23:58:03.179991",
+      "updatedAt": "2025-03-26T23:58:03.179991",
+      "entityId": "project1"
+    },
+    {
+      "id": "task69",
+      "name": "Task 69",
+      "description": "Description for task 69",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user14",
+      "dueDate": "2025-03-31T23:58:03.180029",
+      "tags": [
+        "Urgent",
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task55",
+        "task31",
+        "task28"
+      ],
+      "createdAt": "2025-03-06T23:58:03.180029",
+      "updatedAt": "2025-03-16T23:58:03.180029",
+      "entityId": "project1"
+    },
+    {
+      "id": "task70",
+      "name": "Task 70",
+      "description": "Description for task 70",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user1",
+      "dueDate": "2025-05-11T23:58:03.180055",
+      "tags": [
+        "Bug",
+        "Documentation",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task29",
+        "task28",
+        "task34"
+      ],
+      "createdAt": "2025-04-16T23:58:03.180055",
+      "updatedAt": "2025-04-22T23:58:03.180055",
+      "entityId": "project1"
+    },
+    {
+      "id": "task71",
+      "name": "Task 71",
+      "description": "Description for task 71",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user8",
+      "dueDate": "2025-05-12T23:58:03.180090",
+      "tags": [
+        "Backend",
+        "Documentation",
+        "API"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task7",
+        "task67",
+        "task34"
+      ],
+      "createdAt": "2025-03-30T23:58:03.180090",
+      "updatedAt": "2025-04-10T23:58:03.180090",
+      "entityId": "project1"
+    },
+    {
+      "id": "task72",
+      "name": "Task 72",
+      "description": "Description for task 72",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user15",
+      "dueDate": "2025-05-05T23:58:03.180118",
+      "tags": [
+        "Bug",
+        "Research",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task27"
+      ],
+      "createdAt": "2025-03-24T23:58:03.180118",
+      "updatedAt": "2025-03-29T23:58:03.180118",
+      "entityId": "project1"
+    },
+    {
+      "id": "task73",
+      "name": "Task 73",
+      "description": "Description for task 73",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user11",
+      "dueDate": "2025-06-05T23:58:03.180146",
+      "tags": [
+        "Documentation",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-07T23:58:03.180146",
+      "updatedAt": "2025-05-04T23:58:03.180146",
+      "entityId": "project1"
+    },
+    {
+      "id": "task74",
+      "name": "Task 74",
+      "description": "Description for task 74",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user15",
+      "dueDate": "2025-03-26T23:58:03.180172",
+      "tags": [
+        "Feature",
+        "Documentation"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task29"
+      ],
+      "createdAt": "2025-03-22T23:58:03.180172",
+      "updatedAt": "2025-04-15T23:58:03.180172",
+      "entityId": "project1"
+    },
+    {
+      "id": "task75",
+      "name": "Task 75",
+      "description": "Description for task 75",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-06T23:58:03.180194",
+      "tags": [
+        "UI",
+        "Testing",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task22",
+        "task61"
+      ],
+      "createdAt": "2025-03-29T23:58:03.180194",
+      "updatedAt": "2025-03-30T23:58:03.180194",
+      "entityId": "project1"
+    },
+    {
+      "id": "task76",
+      "name": "Task 76",
+      "description": "Description for task 76",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user6",
+      "dueDate": "2025-04-22T23:58:03.180220",
+      "tags": [
+        "Urgent",
+        "Documentation",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-20T23:58:03.180220",
+      "updatedAt": "2025-03-27T23:58:03.180220",
+      "entityId": "project1"
+    },
+    {
+      "id": "task77",
+      "name": "Task 77",
+      "description": "Description for task 77",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-06-01T23:58:03.180246",
+      "tags": [
+        "UI",
+        "Feature",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task38",
+        "task66"
+      ],
+      "createdAt": "2025-04-04T23:58:03.180246",
+      "updatedAt": "2025-04-19T23:58:03.180246",
+      "entityId": "project1"
+    },
+    {
+      "id": "task78",
+      "name": "Task 78",
+      "description": "Description for task 78",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user6",
+      "dueDate": "2025-05-16T23:58:03.180269",
+      "tags": [
+        "Testing",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task77",
+        "task70",
+        "task15"
+      ],
+      "createdAt": "2025-03-17T23:58:03.180269",
+      "updatedAt": "2025-04-15T23:58:03.180269",
+      "entityId": "project1"
+    },
+    {
+      "id": "task79",
+      "name": "Task 79",
+      "description": "Description for task 79",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-12T23:58:03.180294",
+      "tags": [
+        "API",
+        "UI",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-04-10T23:58:03.180294",
+      "updatedAt": "2025-04-12T23:58:03.180294",
+      "entityId": "project1"
+    },
+    {
+      "id": "task80",
+      "name": "Task 80",
+      "description": "Description for task 80",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user1",
+      "dueDate": "2025-04-21T23:58:03.180315",
+      "tags": [
+        "Feature",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task24",
+        "task62"
+      ],
+      "createdAt": "2025-04-20T23:58:03.180315",
+      "updatedAt": "2025-04-21T23:58:03.180315",
+      "entityId": "project1"
+    },
+    {
+      "id": "task81",
+      "name": "Task 81",
+      "description": "Description for task 81",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user6",
+      "dueDate": "2025-04-20T23:58:03.180336",
+      "tags": [
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task5",
+        "task33",
+        "task28"
+      ],
+      "createdAt": "2025-03-24T23:58:03.180336",
+      "updatedAt": "2025-04-14T23:58:03.180336",
+      "entityId": "project1"
+    },
+    {
+      "id": "task82",
+      "name": "Task 82",
+      "description": "Description for task 82",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user7",
+      "dueDate": "2025-05-07T23:58:03.180361",
+      "tags": [
+        "Feature"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-03-19T23:58:03.180361",
+      "updatedAt": "2025-04-07T23:58:03.180361",
+      "entityId": "project1"
+    },
+    {
+      "id": "task83",
+      "name": "Task 83",
+      "description": "Description for task 83",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user5",
+      "dueDate": "2025-05-28T23:58:03.180382",
+      "tags": [
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task2"
+      ],
+      "createdAt": "2025-03-30T23:58:03.180382",
+      "updatedAt": "2025-04-29T23:58:03.180382",
+      "entityId": "project1"
+    },
+    {
+      "id": "task84",
+      "name": "Task 84",
+      "description": "Description for task 84",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user7",
+      "dueDate": "2025-05-02T23:58:03.180405",
+      "tags": [
+        "Feature",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-16T23:58:03.180405",
+      "updatedAt": "2025-05-02T23:58:03.180405",
+      "entityId": "project1"
+    },
+    {
+      "id": "task85",
+      "name": "Task 85",
+      "description": "Description for task 85",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user12",
+      "dueDate": "2025-06-02T23:58:03.180428",
+      "tags": [
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-08T23:58:03.180428",
+      "updatedAt": "2025-04-18T23:58:03.180428",
+      "entityId": "project1"
+    },
+    {
+      "id": "task86",
+      "name": "Task 86",
+      "description": "Description for task 86",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user13",
+      "dueDate": "2025-06-03T23:58:03.180451",
+      "tags": [
+        "Urgent",
+        "Research",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-14T23:58:03.180451",
+      "updatedAt": "2025-05-05T23:58:03.180451",
+      "entityId": "project1"
+    },
+    {
+      "id": "task87",
+      "name": "Task 87",
+      "description": "Description for task 87",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-04-20T23:58:03.180474",
+      "tags": [
+        "Documentation",
+        "API",
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task58",
+        "task81"
+      ],
+      "createdAt": "2025-04-10T23:58:03.180474",
+      "updatedAt": "2025-04-30T23:58:03.180474",
+      "entityId": "project1"
+    },
+    {
+      "id": "task88",
+      "name": "Task 88",
+      "description": "Description for task 88",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user14",
+      "dueDate": "2025-04-18T23:58:03.180504",
+      "tags": [
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-22T23:58:03.180504",
+      "updatedAt": "2025-04-16T23:58:03.180504",
+      "entityId": "project1"
+    },
+    {
+      "id": "task89",
+      "name": "Task 89",
+      "description": "Description for task 89",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user7",
+      "dueDate": "2025-06-25T23:58:03.180536",
+      "tags": [
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task23",
+        "task44",
+        "task58"
+      ],
+      "createdAt": "2025-04-27T23:58:03.180536",
+      "updatedAt": "2025-05-24T23:58:03.180536",
+      "entityId": "project1"
+    },
+    {
+      "id": "task90",
+      "name": "Task 90",
+      "description": "Description for task 90",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user10",
+      "dueDate": "2025-03-23T23:58:03.180559",
+      "tags": [
+        "Feature",
+        "Backend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task48"
+      ],
+      "createdAt": "2025-03-15T23:58:03.180559",
+      "updatedAt": "2025-04-05T23:58:03.180559",
+      "entityId": "project1"
+    },
+    {
+      "id": "task91",
+      "name": "Task 91",
+      "description": "Description for task 91",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user1",
+      "dueDate": "2025-06-19T23:58:03.180582",
+      "tags": [
+        "Testing",
+        "API",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task45",
+        "task25",
+        "task78"
+      ],
+      "createdAt": "2025-04-24T23:58:03.180582",
+      "updatedAt": "2025-05-05T23:58:03.180582",
+      "entityId": "project1"
+    },
+    {
+      "id": "task92",
+      "name": "Task 92",
+      "description": "Description for task 92",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user6",
+      "dueDate": "2025-04-30T23:58:03.180608",
+      "tags": [
+        "Backend",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task29",
+        "task66"
+      ],
+      "createdAt": "2025-03-24T23:58:03.180608",
+      "updatedAt": "2025-04-13T23:58:03.180608",
+      "entityId": "project1"
+    },
+    {
+      "id": "task93",
+      "name": "Task 93",
+      "description": "Description for task 93",
+      "status": "IN_PROGRESS",
+      "priority": "MEDIUM",
+      "assignedTo": "user14",
+      "dueDate": "2025-06-09T23:58:03.180633",
+      "tags": [
+        "Bug",
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-24T23:58:03.180633",
+      "updatedAt": "2025-05-13T23:58:03.180633",
+      "entityId": "project1"
+    },
+    {
+      "id": "task94",
+      "name": "Task 94",
+      "description": "Description for task 94",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user7",
+      "dueDate": "2025-04-29T23:58:03.180657",
+      "tags": [
+        "Backend",
+        "API",
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task38"
+      ],
+      "createdAt": "2025-03-19T23:58:03.180657",
+      "updatedAt": "2025-04-05T23:58:03.180657",
+      "entityId": "project1"
+    },
+    {
+      "id": "task95",
+      "name": "Task 95",
+      "description": "Description for task 95",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user10",
+      "dueDate": "2025-04-27T23:58:03.180681",
+      "tags": [
+        "Documentation",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task82",
+        "task70"
+      ],
+      "createdAt": "2025-03-04T23:58:03.180681",
+      "updatedAt": "2025-03-27T23:58:03.180681",
+      "entityId": "project1"
+    },
+    {
+      "id": "task96",
+      "name": "Task 96",
+      "description": "Description for task 96",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user10",
+      "dueDate": "2025-04-25T23:58:03.180709",
+      "tags": [
+        "Research",
+        "Bug",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task57",
+        "task74"
+      ],
+      "createdAt": "2025-04-14T23:58:03.180709",
+      "updatedAt": "2025-05-05T23:58:03.180709",
+      "entityId": "project1"
+    },
+    {
+      "id": "task97",
+      "name": "Task 97",
+      "description": "Description for task 97",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-21T23:58:03.180746",
+      "tags": [
+        "Research",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task17"
+      ],
+      "createdAt": "2025-03-12T23:58:03.180746",
+      "updatedAt": "2025-04-10T23:58:03.180746",
+      "entityId": "project1"
+    },
+    {
+      "id": "task98",
+      "name": "Task 98",
+      "description": "Description for task 98",
+      "status": "IN_PROGRESS",
+      "priority": "MEDIUM",
+      "assignedTo": "user15",
+      "dueDate": "2025-05-31T23:58:03.180778",
+      "tags": [
+        "Testing"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-09T23:58:03.180778",
+      "updatedAt": "2025-05-03T23:58:03.180778",
+      "entityId": "project1"
+    },
+    {
+      "id": "task99",
+      "name": "Task 99",
+      "description": "Description for task 99",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user9",
+      "dueDate": "2025-03-23T23:58:03.180814",
+      "tags": [
+        "API",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task57"
+      ],
+      "createdAt": "2025-03-17T23:58:03.180814",
+      "updatedAt": "2025-03-18T23:58:03.180814",
+      "entityId": "project1"
+    },
+    {
+      "id": "task100",
+      "name": "Task 100",
+      "description": "Description for task 100",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user12",
+      "dueDate": "2025-03-11T23:58:03.180848",
+      "tags": [
+        "Testing",
+        "Documentation"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task63",
+        "task87"
+      ],
+      "createdAt": "2025-03-06T23:58:03.180848",
+      "updatedAt": "2025-03-18T23:58:03.180848",
+      "entityId": "project1"
+    },
+    {
+      "id": "task101",
+      "name": "Task 101",
+      "description": "Description for task 101",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user9",
+      "dueDate": "2025-04-07T23:58:03.180886",
+      "tags": [
+        "Research",
+        "Bug",
+        "Documentation"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task12",
+        "task17"
+      ],
+      "createdAt": "2025-03-22T23:58:03.180886",
+      "updatedAt": "2025-04-21T23:58:03.180886",
+      "entityId": "project1"
+    },
+    {
+      "id": "task102",
+      "name": "Task 102",
+      "description": "Description for task 102",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user1",
+      "dueDate": "2025-06-06T23:58:03.180914",
+      "tags": [
+        "Research",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task83",
+        "task94"
+      ],
+      "createdAt": "2025-04-09T23:58:03.180914",
+      "updatedAt": "2025-04-30T23:58:03.180914",
+      "entityId": "project1"
+    },
+    {
+      "id": "task103",
+      "name": "Task 103",
+      "description": "Description for task 103",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user13",
+      "dueDate": "2025-03-22T23:58:03.180942",
+      "tags": [
+        "API"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task54",
+        "task18",
+        "task85"
+      ],
+      "createdAt": "2025-03-04T23:58:03.180942",
+      "updatedAt": "2025-03-31T23:58:03.180942",
+      "entityId": "project1"
+    },
+    {
+      "id": "task104",
+      "name": "Task 104",
+      "description": "Description for task 104",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-06T23:58:03.180968",
+      "tags": [
+        "Backend",
+        "Testing",
+        "Feature"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task9",
+        "task3"
+      ],
+      "createdAt": "2025-04-02T23:58:03.180968",
+      "updatedAt": "2025-04-08T23:58:03.180968",
+      "entityId": "project1"
+    },
+    {
+      "id": "task105",
+      "name": "Task 105",
+      "description": "Description for task 105",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user1",
+      "dueDate": "2025-04-18T23:58:03.180991",
+      "tags": [
+        "Documentation",
+        "Bug",
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task49",
+        "task30"
+      ],
+      "createdAt": "2025-03-02T23:58:03.180991",
+      "updatedAt": "2025-03-20T23:58:03.180991",
+      "entityId": "project1"
+    },
+    {
+      "id": "task106",
+      "name": "Task 106",
+      "description": "Description for task 106",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-15T23:58:03.181013",
+      "tags": [
+        "Backend",
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-19T23:58:03.181013",
+      "updatedAt": "2025-04-14T23:58:03.181013",
+      "entityId": "project1"
+    },
+    {
+      "id": "task107",
+      "name": "Task 107",
+      "description": "Description for task 107",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user8",
+      "dueDate": "2025-04-21T23:58:03.181048",
+      "tags": [
+        "Urgent",
+        "Testing"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task60"
+      ],
+      "createdAt": "2025-03-16T23:58:03.181048",
+      "updatedAt": "2025-04-07T23:58:03.181048",
+      "entityId": "project1"
+    },
+    {
+      "id": "task108",
+      "name": "Task 108",
+      "description": "Description for task 108",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-14T23:58:03.181078",
+      "tags": [
+        "Feature",
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task60",
+        "task84"
+      ],
+      "createdAt": "2025-04-05T23:58:03.181078",
+      "updatedAt": "2025-04-17T23:58:03.181078",
+      "entityId": "project1"
+    },
+    {
+      "id": "task109",
+      "name": "Task 109",
+      "description": "Description for task 109",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user4",
+      "dueDate": "2025-04-22T23:58:03.181101",
+      "tags": [
+        "Frontend",
+        "Testing",
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task76",
+        "task30",
+        "task36"
+      ],
+      "createdAt": "2025-04-15T23:58:03.181101",
+      "updatedAt": "2025-05-11T23:58:03.181101",
+      "entityId": "project1"
+    },
+    {
+      "id": "task110",
+      "name": "Task 110",
+      "description": "Description for task 110",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user14",
+      "dueDate": "2025-05-19T23:58:03.181134",
+      "tags": [
+        "Bug",
+        "Feature",
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task58"
+      ],
+      "createdAt": "2025-04-10T23:58:03.181134",
+      "updatedAt": "2025-05-02T23:58:03.181134",
+      "entityId": "project1"
+    },
+    {
+      "id": "task111",
+      "name": "Task 111",
+      "description": "Description for task 111",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user6",
+      "dueDate": "2025-04-28T23:58:03.181171",
+      "tags": [
+        "Urgent",
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task16",
+        "task27",
+        "task93"
+      ],
+      "createdAt": "2025-03-25T23:58:03.181171",
+      "updatedAt": "2025-04-01T23:58:03.181171",
+      "entityId": "project1"
+    },
+    {
+      "id": "task112",
+      "name": "Task 112",
+      "description": "Description for task 112",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user8",
+      "dueDate": "2025-04-29T23:58:03.181204",
+      "tags": [
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task68",
+        "task104"
+      ],
+      "createdAt": "2025-03-10T23:58:03.181204",
+      "updatedAt": "2025-04-05T23:58:03.181204",
+      "entityId": "project1"
+    },
+    {
+      "id": "task113",
+      "name": "Task 113",
+      "description": "Description for task 113",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user9",
+      "dueDate": "2025-04-05T23:58:03.181234",
+      "tags": [
+        "Documentation"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task49"
+      ],
+      "createdAt": "2025-03-22T23:58:03.181234",
+      "updatedAt": "2025-04-08T23:58:03.181234",
+      "entityId": "project1"
+    },
+    {
+      "id": "task114",
+      "name": "Task 114",
+      "description": "Description for task 114",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user7",
+      "dueDate": "2025-03-18T23:58:03.181261",
+      "tags": [
+        "Feature",
+        "Documentation"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task1"
+      ],
+      "createdAt": "2025-03-01T23:58:03.181261",
+      "updatedAt": "2025-03-02T23:58:03.181261",
+      "entityId": "project1"
+    },
+    {
+      "id": "task115",
+      "name": "Task 115",
+      "description": "Description for task 115",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user15",
+      "dueDate": "2025-05-21T23:58:03.181288",
+      "tags": [
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-09T23:58:03.181288",
+      "updatedAt": "2025-05-01T23:58:03.181288",
+      "entityId": "project1"
+    },
+    {
+      "id": "task116",
+      "name": "Task 116",
+      "description": "Description for task 116",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-05-19T23:58:03.181315",
+      "tags": [
+        "Backend",
+        "UI"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task30",
+        "task45"
+      ],
+      "createdAt": "2025-04-14T23:58:03.181315",
+      "updatedAt": "2025-05-02T23:58:03.181315",
+      "entityId": "project1"
+    },
+    {
+      "id": "task117",
+      "name": "Task 117",
+      "description": "Description for task 117",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user4",
+      "dueDate": "2025-04-23T23:58:03.181341",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task47",
+        "task63",
+        "task81"
+      ],
+      "createdAt": "2025-04-21T23:58:03.181341",
+      "updatedAt": "2025-05-18T23:58:03.181341",
+      "entityId": "project1"
+    },
+    {
+      "id": "task118",
+      "name": "Task 118",
+      "description": "Description for task 118",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user6",
+      "dueDate": "2025-04-09T23:58:03.181365",
+      "tags": [
+        "Research",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task94",
+        "task7",
+        "task29"
+      ],
+      "createdAt": "2025-03-18T23:58:03.181365",
+      "updatedAt": "2025-03-28T23:58:03.181365",
+      "entityId": "project1"
+    },
+    {
+      "id": "task119",
+      "name": "Task 119",
+      "description": "Description for task 119",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user15",
+      "dueDate": "2025-03-24T23:58:03.181389",
+      "tags": [
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task96",
+        "task39"
+      ],
+      "createdAt": "2025-03-23T23:58:03.181389",
+      "updatedAt": "2025-03-29T23:58:03.181389",
+      "entityId": "project1"
+    },
+    {
+      "id": "task120",
+      "name": "Task 120",
+      "description": "Description for task 120",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user3",
+      "dueDate": "2025-04-06T23:58:03.181414",
+      "tags": [
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task23",
+        "task76",
+        "task48"
+      ],
+      "createdAt": "2025-02-28T23:58:03.181414",
+      "updatedAt": "2025-03-30T23:58:03.181414",
+      "entityId": "project1"
+    },
+    {
+      "id": "task121",
+      "name": "Task 121",
+      "description": "Description for task 121",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user10",
+      "dueDate": "2025-06-01T23:58:03.181438",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task67",
+        "task65"
+      ],
+      "createdAt": "2025-04-15T23:58:03.181438",
+      "updatedAt": "2025-04-30T23:58:03.181438",
+      "entityId": "project1"
+    },
+    {
+      "id": "task122",
+      "name": "Task 122",
+      "description": "Description for task 122",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user9",
+      "dueDate": "2025-04-09T23:58:03.181462",
+      "tags": [
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task4",
+        "task53",
+        "task69"
+      ],
+      "createdAt": "2025-03-24T23:58:03.181462",
+      "updatedAt": "2025-04-17T23:58:03.181462",
+      "entityId": "project1"
+    },
+    {
+      "id": "task123",
+      "name": "Task 123",
+      "description": "Description for task 123",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user5",
+      "dueDate": "2025-05-13T23:58:03.181485",
+      "tags": [
+        "Research",
+        "UI",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task75"
+      ],
+      "createdAt": "2025-03-31T23:58:03.181485",
+      "updatedAt": "2025-04-17T23:58:03.181485",
+      "entityId": "project1"
+    },
+    {
+      "id": "task124",
+      "name": "Task 124",
+      "description": "Description for task 124",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user14",
+      "dueDate": "2025-05-28T23:58:03.181508",
+      "tags": [
+        "Frontend",
+        "Backend"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task66",
+        "task99",
+        "task16"
+      ],
+      "createdAt": "2025-04-26T23:58:03.181508",
+      "updatedAt": "2025-05-22T23:58:03.181508",
+      "entityId": "project1"
+    },
+    {
+      "id": "task125",
+      "name": "Task 125",
+      "description": "Description for task 125",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user2",
+      "dueDate": "2025-04-26T23:58:03.181533",
+      "tags": [
+        "Research"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task51"
+      ],
+      "createdAt": "2025-04-11T23:58:03.181533",
+      "updatedAt": "2025-05-10T23:58:03.181533",
+      "entityId": "project1"
+    },
+    {
+      "id": "task126",
+      "name": "Task 126",
+      "description": "Description for task 126",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user11",
+      "dueDate": "2025-04-30T23:58:03.181558",
+      "tags": [
+        "Research",
+        "Documentation",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task104"
+      ],
+      "createdAt": "2025-03-01T23:58:03.181558",
+      "updatedAt": "2025-03-20T23:58:03.181558",
+      "entityId": "project1"
+    },
+    {
+      "id": "task127",
+      "name": "Task 127",
+      "description": "Description for task 127",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user15",
+      "dueDate": "2025-05-20T23:58:03.181592",
+      "tags": [
+        "Frontend",
+        "Backend",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task69"
+      ],
+      "createdAt": "2025-04-07T23:58:03.181592",
+      "updatedAt": "2025-05-03T23:58:03.181592",
+      "entityId": "project1"
+    },
+    {
+      "id": "task128",
+      "name": "Task 128",
+      "description": "Description for task 128",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user12",
+      "dueDate": "2025-06-01T23:58:03.181626",
+      "tags": [
+        "Bug"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task26",
+        "task3"
+      ],
+      "createdAt": "2025-04-05T23:58:03.181626",
+      "updatedAt": "2025-04-14T23:58:03.181626",
+      "entityId": "project1"
+    },
+    {
+      "id": "task129",
+      "name": "Task 129",
+      "description": "Description for task 129",
+      "status": "TODO",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-03-30T23:58:03.181650",
+      "tags": [
+        "Urgent",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-29T23:58:03.181650",
+      "updatedAt": "2025-04-23T23:58:03.181650",
+      "entityId": "project1"
+    },
+    {
+      "id": "task130",
+      "name": "Task 130",
+      "description": "Description for task 130",
+      "status": "DONE",
+      "priority": "MEDIUM",
+      "assignedTo": "user2",
+      "dueDate": "2025-04-01T23:58:03.181677",
+      "tags": [
+        "Bug"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task34",
+        "task32",
+        "task111"
+      ],
+      "createdAt": "2025-03-27T23:58:03.181677",
+      "updatedAt": "2025-04-12T23:58:03.181677",
+      "entityId": "project1"
+    },
+    {
+      "id": "task131",
+      "name": "Task 131",
+      "description": "Description for task 131",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-24T23:58:03.181705",
+      "tags": [
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task128",
+        "task11",
+        "task87"
+      ],
+      "createdAt": "2025-04-23T23:58:03.181705",
+      "updatedAt": "2025-05-16T23:58:03.181705",
+      "entityId": "project1"
+    },
+    {
+      "id": "task132",
+      "name": "Task 132",
+      "description": "Description for task 132",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user4",
+      "dueDate": "2025-05-01T23:58:03.181733",
+      "tags": [
+        "Documentation",
+        "Feature",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task100"
+      ],
+      "createdAt": "2025-03-05T23:58:03.181733",
+      "updatedAt": "2025-03-21T23:58:03.181733",
+      "entityId": "project1"
+    },
+    {
+      "id": "task133",
+      "name": "Task 133",
+      "description": "Description for task 133",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user1",
+      "dueDate": "2025-06-02T23:58:03.181757",
+      "tags": [
+        "Testing"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task104"
+      ],
+      "createdAt": "2025-04-24T23:58:03.181757",
+      "updatedAt": "2025-05-13T23:58:03.181757",
+      "entityId": "project1"
+    },
+    {
+      "id": "task134",
+      "name": "Task 134",
+      "description": "Description for task 134",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user11",
+      "dueDate": "2025-04-24T23:58:03.181784",
+      "tags": [
+        "Feature",
+        "API"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-08T23:58:03.181784",
+      "updatedAt": "2025-04-15T23:58:03.181784",
+      "entityId": "project1"
+    },
+    {
+      "id": "task135",
+      "name": "Task 135",
+      "description": "Description for task 135",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user10",
+      "dueDate": "2025-03-17T23:58:03.181822",
+      "tags": [
+        "Feature",
+        "API",
+        "UI"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task126",
+        "task70",
+        "task64"
+      ],
+      "createdAt": "2025-03-04T23:58:03.181822",
+      "updatedAt": "2025-03-15T23:58:03.181822",
+      "entityId": "project1"
+    },
+    {
+      "id": "task136",
+      "name": "Task 136",
+      "description": "Description for task 136",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user9",
+      "dueDate": "2025-05-28T23:58:03.181850",
+      "tags": [
+        "Research"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task56",
+        "task41"
+      ],
+      "createdAt": "2025-04-10T23:58:03.181850",
+      "updatedAt": "2025-04-25T23:58:03.181850",
+      "entityId": "project1"
+    },
+    {
+      "id": "task137",
+      "name": "Task 137",
+      "description": "Description for task 137",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user10",
+      "dueDate": "2025-06-07T23:58:03.181873",
+      "tags": [
+        "UI",
+        "Bug"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task6",
+        "task30"
+      ],
+      "createdAt": "2025-04-12T23:58:03.181873",
+      "updatedAt": "2025-04-23T23:58:03.181873",
+      "entityId": "project1"
+    },
+    {
+      "id": "task138",
+      "name": "Task 138",
+      "description": "Description for task 138",
+      "status": "ARCHIVED",
+      "priority": "MEDIUM",
+      "assignedTo": "user12",
+      "dueDate": "2025-05-12T23:58:03.181898",
+      "tags": [
+        "Research",
+        "UI",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task28",
+        "task137"
+      ],
+      "createdAt": "2025-04-25T23:58:03.181898",
+      "updatedAt": "2025-05-20T23:58:03.181898",
+      "entityId": "project1"
+    },
+    {
+      "id": "task139",
+      "name": "Task 139",
+      "description": "Description for task 139",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user7",
+      "dueDate": "2025-03-30T23:58:03.181934",
+      "tags": [
+        "Testing",
+        "Backend",
+        "Urgent"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task42",
+        "task3"
+      ],
+      "createdAt": "2025-03-02T23:58:03.181934",
+      "updatedAt": "2025-03-19T23:58:03.181934",
+      "entityId": "project1"
+    },
+    {
+      "id": "task140",
+      "name": "Task 140",
+      "description": "Description for task 140",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user7",
+      "dueDate": "2025-04-26T23:58:03.181981",
+      "tags": [
+        "Documentation",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-22T23:58:03.181981",
+      "updatedAt": "2025-05-21T23:58:03.181981",
+      "entityId": "project1"
+    },
+    {
+      "id": "task141",
+      "name": "Task 141",
+      "description": "Description for task 141",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user13",
+      "dueDate": "2025-06-02T23:58:03.182012",
+      "tags": [
+        "Frontend",
+        "Research",
+        "API"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task55",
+        "task27"
+      ],
+      "createdAt": "2025-04-23T23:58:03.182012",
+      "updatedAt": "2025-04-28T23:58:03.182012",
+      "entityId": "project1"
+    },
+    {
+      "id": "task142",
+      "name": "Task 142",
+      "description": "Description for task 142",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user13",
+      "dueDate": "2025-05-18T23:58:03.182048",
+      "tags": [
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-03-19T23:58:03.182048",
+      "updatedAt": "2025-04-15T23:58:03.182048",
+      "entityId": "project1"
+    },
+    {
+      "id": "task143",
+      "name": "Task 143",
+      "description": "Description for task 143",
+      "status": "DONE",
+      "priority": "HIGH",
+      "assignedTo": "user14",
+      "dueDate": "2025-06-03T23:58:03.182071",
+      "tags": [
+        "UI",
+        "API",
+        "Backend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task89",
+        "task17"
+      ],
+      "createdAt": "2025-04-23T23:58:03.182071",
+      "updatedAt": "2025-04-23T23:58:03.182071",
+      "entityId": "project1"
+    },
+    {
+      "id": "task144",
+      "name": "Task 144",
+      "description": "Description for task 144",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user1",
+      "dueDate": "2025-03-11T23:58:03.182110",
+      "tags": [
+        "Frontend",
+        "UI",
+        "Testing"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-04T23:58:03.182110",
+      "updatedAt": "2025-03-06T23:58:03.182110",
+      "entityId": "project1"
+    },
+    {
+      "id": "task145",
+      "name": "Task 145",
+      "description": "Description for task 145",
+      "status": "IN_PROGRESS",
+      "priority": "LOW",
+      "assignedTo": "user6",
+      "dueDate": "2025-05-14T23:58:03.182139",
+      "tags": [
+        "Research",
+        "API",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [
+        "task86"
+      ],
+      "createdAt": "2025-04-05T23:58:03.182139",
+      "updatedAt": "2025-04-29T23:58:03.182139",
+      "entityId": "project1"
+    },
+    {
+      "id": "task146",
+      "name": "Task 146",
+      "description": "Description for task 146",
+      "status": "ARCHIVED",
+      "priority": "HIGH",
+      "assignedTo": "user10",
+      "dueDate": "2025-04-28T23:58:03.182163",
+      "tags": [
+        "Bug",
+        "Frontend"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        },
+        {
+          "name": "Subtask 4",
+          "completed": false
+        }
+      ],
+      "dependencies": [
+        "task95",
+        "task29",
+        "task3"
+      ],
+      "createdAt": "2025-04-22T23:58:03.182163",
+      "updatedAt": "2025-05-01T23:58:03.182163",
+      "entityId": "project1"
+    },
+    {
+      "id": "task147",
+      "name": "Task 147",
+      "description": "Description for task 147",
+      "status": "DONE",
+      "priority": "LOW",
+      "assignedTo": "user1",
+      "dueDate": "2025-05-01T23:58:03.182196",
+      "tags": [
+        "Backend",
+        "Frontend"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": true
+        },
+        {
+          "name": "Subtask 3",
+          "completed": true
+        }
+      ],
+      "dependencies": [
+        "task83"
+      ],
+      "createdAt": "2025-03-02T23:58:03.182196",
+      "updatedAt": "2025-03-28T23:58:03.182196",
+      "entityId": "project1"
+    },
+    {
+      "id": "task148",
+      "name": "Task 148",
+      "description": "Description for task 148",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "user15",
+      "dueDate": "2025-05-05T23:58:03.182235",
+      "tags": [
+        "Bug",
+        "Feature"
+      ],
+      "blocked": false,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": true
+        },
+        {
+          "name": "Subtask 2",
+          "completed": false
+        },
+        {
+          "name": "Subtask 3",
+          "completed": false
+        },
+        {
+          "name": "Subtask 4",
+          "completed": true
+        },
+        {
+          "name": "Subtask 5",
+          "completed": true
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-04-20T23:58:03.182235",
+      "updatedAt": "2025-05-11T23:58:03.182235",
+      "entityId": "project1"
+    },
+    {
+      "id": "task149",
+      "name": "Task 149",
+      "description": "Description for task 149",
+      "status": "ARCHIVED",
+      "priority": "LOW",
+      "assignedTo": "user5",
+      "dueDate": "2025-04-11T23:58:03.182262",
+      "tags": [
+        "Research",
+        "Documentation"
+      ],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [
+        "task142"
+      ],
+      "createdAt": "2025-03-19T23:58:03.182262",
+      "updatedAt": "2025-03-31T23:58:03.182262",
+      "entityId": "project1"
+    },
+    {
+      "id": "task150",
+      "name": "Task 150",
+      "description": "Description for task 150",
+      "status": "TODO",
+      "priority": "HIGH",
+      "assignedTo": "user9",
+      "dueDate": "2025-04-26T23:58:03.182288",
+      "tags": [
+        "Testing",
+        "Urgent"
+      ],
+      "blocked": true,
+      "subtasks": [
+        {
+          "name": "Subtask 1",
+          "completed": false
+        }
+      ],
+      "dependencies": [],
+      "createdAt": "2025-03-17T23:58:03.182288",
+      "updatedAt": "2025-03-25T23:58:03.182288",
+      "entityId": "project1"
+    },
+    {
+      "name": "task_1",
+      "description": "",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user1",
+      "dueDate": null,
+      "tags": [],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [],
+      "id": "task-1745972598701",
+      "createdAt": "2025-04-30T00:23:18.701Z",
+      "updatedAt": "2025-04-30T00:23:31.347Z",
+      "entityId": "default"
+    },
+    {
+      "id": "task-1745972682280",
+      "name": "taask",
+      "description": "",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "assignedTo": "user1",
+      "dueDate": null,
+      "tags": [
+        "Bug",
+        "Feature",
+        "Documentation"
+      ],
+      "blocked": true,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-04-30T00:24:42.280Z",
+      "updatedAt": "2025-04-30T00:24:42.280Z",
+      "entityId": "default"
+    }
+  ],
+  "wip-limits": {
+    "user1": 6,
+    "user2": 5,
+    "user3": 4,
+    "user4": 7,
+    "user5": 7,
+    "user6": 6,
+    "user7": 5,
+    "user8": 7,
+    "user9": 5,
+    "user10": 6,
+    "user11": 6,
+    "user12": 4,
+    "user13": 5,
+    "user14": 4,
+    "user15": 6
+  }
 }

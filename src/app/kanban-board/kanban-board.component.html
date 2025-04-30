@@ -1,0 +1,154 @@
+<div class="kanban-container">
+  <div class="kanban-header">
+    <h1>Kanban Task Board</h1>
+    
+    <div class="kanban-controls">
+      <mat-slide-toggle 
+        [checked]="enableDragDrop" 
+        (change)="toggleDragDrop()"
+        color="primary">
+        Enable Drag & Drop
+      </mat-slide-toggle>
+      
+      <mat-slide-toggle 
+        [checked]="minimizeTasks" 
+        (change)="toggleMinimizeTasks()"
+        color="primary">
+        Minimize Tasks
+      </mat-slide-toggle>
+      
+      <button mat-raised-button color="accent" (click)="toggleArchiveView()">
+        {{ showArchived ? 'Hide Archived' : 'Show Archived' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="kanban-board" cdkScrollable>
+    <div 
+      *ngFor="let user of users" 
+      class="kanban-column"
+      [class.wip-exceeded]="isWipLimitExceeded(user.id)">
+      
+      <div class="column-header">
+        <div class="user-info">
+          <img [src]="user.avatar" alt="User avatar" class="user-avatar">
+          <div class="user-details">
+            <h3>{{ user.name }}</h3>
+            <span class="user-role">{{ user.role }}</span>
+          </div>
+        </div>
+        
+        <div class="column-stats">
+          <span class="task-count" [class.exceeded]="isWipLimitExceeded(user.id)">
+            {{ getActiveTaskCount(user.id) }} / {{ getWipLimit(user.id) }}
+          </span>
+          
+          <button mat-icon-button (click)="openWipLimitDialog(user.id)">
+            <mat-icon>settings</mat-icon>
+          </button>
+          
+          <button mat-icon-button color="primary" (click)="openTaskModal(user.id)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      
+      <div 
+        cdkDropList
+        [id]="user.id"
+        [cdkDropListData]="filteredTasks[user.id]"
+        [cdkDropListConnectedTo]="getConnectedLists()"
+        (cdkDropListDropped)="onTaskDrop($event)"
+        [cdkDropListDisabled]="!enableDragDrop"
+        class="task-list">
+        
+        <div 
+          *ngFor="let task of filteredTasks[user.id]"
+          cdkDrag
+          [cdkDragDisabled]="!enableDragDrop || task.blocked"
+          class="task-card"
+          [class.minimized]="minimizeTasks"
+          [class.subtask]="isSubtask(task)"
+          [class.blocked]="task.blocked">
+          
+          <!-- Parent-child relationship indicator -->
+          <div *ngIf="isSubtask(task)" class="subtask-indicator">
+            <mat-icon>subdirectory_arrow_right</mat-icon>
+            <span>Subtask of: {{ getParentTask(task)?.name }}</span>
+          </div>
+          
+          <div class="task-header">
+            <span class="task-id">{{ task.id }}</span>
+            <div class="task-actions">
+              <button mat-icon-button [matMenuTriggerFor]="taskMenu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #taskMenu="matMenu">
+                <button mat-menu-item (click)="editTask(task)">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item (click)="createSubtask(task)">
+                  <mat-icon>playlist_add</mat-icon>
+                  <span>Add Subtask</span>
+                </button>
+                <button mat-menu-item (click)="toggleTaskBlocked(task)">
+                  <mat-icon>{{ task.blocked ? 'lock_open' : 'lock' }}</mat-icon>
+                  <span>{{ task.blocked ? 'Unblock' : 'Block' }}</span>
+                </button>
+                <button mat-menu-item *ngIf="task.status === 'DONE'" (click)="archiveTask(task)">
+                  <mat-icon>archive</mat-icon>
+                  <span>Archive</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+          
+          <h3 class="task-name">{{ task.name }}</h3>
+          
+          <div class="task-details" *ngIf="!minimizeTasks">
+            <p class="task-description">{{ task.description }}</p>
+            
+            <div class="task-metadata">
+              <div class="task-priority" [ngClass]="task.priority">
+                {{ task.priority }}
+              </div>
+              
+              <div class="task-status" [ngClass]="task.status">
+                {{ task.status }}
+              </div>
+              
+              <div class="task-due-date" *ngIf="task.dueDate">
+                <mat-icon>event</mat-icon>
+                <span>{{ task.dueDate | date:'shortDate' }}</span>
+              </div>
+            </div>
+            
+            <div class="task-tags" *ngIf="task.tags && task.tags.length">
+              <span *ngFor="let tag of task.tags" class="tag">{{ tag }}</span>
+            </div>
+            
+            <!-- Subtasks section -->
+            <div class="task-subtasks" *ngIf="task.subtasks && task.subtasks.length && !isSubtask(task)">
+              <div class="subtasks-header" (click)="toggleTaskExpansion(task.id)">
+                <span>Subtasks ({{ task.subtasks.length }})</span>
+                <mat-icon>{{ isTaskExpanded(task.id) ? 'expand_less' : 'expand_more' }}</mat-icon>
+              </div>
+              
+              <div class="subtasks-list" *ngIf="isTaskExpanded(task.id)">
+                <div *ngFor="let subtask of task.subtasks" class="subtask-item">
+                  <span class="subtask-status" [ngClass]="subtask.status"></span>
+                  <span class="subtask-name">{{ subtask.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="empty-column" *ngIf="filteredTasks[user.id].length === 0">
+          <p>No tasks</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

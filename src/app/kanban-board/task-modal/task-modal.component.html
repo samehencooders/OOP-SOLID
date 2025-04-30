@@ -1,0 +1,162 @@
+<h2 mat-dialog-title>{{ data.task ? 'Edit Task' : (isSubtaskMode ? 'Add Subtask' : 'Create Task') }}</h2>
+
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Task Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="taskForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row two-columns">
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority" required>
+          <mat-option *ngFor="let priority of priorities" [value]="priority">
+            {{ priority }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row two-columns">
+      <mat-form-field appearance="fill">
+        <mat-label>Assigned To</mat-label>
+        <mat-select formControlName="assignedTo" required>
+          <mat-option *ngFor="let user of data.users" [value]="user.id">
+            {{ user.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Tags</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let tag of taskForm.get('tags')?.value" [removable]="true" (removed)="removeTag(tag)">
+            {{ tag }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input 
+            placeholder="New tag..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="addTag($event)">
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+      <mat-slide-toggle formControlName="blocked" color="warn">
+        Task is Blocked
+      </mat-slide-toggle>
+    </div>
+    
+    <!-- Only show subtasks section for parent tasks -->
+    <div *ngIf="!isSubtaskMode" class="subtasks-section">
+      <div class="section-header">
+        <h3>Subtasks</h3>
+        <button type="button" mat-mini-fab color="primary" (click)="addSubtask()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      
+      <div formArrayName="subtasks">
+        <div *ngFor="let subtaskGroup of subtasksArray.controls; let i = index" [formGroupName]="i" class="subtask-form">
+          <div class="subtask-header">
+            <h4>Subtask {{ i + 1 }}</h4>
+            <button type="button" mat-icon-button color="warn" (click)="removeSubtask(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          
+          <div class="form-row">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" rows="2"></textarea>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row two-columns">
+            <mat-form-field appearance="fill">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status">
+                <mat-option *ngFor="let status of statuses" [value]="status">
+                  {{ status }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+              <mat-label>Priority</mat-label>
+              <mat-select formControlName="priority">
+                <mat-option *ngFor="let priority of priorities" [value]="priority">
+                  {{ priority }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Assigned To</mat-label>
+              <mat-select formControlName="assignedTo">
+                <mat-option *ngFor="let user of data.users" [value]="user.id">
+                  {{ user.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          <div class="form-row">
+            <mat-slide-toggle formControlName="blocked" color="warn">
+              Subtask is Blocked
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button (click)="onCancel()">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!taskForm.valid">
+      {{ data.task ? 'Update' : 'Create' }}
+    </button>
+  </mat-dialog-actions>
+</form>

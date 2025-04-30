@@ -1,0 +1,387 @@
+.kanban-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.kanban-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  
+  h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .kanban-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+// Add these styles to your existing SCSS file
+
+.kanban-board {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  &:active {
+    cursor: grabbing;
+  }
+  
+  // Hide scrollbar but keep functionality
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// Ensure columns don't shrink
+.kanban-column {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 100%;
+  
+  &.wip-exceeded {
+    border: 2px solid #f44336;
+  }
+}
+
+.column-header {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    h2 {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+  
+  .column-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .wip-limit {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+.task-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  min-height: 100px;
+}
+
+.task-card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  margin-bottom: 8px;
+  padding: 12px;
+  cursor: grab;
+  
+  &.minimized {
+    padding: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &.blocked {
+    border-left: 4px solid #f44336;
+  }
+  
+  &.priority-high {
+    border-top: 3px solid #f44336;
+  }
+  
+  &.priority-medium {
+    border-top: 3px solid #ff9800;
+  }
+  
+  &.priority-low {
+    border-top: 3px solid #4caf50;
+  }
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  
+  .task-name {
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+
+.task-details {
+  font-size: 14px;
+  
+  .task-status {
+    margin-bottom: 8px;
+  }
+  
+  .task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    
+    .task-due-date {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #666;
+    }
+  }
+  
+  .task-subtasks {
+    margin-top: 8px;
+    
+    mat-progress-bar {
+      margin-bottom: 4px;
+    }
+  }
+  
+  .task-dependencies {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+  }
+}
+
+.task-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .due-soon {
+    color: #f44336;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.empty-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  color: #999;
+  
+  p {
+    margin-bottom: 16px;
+  }
+}
+
+.wip-limit-control {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  mat-form-field {
+    width: 60px;
+  }
+}
+
+// Task Modal Styles
+.full-width {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  
+  mat-form-field {
+    flex: 1;
+  }
+}
+
+.block-toggle {
+  margin: 16px 0;
+}
+
+.subtask-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  
+  .subtask-name {
+    flex: 1;
+  }
+}
+
+.task-card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  margin-bottom: 8px;
+  padding: 12px;
+  cursor: grab;
+  
+  &.minimized {
+    padding: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &.blocked {
+    border-left: 4px solid #f44336;
+  }
+  
+  &.priority-high {
+    border-top: 3px solid #f44336;
+  }
+  
+  &.priority-medium {
+    border-top: 3px solid #ff9800;
+  }
+  
+  &.priority-low {
+    border-top: 3px solid #4caf50;
+  }
+  
+  &.subtask {
+    margin-left: 20px;
+    border-left: 3px solid #3f51b5;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      border-left: 2px solid #3f51b5;
+      border-bottom: 2px solid #3f51b5;
+      border-bottom-left-radius: 5px;
+    }
+  }
+}
+
+.subtask-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  
+  mat-icon {
+    font-size: 16px;
+    margin-right: 4px;
+  }
+}
+
+.task-subtasks {
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  
+  .subtasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    
+    &:hover {
+      color: #3f51b5;
+    }
+  }
+  
+  .subtasks-list {
+    margin-top: 8px;
+  }
+  
+  .subtask-item {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    
+    .subtask-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 8px;
+      
+      &.todo {
+        background-color: #9e9e9e;
+      }
+      
+      &.in_progress {
+        background-color: #2196f3;
+      }
+      
+      &.done {
+        background-color: #4caf50;
+      }
+      
+      &.archived {
+        background-color: #757575;
+      }
+    }
+    
+    .subtask-name {
+      font-size: 13px;
+    }
+  }
+}
