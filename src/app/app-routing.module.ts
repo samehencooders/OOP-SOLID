@@ -3,15 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskDetailsComponent } from './kanban-board/task-details/task-details.component';
 
 const routes: Routes = [
-  {
-    path: 'users',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-  },
-  {
-    path: 'products',
-    loadChildren: () =>
-      import('./product/product.module').then((m) => m.ProductModule),
-  },
 
   {
     path: 'task-board',
