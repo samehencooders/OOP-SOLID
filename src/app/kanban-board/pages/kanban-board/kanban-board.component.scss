@@ -300,7 +300,9 @@ $transition-slow: 350ms ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  animation: fadeIn $transition-normal forwards;
+  animation: none;
+  transition: none;
+  // animation: fadeIn $transition-normal forwards;
   
   &:hover {
     transform: translateY(-2px);
