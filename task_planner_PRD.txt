@@ -1,0 +1,105 @@
+### 1.1 Purpose
+This document outlines the requirements for the Kanban Board application, a task management system designed to visualize work, limit work-in-progress, and maximize efficiency. The application follows SOLID principles and implements a user-centric approach to task management.
+
+### 1.2 Scope
+The Kanban Board application provides a visual task management system that allows users to track tasks across different stages of completion, assign tasks to team members, and enforce work-in-progress (WIP) limits to prevent overloading.
+
+## 2. Product Overview
+### 2.1 Product Perspective
+The Kanban Board is a standalone web application built with Angular that can be integrated with existing project management systems. It provides a visual representation of tasks organized by assignees with customizable WIP limits.
+
+### 2.2 User Classes and Characteristics
+- Project Managers : Need overview of all tasks and team workload
+- Team Members : Need to manage their assigned tasks
+- Stakeholders : Need visibility into project progress
+## 3. Features and Requirements
+### 3.1 User Management
+- Display users with avatars and roles
+- Assign tasks to specific users
+- Enforce user-specific WIP limits
+### 3.2 Task Management 3.2.1 Task Creation and Editing
+- Create new tasks with name, description, priority, status, and due date
+- Edit existing tasks
+- Assign tasks to users
+- Add tags to tasks for categorization
+- Set task priorities (HIGH, MEDIUM, LOW)
+- Set task status (TODO, IN_PROGRESS, DONE, ARCHIVED) 3.2.2 Task Relationships
+- Create subtasks under parent tasks
+- View parent-child relationships between tasks
+- Track dependencies between tasks 3.2.3 Task Visualization
+- Display tasks in columns by assigned user
+- Show task details including status, priority, and due date
+- Provide visual indicators for task priority and status
+- Support minimized view for compact display
+- Display progress of subtasks within parent tasks 3.2.4 Task Actions
+- Block/unblock tasks to indicate impediments
+- Archive completed tasks
+- Filter tasks by archived status
+### 3.3 Workflow Management 3.3.1 Drag and Drop
+- Move tasks between users via drag and drop
+- Enable/disable drag and drop functionality
+- Prevent moving blocked tasks 3.3.2 WIP Limits
+- Set and enforce work-in-progress limits per user
+- Provide visual indicators when WIP limits are exceeded
+- Allow customization of WIP limits
+### 3.4 User Interface 3.4.1 Board Layout
+- Display user columns with assigned tasks
+- Show user information (name, avatar, role)
+- Display task count and WIP limit per user 3.4.2 Task Cards
+- Show task details in card format
+- Support minimized and expanded views
+- Display visual indicators for priority, status, and blocking
+- Show subtask progress 3.4.3 Controls
+- Toggle drag and drop functionality
+- Toggle minimized task view
+- Toggle archived task visibility
+## 4. Non-Functional Requirements
+### 4.1 Performance
+- Smooth drag and drop interactions
+- Efficient loading of task data
+- Responsive UI for different screen sizes
+### 4.2 Security
+- User authentication and authorization
+- Data validation for all inputs
+### 4.3 Usability
+- Intuitive interface for task management
+- Clear visual indicators for task status and priority
+- Accessible design following web standards
+## 5. Technical Requirements
+### 5.1 Frontend
+- Angular framework
+- Material Design components
+- Drag and Drop functionality (Angular CDK)
+- Responsive design
+### 5.2 Backend
+- RESTful API for data operations
+- JSON-based data storage
+- Support for real-time updates
+### 5.3 Data Model
+- Tasks with properties for name, description, status, priority, etc.
+- Users with properties for name, role, avatar, etc.
+- WIP limits associated with users
+- Relationships between tasks (parent-child, dependencies)
+## 6. Future Enhancements
+### 6.1 Analytics
+- Task completion metrics
+- User productivity analytics
+- Cycle time and lead time tracking
+### 6.2 Advanced Features
+- Custom workflow stages beyond the basic statuses
+- Time tracking for tasks
+- Integration with external notification systems
+- Team-based organization beyond individual users
+## 7. Acceptance Criteria
+### 7.1 Task Management
+- Users can create, edit, and delete tasks
+- Tasks display all relevant information
+- Subtasks can be created and managed
+### 7.2 User Experience
+- Drag and drop works smoothly
+- WIP limits are enforced correctly
+- UI is responsive and intuitive
+### 7.3 Performance
+- Application loads quickly
+- Interactions are responsive
+- Data is saved reliably
