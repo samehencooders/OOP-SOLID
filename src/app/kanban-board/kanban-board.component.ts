@@ -1,5 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { KanbanBoardService } from './services/kanban-board.service';
 import { Task, TaskStatus, Priority } from './models/task.model';
@@ -9,12 +19,13 @@ import { WipLimitDialogComponent } from './wip-limit-dialog/wip-limit-dialog.com
 
 import { combineLatest, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kanban-board',
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KanbanBoardComponent implements OnInit {
   @Input() entityId!: string;
@@ -23,61 +34,66 @@ export class KanbanBoardComponent implements OnInit {
   tasks: Task[] = [];
   filteredTasks: Record<string, Task[]> = {};
   wipLimits: Record<string, number> = {};
-  
+
   enableDragDrop = true;
   minimizeTasks = false;
   showArchived = false;
-  
+
   Priority = Priority;
 
   constructor(
     private kanbanService: KanbanBoardService,
     private dialog: MatDialog,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   // Add a property to track expanded tasks
   expandedTasks: Set<string> = new Set();
-  
+
   ngOnInit(): void {
     if (!this.entityId) {
       this.entityId = 'project1'; // Default entity
     }
-    
+
     this.kanbanService.loadData(this.entityId);
-    
+
     // Update the tasks observable to include flattened subtasks
-    this.kanbanService.tasks$.pipe(
-      takeUntil(this.destroy$),
-      map(tasks => this.flattenTasksWithSubtasks(tasks))
-    ).subscribe(tasks => {
-      this.tasks = tasks;
-      this.filterTasks();
-      this.cdr.markForCheck(); // Mark for check after data changes
-    });
-    
+    this.kanbanService.tasks$
+      .pipe(
+        takeUntil(this.destroy$),
+        map((tasks) => this.flattenTasksWithSubtasks(tasks))
+      )
+      .subscribe((tasks) => {
+        this.tasks = tasks;
+        this.filterTasks();
+        this.cdr.markForCheck(); // Mark for check after data changes
+      });
+
     combineLatest([
       this.kanbanService.tasks$,
       this.kanbanService.users$,
-      this.kanbanService.wipLimits$
-    ]).pipe(
-      takeUntil(this.destroy$),
-      map(([tasks, users, wipLimits]) => {
-        this.tasks = tasks;
-        this.users = users;
-        this.wipLimits = wipLimits;
-        
-        // Initialize WIP limits if not set
-        this.users.forEach(user => {
-          if (!this.wipLimits[user.id]) {
-            this.wipLimits[user.id] = 5; // Default limit
-          }
-        });
-        
-        this.filterTasks();
-        this.cdr.markForCheck(); // Mark for check after data changes
-      })
-    ).subscribe();
+      this.kanbanService.wipLimits$,
+    ])
+      .pipe(
+        takeUntil(this.destroy$),
+        map(([tasks, users, wipLimits]) => {
+          this.tasks = tasks;
+          this.users = users;
+          this.wipLimits = wipLimits;
+
+          // Initialize WIP limits if not set
+          this.users.forEach((user) => {
+            if (!this.wipLimits[user.id]) {
+              this.wipLimits[user.id] = 5; // Default limit
+            }
+          });
+
+          this.filterTasks();
+          this.cdr.markForCheck(); // Mark for check after data changes
+        })
+      )
+      .subscribe();
   }
 
   // Add ngOnDestroy for cleanup
@@ -88,33 +104,37 @@ export class KanbanBoardComponent implements OnInit {
 
   loadBoardData(): void {
     this.kanbanService.loadData(this.entityId);
-    
+
     combineLatest([
       this.kanbanService.tasks$,
       this.kanbanService.users$,
-      this.kanbanService.wipLimits$
-    ]).pipe(
-      map(([tasks, users, wipLimits]) => {
-        this.tasks = tasks;
-        this.users = users;
-        this.wipLimits = wipLimits;
-        
-        // Initialize WIP limits if not set
-        this.users.forEach(user => {
-          if (!this.wipLimits[user.id]) {
-            this.wipLimits[user.id] = 5; // Default limit
-          }
-        });
-        
-        this.filterTasks();
-      })
-    ).subscribe();
+      this.kanbanService.wipLimits$,
+    ])
+      .pipe(
+        map(([tasks, users, wipLimits]) => {
+          this.tasks = tasks;
+          this.users = users;
+          this.wipLimits = wipLimits;
+
+          // Initialize WIP limits if not set
+          this.users.forEach((user) => {
+            if (!this.wipLimits[user.id]) {
+              this.wipLimits[user.id] = 5; // Default limit
+            }
+          });
+
+          this.filterTasks();
+        })
+      )
+      .subscribe();
   }
 
   // Add this property to store the user IDs for drop lists
   userIds: string[] = [];
 
-  
+  navigateToTaskDetails(taskId: string): void {
+    this.router.navigate(['/task', taskId]);
+  }
   toggleDragDrop(): void {
     this.enableDragDrop = !this.enableDragDrop;
     this.cdr.markForCheck();
@@ -143,27 +163,6 @@ export class KanbanBoardComponent implements OnInit {
     }
   }
 
-//   openTaskModal(task?: Task, assignedUserId?: string): void {
-//     const dialogRef = this.dialog.open(TaskModalComponent, {
-//       width: '600px',
-//       data: { 
-//         task: task ? { ...task } : null,
-//         users: this.users,
-//         assignedUserId
-//       }
-//     });
-
-//     dialogRef.afterClosed().subscribe(result => {
-//       if (result) {
-//         if (result.id) {
-//           this.kanbanService.updateTask(result).subscribe();
-//         } else {
-//           this.kanbanService.createTask(result).subscribe();
-//         }
-//       }
-//     });
-//   }
-
   bulkArchive(userId: string): void {
     this.kanbanService.bulkArchiveTasks([userId]).subscribe();
   }
@@ -172,7 +171,7 @@ export class KanbanBoardComponent implements OnInit {
     if (!this.enableDragDrop) {
       return;
     }
-    
+
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -186,7 +185,7 @@ export class KanbanBoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      
+
       // Update the task's assigned user
       const movedTask = event.container.data[event.currentIndex];
       this.kanbanService.moveTask(movedTask.id, event.container.id).subscribe();
@@ -195,23 +194,28 @@ export class KanbanBoardComponent implements OnInit {
 
   getStatusColor(status: string): string {
     switch (status) {
-      case TaskStatus.TODO: return 'primary';
-      case TaskStatus.IN_PROGRESS: return 'accent';
-      case TaskStatus.DONE: return 'primary';
-      case TaskStatus.ARCHIVED: return '';
-      default: return '';
+      case TaskStatus.TODO:
+        return 'primary';
+      case TaskStatus.IN_PROGRESS:
+        return 'accent';
+      case TaskStatus.DONE:
+        return 'primary';
+      case TaskStatus.ARCHIVED:
+        return '';
+      default:
+        return '';
     }
   }
 
   getTagColor(tag: string): string {
     // Map tags to colors
     const tagColors = {
-      'Bug': 'warn',
-      'Feature': 'primary',
-      'Documentation': 'accent',
-      'Urgent': 'warn'
+      Bug: 'warn',
+      Feature: 'primary',
+      Documentation: 'accent',
+      Urgent: 'warn',
     };
-    
+
     return tagColors[tag as keyof typeof tagColors] || '';
   }
 
@@ -219,8 +223,10 @@ export class KanbanBoardComponent implements OnInit {
     if (!task.subtasks?.length) {
       return 0;
     }
-    
-    const completed = task.subtasks.filter(st => st.status === TaskStatus.DONE).length;
+
+    const completed = task.subtasks.filter(
+      (st) => st.status === TaskStatus.DONE
+    ).length;
     return (completed / task.subtasks.length) * 100;
   }
 
@@ -228,8 +234,8 @@ export class KanbanBoardComponent implements OnInit {
     if (!task.subtasks?.length) {
       return 0;
     }
-    
-    return task.subtasks.filter(st => st.status === TaskStatus.DONE).length;
+
+    return task.subtasks.filter((st) => st.status === TaskStatus.DONE).length;
   }
 
   // Add method to create a subtask
@@ -240,19 +246,19 @@ export class KanbanBoardComponent implements OnInit {
   editTask(task: Task): void {
     const dialogRef = this.dialog.open(TaskModalComponent, {
       width: '600px',
-      data: { 
+      data: {
         task: task,
-        users: this.users
-      }
+        users: this.users,
+      },
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.kanbanService.updateTask(result).subscribe();
       }
     });
   }
-  
+
   /**
    * Creates a new subtask for the given parent task
    * @param parentTask The parent task
@@ -260,22 +266,22 @@ export class KanbanBoardComponent implements OnInit {
   createSubtask(parentTask: Task): void {
     const dialogRef = this.dialog.open(TaskModalComponent, {
       width: '600px',
-      data: { 
+      data: {
         task: null,
         users: this.users,
         assignedUserId: parentTask.assignedTo,
         isSubtask: true,
-        parentTask: parentTask
-      }
+        parentTask: parentTask,
+      },
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.kanbanService.createTask(result, parentTask.id).subscribe();
       }
     });
   }
-  
+
   /**
    * Toggles the blocked status of a task
    * @param task The task to toggle
@@ -284,12 +290,12 @@ export class KanbanBoardComponent implements OnInit {
     const updatedTask = {
       ...task,
       blocked: !task.blocked,
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
-    
+
     this.kanbanService.updateTask(updatedTask).subscribe();
   }
-  
+
   /**
    * Archives a completed task
    * @param task The task to archive
@@ -298,16 +304,16 @@ export class KanbanBoardComponent implements OnInit {
     if (task.status !== TaskStatus.DONE) {
       return;
     }
-    
+
     const updatedTask = {
       ...task,
       status: TaskStatus.ARCHIVED,
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
-    
+
     this.kanbanService.updateTask(updatedTask).subscribe();
   }
-  
+
   /**
    * Opens the task creation modal
    * @param userId The ID of the user to assign the task to
@@ -315,21 +321,23 @@ export class KanbanBoardComponent implements OnInit {
   openTaskModal(userId: string): void {
     const dialogRef = this.dialog.open(TaskModalComponent, {
       width: '600px',
-      data: { 
+      data: {
         task: null,
         users: this.users,
-        assignedUserId: userId
-      }
+        assignedUserId: userId,
+      },
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.kanbanService.createTask({
-          ...result,
-          entityId: this.entityId
-        }).subscribe(() => {
-          this.cdr.markForCheck(); // Mark for check after task creation
-        });
+        this.kanbanService
+          .createTask({
+            ...result,
+            entityId: this.entityId,
+          })
+          .subscribe(() => {
+            this.cdr.markForCheck(); // Mark for check after task creation
+          });
       }
     });
   }
@@ -339,7 +347,7 @@ export class KanbanBoardComponent implements OnInit {
     const today = new Date();
     const diffTime = dueDate.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
+
     return diffDays >= 0 && diffDays <= 2; // Due within 2 days
   }
 
@@ -351,33 +359,33 @@ export class KanbanBoardComponent implements OnInit {
   // Add these methods for horizontal scrolling
   onMouseDown(event: MouseEvent): void {
     if (!this.enableDragDrop) return;
-    
+
     const kanbanBoard = document.querySelector('.kanban-board') as HTMLElement;
     if (!kanbanBoard) return;
-    
+
     this.isDraggingHorizontally = true;
     this.startX = event.pageX - kanbanBoard.offsetLeft;
     this.scrollLeft = kanbanBoard.scrollLeft;
-    
+
     // Prevent text selection during drag
     event.preventDefault();
   }
-  
+
   onMouseMove(event: MouseEvent): void {
     if (!this.isDraggingHorizontally) return;
-    
+
     const kanbanBoard = document.querySelector('.kanban-board') as HTMLElement;
     if (!kanbanBoard) return;
-    
+
     const x = event.pageX - kanbanBoard.offsetLeft;
     const walk = (x - this.startX) * 2; // Scroll speed multiplier
     kanbanBoard.scrollLeft = this.scrollLeft - walk;
   }
-  
+
   onMouseUp(): void {
     this.isDraggingHorizontally = false;
   }
-  
+
   onMouseLeave(): void {
     this.isDraggingHorizontally = false;
   }
@@ -385,31 +393,31 @@ export class KanbanBoardComponent implements OnInit {
   // Method to flatten tasks and subtasks into a single array
   flattenTasksWithSubtasks(tasks: Task[]): Task[] {
     let result: Task[] = [];
-    
+
     for (const task of tasks) {
       // Add the parent task
       result.push(task);
-      
+
       // Add subtasks if they exist
       if (task.subtasks && task.subtasks.length > 0) {
         result = [...result, ...task.subtasks];
       }
     }
-    
+
     return result;
   }
-  
+
   // Method to check if a task is a subtask
   isSubtask(task: Task): boolean {
     return !!task.parentId;
   }
-  
+
   // Method to get the parent task
   getParentTask(task: Task): Task | undefined {
     if (!task.parentId) return undefined;
-    return this.tasks.find(t => t.id === task.parentId);
+    return this.tasks.find((t) => t.id === task.parentId);
   }
-  
+
   // Method to toggle task expansion
   toggleTaskExpansion(taskId: string): void {
     if (this.expandedTasks.has(taskId)) {
@@ -423,19 +431,20 @@ export class KanbanBoardComponent implements OnInit {
   isTaskExpanded(taskId: string): boolean {
     return this.expandedTasks.has(taskId);
   }
-  
+
   // Override the filterTasks method to handle subtasks
   filterTasks(): void {
     this.filteredTasks = {};
-    
+
     for (const user of this.users) {
-      this.filteredTasks[user.id] = this.tasks.filter(task => {
+      this.filteredTasks[user.id] = this.tasks.filter((task) => {
         // Filter by assigned user
         const isAssignedToUser = task.assignedTo === user.id;
-        
+
         // Filter by archived status
-        const matchesArchivedFilter = this.showArchived || task.status !== TaskStatus.ARCHIVED;
-        
+        const matchesArchivedFilter =
+          this.showArchived || task.status !== TaskStatus.ARCHIVED;
+
         return isAssignedToUser && matchesArchivedFilter;
       });
     }
@@ -450,12 +459,12 @@ export class KanbanBoardComponent implements OnInit {
     if (!this.filteredTasks[userId]) {
       return 0;
     }
-    
-    return this.filteredTasks[userId].filter(task => 
-      task.status !== TaskStatus.ARCHIVED
+
+    return this.filteredTasks[userId].filter(
+      (task) => task.status !== TaskStatus.ARCHIVED
     ).length;
   }
-  
+
   /**
    * Gets the WIP limit for a user
    * @param userId The ID of the user
@@ -464,17 +473,17 @@ export class KanbanBoardComponent implements OnInit {
   getWipLimit(userId: string): number {
     return this.wipLimits[userId] || 0;
   }
-  
+
   // Add these methods to the KanbanBoardComponent class
-  
+
   /**
    * Gets the IDs of all connected drop lists
    * @returns Array of user IDs representing the connected lists
    */
   getConnectedLists(): string[] {
-    return this.users.map(user => user.id);
+    return this.users.map((user) => user.id);
   }
-  
+
   /**
    * Handles the drop event when a task is moved between columns
    * @param event The CdkDragDrop event
@@ -492,16 +501,16 @@ export class KanbanBoardComponent implements OnInit {
       // Moving to a different column (user)
       const task = event.previousContainer.data[event.previousIndex];
       const newUserId = event.container.id;
-      
+
       // Check if moving would exceed WIP limit
       if (this.isWipLimitExceeded(newUserId)) {
         // Don't allow the move if it would exceed the WIP limit
         return;
       }
-      
+
       // Update the task's assigned user
       this.kanbanService.moveTask(task.id, newUserId).subscribe(
-        updatedTask => {
+        (updatedTask) => {
           // Transfer the item between arrays
           transferArrayItem(
             event.previousContainer.data,
@@ -511,7 +520,7 @@ export class KanbanBoardComponent implements OnInit {
           );
           this.cdr.markForCheck();
         },
-        error => {
+        (error) => {
           console.error('Error moving task:', error);
           // Optionally show an error message to the user
         }
@@ -519,18 +528,18 @@ export class KanbanBoardComponent implements OnInit {
     }
   }
   // Update the imports to include the WipLimitDialogComponent
-  
+
   // Then update the openWipLimitDialog method
   openWipLimitDialog(userId: string): void {
     const dialogRef = this.dialog.open(WipLimitDialogComponent, {
       width: '300px',
       data: {
         userId: userId,
-        currentLimit: this.wipLimits[userId] || 5
-      }
+        currentLimit: this.wipLimits[userId] || 5,
+      },
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result && typeof result === 'number') {
         this.kanbanService.updateWipLimit(userId, result).subscribe();
       }
