@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Task, TaskStatus } from '../models/task.model';
 import { User } from '../models/user.model';
-import { map, tap, catchError } from 'rxjs/operators';
+import { map, tap, catchError, take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -269,5 +269,53 @@ export class KanbanBoardService {
     };
     
     return this.updateTask(updatedTask);
+  }
+  /**
+   * Gets a task by its ID
+   * @param taskId The ID of the task to retrieve
+   * @returns An observable of the task
+   */
+  getTaskById(taskId: string): Observable<Task | null> {
+    return this.http.get<Task>(`${this.apiUrl}/tasks/${taskId}`).pipe(
+      catchError(error => {
+        console.error('Error fetching task:', error);
+        return of(null);
+      })
+    );
+  }
+
+  /**
+   * Gets all subtasks for a parent task
+   * @param parentId The ID of the parent task
+   * @returns An observable of subtasks
+   */
+  getSubtasks(parentId: string): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.apiUrl}/tasks?parentId=${parentId}`).pipe(
+      catchError(error => {
+        console.error('Error fetching subtasks:', error);
+        return of([]);
+      })
+    );
+  }
+
+  /**
+   * Deletes a task
+   * @param taskId The ID of the task to delete
+   * @returns An observable of the operation result
+   */
+  deleteTask(taskId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/tasks/${taskId}`).pipe(
+      tap(() => {
+        // Update the local tasks array if it's loaded
+        this.tasks$.pipe(take(1)).subscribe(tasks => {
+          const updatedTasks = tasks.filter(task => task.id !== taskId);
+          this.tasksSubject.next(updatedTasks);
+        });
+      }),
+      catchError(error => {
+        console.error('Error deleting task:', error);
+        return of(null);
+      })
+    );
   }
 }

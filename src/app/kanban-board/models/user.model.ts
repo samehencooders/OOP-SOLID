@@ -3,5 +3,6 @@ export interface User {
   name: string;
   email: string;
   avatar: string;
-  role: string; // Added role property
+  role: string; 
+  avatarColor:string
 }

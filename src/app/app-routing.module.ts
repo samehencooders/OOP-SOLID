@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TaskDetailsComponent } from './kanban-board/task-details/task-details.component';
 
 const routes: Routes = [
   {
@@ -11,13 +12,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./product/product.module').then((m) => m.ProductModule),
   },
-  {
-    path: 'task-management',
-    loadChildren: () =>
-      import('./task-management/task-management.module').then(
-        (m) => m.TaskManagementModule
-      ),
-  },
+
   {
     path: 'task-board',
     loadChildren: () =>
@@ -25,18 +20,19 @@ const routes: Routes = [
         (m) => m.KanbanBoardModule
       ),
   },
+  { 
+    path: 'task/:id', 
+    component: TaskDetailsComponent 
+  },
   {
     path: 'inventory',
     loadChildren: () =>
       import('./inventory/inventory.module').then((m) => m.InventoryModule),
   },
-  // {
-  //   path: 'dashbaord',
-  //   loadChildren: () =>
-  //     import('./analytics/analytics.module').then((m) => m.AnalyticsModule),
-  // },
+
   { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: '**', redirectTo: '/users' },
+
 ];
 
 @NgModule({

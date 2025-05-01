@@ -30,9 +30,13 @@ import { KanbanBoardRoutingModule } from './kanban-board-routing.module';
 import { KanbanBoardComponent } from './kanban-board.component';
 import { TaskModalComponent } from './task-modal/task-modal.component';
 import { WipLimitDialogComponent } from './wip-limit-dialog/wip-limit-dialog.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
 
 @NgModule({
-  declarations: [KanbanBoardComponent, TaskModalComponent,WipLimitDialogComponent],
+  declarations: [KanbanBoardComponent, TaskModalComponent,WipLimitDialogComponent,
+    TaskDetailsComponent
+
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -58,7 +62,8 @@ import { WipLimitDialogComponent } from './wip-limit-dialog/wip-limit-dialog.com
     MatDividerModule,
     MatToolbarModule,
     FormsModule,
+
   ],
-  exports: [KanbanBoardComponent],
+  exports: [KanbanBoardComponent,TaskDetailsComponent],
 })
 export class KanbanBoardModule {}
