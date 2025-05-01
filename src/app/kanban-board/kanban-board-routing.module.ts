@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { KanbanBoardComponent } from './kanban-board.component';
+import { KanbanBoardComponent } from './pages/kanban-board/kanban-board.component';
 
 const routes: Routes = [
   {

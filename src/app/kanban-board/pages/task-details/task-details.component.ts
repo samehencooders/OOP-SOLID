@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { KanbanBoardService } from '../services/kanban-board.service';
-import { Task, TaskStatus, Priority } from '../models/task.model';
-import { User } from '../models/user.model';
-import { TaskModalComponent } from '../task-modal/task-modal.component';
+import { KanbanBoardService } from '../../services/kanban-board.service';
+import { Task, TaskStatus, Priority } from '../../models/task.model';
+import { User } from '../../models/user.model';
+import { TaskModalComponent } from '../../modals/task-modal/task-modal.component';
 
 @Component({
   selector: 'app-task-details',

@@ -11,11 +11,11 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
-import { KanbanBoardService } from './services/kanban-board.service';
-import { Task, TaskStatus, Priority } from './models/task.model';
-import { User } from './models/user.model';
-import { TaskModalComponent } from './task-modal/task-modal.component';
-import { WipLimitDialogComponent } from './wip-limit-dialog/wip-limit-dialog.component';
+import { KanbanBoardService } from '../../services/kanban-board.service';
+import { Task, TaskStatus, Priority } from '../../models/task.model';
+import { User } from '../../models/user.model';
+import { TaskModalComponent } from '../../modals/task-modal/task-modal.component';
+import { WipLimitDialogComponent } from '../../modals/wip-limit-dialog/wip-limit-dialog.component';
 
 import { combineLatest, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';

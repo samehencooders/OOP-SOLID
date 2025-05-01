@@ -27,10 +27,10 @@ import { FormsModule } from '@angular/forms';
 import { KanbanBoardRoutingModule } from './kanban-board-routing.module';
 
 // Components
-import { KanbanBoardComponent } from './kanban-board.component';
-import { TaskModalComponent } from './task-modal/task-modal.component';
-import { WipLimitDialogComponent } from './wip-limit-dialog/wip-limit-dialog.component';
-import { TaskDetailsComponent } from './task-details/task-details.component';
+import { KanbanBoardComponent } from './pages/kanban-board/kanban-board.component';
+import { TaskModalComponent } from './modals/task-modal/task-modal.component';
+import { WipLimitDialogComponent } from './modals/wip-limit-dialog/wip-limit-dialog.component';
+import { TaskDetailsComponent } from './pages/task-details/task-details.component';
 
 @NgModule({
   declarations: [KanbanBoardComponent, TaskModalComponent,WipLimitDialogComponent,
