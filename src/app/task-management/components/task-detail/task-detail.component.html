@@ -1,6 +1,0 @@
-<div class="task-detail" *ngIf="task">
-  <h3>{{ task.title }}</h3>
-  <p><strong>Status:</strong> <span [ngClass]="task.status | statusColor">{{ task.status }}</span></p>
-  <p><strong>Priority:</strong> <span [ngClass]="task.priority | priorityColor">{{ task.priority }}</span></p>
-  <p *ngIf="task.description"><strong>Description:</strong> {{ task.description }}</p>
-</div>
