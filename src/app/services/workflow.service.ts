@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Workflow, WorkflowStage } from '../models/workflow.model';
+import {
+  TransitionRule,
+  Workflow,
+  WorkflowStage,
+} from '../models/workflow.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -151,7 +155,96 @@ export class WorkflowService {
         catchError(this.handleError)
       );
   }
-
+  deleteStage(workflowId: string, stageId: string): Observable<void> {
+    return this.http
+      .delete<void>(`${this.apiUrl}/${workflowId}/stages/${stageId}`)
+      .pipe(
+        tap(() => {
+          const currentWorkflow = this.currentWorkflowSubject.getValue();
+          if (currentWorkflow && currentWorkflow.id === workflowId) {
+            const updatedWorkflow = {
+              ...currentWorkflow,
+              stages: currentWorkflow.stages.filter((x) => x.id !== stageId),
+            };
+            this.currentWorkflowSubject.next(updatedWorkflow);
+            const currentWorkflows = this.workflowsSubject.getValue();
+            const workflowIndex = currentWorkflows.findIndex(
+              (x) => x.id === workflowId
+            );
+            if (workflowIndex !== -1) {
+              const updatedWorkflows = [...currentWorkflows];
+              updatedWorkflows[workflowIndex] = updatedWorkflow;
+              this.workflowsSubject.next(updatedWorkflows);
+            }
+          }
+        }),
+        catchError(this.handleError)
+      );
+  }
+  addTransitionRule(
+    workflowId: string,
+    stageId: string,
+    rule: Partial<TransitionRule>
+  ): Observable<TransitionRule> {
+    return this.http
+      .post<TransitionRule>(
+        `${this.apiUrl}/${workflowId}/stages/${stageId}/rules`,
+        rule
+      )
+      .pipe(
+        tap(() => {
+          this.getWorkflowById(workflowId).subscribe();
+        }),
+        catchError(this.handleError)
+      );
+  }
+  updateTransitionRule(
+    workflowId: string,
+    stageId: string,
+    ruleId: string,
+    update: Partial<TransitionRule>
+  ): Observable<TransitionRule> {
+    return this.http
+      .patch<TransitionRule>(
+        `${this.apiUrl}/${workflowId}/stages/${stageId}/rules/${ruleId}`,
+        update
+      )
+      .pipe(
+        tap(() => {
+          this.getWorkflowById(workflowId).subscribe();
+        }),
+        catchError(this.handleError)
+      );
+  }
+  deleteTransitionRule(
+    workflowId: string,
+    stageId: string,
+    ruleId: string
+  ): Observable<void> {
+    return this.http
+      .delete<void>(
+        `${this.apiUrl}/${workflowId}/stages/${stageId}/rules/${ruleId}`
+      )
+      .pipe(
+        tap(() => {
+          this.getWorkflowById(workflowId).subscribe();
+        }),
+        catchError(this.handleError)
+      );
+  }
+  generateAiWorkflowTemplate(projectType: string): Observable<Workflow> {
+    return this.http
+      .post<Workflow>(`${this.apiUrl}/ai-template`, { projectType })
+      .pipe(catchError(this.handleError));
+  }
+  getOptimalWipLimits(workflowId: string): Observable<Record<string, number>> {
+    return this.http
+      .get<Record<string, number>>(`${this.apiUrl}/${workflowId}/wip-limits`)
+      .pipe(
+        tap(() => this.getWorkflowById(workflowId).subscribe()),
+        catchError(this.handleError)
+      );
+  }
   private handleError(error: any) {
     console.error(`Api Error:`, error);
     return throwError(
