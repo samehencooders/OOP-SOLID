@@ -1,0 +1,196 @@
+<div class="ai-assistant">
+  <div class="ai-header">
+    <h2>AI Assistant</h2>
+    <p>Get AI-powered insights and recommendations</p>
+  </div>
+
+  <div class="ai-features">
+    <div class="feature-selector">
+      <button [class.active]="activeFeature === 'task-creation'" (click)="onFeatureSelect('task-creation')">
+        Create Task
+      </button>
+      <button [class.active]="activeFeature === 'workflow-template'" (click)="onFeatureSelect('workflow-template')">
+        Workflow Template
+      </button>
+      <button [class.active]="activeFeature === 'task-completion'" (click)="onFeatureSelect('task-completion')">
+        Predict Completion
+      </button>
+      <button [class.active]="activeFeature === 'suggest-assignee'" (click)="onFeatureSelect('suggest-assignee')">
+        Suggest Assignee
+      </button>
+      <button [class.active]="activeFeature === 'generate-checklist'" (click)="onFeatureSelect('generate-checklist')">
+        Generate Checklist
+      </button>
+      <button [class.active]="activeFeature === 'analyze-bottlenecks'" (click)="onFeatureSelect('analyze-bottlenecks')">
+        Analyze Bottlenecks
+      </button>
+      <button [class.active]="activeFeature === 'suggest-wip-limits'" (click)="onFeatureSelect('suggest-wip-limits')">
+        WIP Limits
+      </button>
+      <button [class.active]="activeFeature === 'analyze-risk'" (click)="onFeatureSelect('analyze-risk')">
+        Risk Analysis
+      </button>
+      <button [class.active]="activeFeature === 'project-summary'" (click)="onFeatureSelect('project-summary')">
+        Project Summary
+      </button>
+    </div>
+
+    <div class="ai-input-form">
+      <form [formGroup]="aiForm" (ngSubmit)="submitRequest()">
+        <div *ngIf="activeFeature === 'task-creation'">
+          <h3>Create Task from Natural Language</h3>
+          <textarea 
+            formControlName="naturalLanguageInput" 
+            placeholder="Describe your task (e.g., 'Create a login page with email and password fields')">
+          </textarea>
+        </div>
+
+        <div *ngIf="activeFeature === 'workflow-template'">
+          <h3>Generate Workflow Template</h3>
+          <input 
+            type="text" 
+            formControlName="projectType" 
+            placeholder="Enter project type (e.g., 'Web Development', 'Mobile App')">
+        </div>
+
+        <div *ngIf="['task-completion', 'suggest-assignee', 'generate-checklist', 'analyze-risk'].includes(activeFeature)">
+          <h3>{{ getFeatureTitle(activeFeature) }}</h3>
+          <input 
+            type="text" 
+            formControlName="taskId" 
+            placeholder="Enter task ID">
+        </div>
+
+        <div *ngIf="['analyze-bottlenecks', 'suggest-wip-limits', 'project-summary'].includes(activeFeature)">
+          <h3>{{ getFeatureTitle(activeFeature) }}</h3>
+          <input 
+            type="text" 
+            formControlName="workflowId" 
+            placeholder="Enter workflow ID">
+        </div>
+
+        <button type="submit" [disabled]="aiForm.invalid || loading">
+          <span *ngIf="!loading">Get AI Insights</span>
+          <span *ngIf="loading">Processing...</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="ai-response" *ngIf="aiResponse">
+      <h3>AI Response</h3>
+      
+      <div *ngIf="activeFeature === 'task-creation'" class="response-content">
+        <h4>Task Details</h4>
+        <p><strong>Title:</strong> {{ aiResponse.title }}</p>
+        <p><strong>Description:</strong> {{ aiResponse.description }}</p>
+        <p *ngIf="aiResponse.estimatedTime"><strong>Estimated Time:</strong> {{ aiResponse.estimatedTime }}</p>
+        <p *ngIf="aiResponse.priority"><strong>Priority:</strong> {{ aiResponse.priority }}</p>
+        <button class="action-button">Create This Task</button>
+      </div>
+
+      <div *ngIf="activeFeature === 'workflow-template'" class="response-content">
+        <h4>Workflow Template</h4>
+        <div *ngIf="aiResponse.stages">
+          <div *ngFor="let stage of aiResponse.stages" class="workflow-stage">
+            <h5>{{ stage.name }}</h5>
+            <p>{{ stage.description }}</p>
+          </div>
+        </div>
+        <button class="action-button">Use This Template</button>
+      </div>
+
+      <div *ngIf="activeFeature === 'task-completion'" class="response-content">
+        <h4>Completion Prediction</h4>
+        <p><strong>Predicted Days:</strong> {{ aiResponse.predictedDays }}</p>
+        <p><strong>Confidence:</strong> {{ aiResponse.confidence * 100 }}%</p>
+        <div *ngIf="aiResponse.factors">
+          <h5>Factors:</h5>
+          <ul>
+            <li *ngFor="let factor of aiResponse.factors">
+              {{ factor.factor }} (Impact: {{ factor.impact }})
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div *ngIf="activeFeature === 'suggest-assignee'" class="response-content">
+        <h4>Suggested Assignee</h4>
+        <p><strong>User ID:</strong> {{ aiResponse.userId }}</p>
+        <p><strong>Confidence:</strong> {{ aiResponse.confidence * 100 }}%</p>
+        <p><strong>Reasoning:</strong> {{ aiResponse.reasoning }}</p>
+        <button class="action-button">Assign User</button>
+      </div>
+
+      <div *ngIf="activeFeature === 'generate-checklist'" class="response-content">
+        <h4>Task Checklist</h4>
+        <ul>
+          <li *ngFor="let item of aiResponse">
+            {{ item.content }} (Confidence: {{ item.confidence * 100 }}%)
+          </li>
+        </ul>
+        <button class="action-button">Add to Task</button>
+      </div>
+
+      <div *ngIf="activeFeature === 'analyze-bottlenecks'" class="response-content">
+        <h4>Workflow Bottlenecks</h4>
+        <div *ngFor="let bottleneck of aiResponse" class="bottleneck-item">
+          <h5>Stage: {{ bottleneck.stageId }}</h5>
+          <p><strong>Severity:</strong> {{ bottleneck.severity }}/10</p>
+          <p><strong>Reason:</strong> {{ bottleneck.reason }}</p>
+          <p><strong>Recommendation:</strong> {{ bottleneck.recommendation }}</p>
+        </div>
+      </div>
+
+      <div *ngIf="activeFeature === 'suggest-wip-limits'" class="response-content">
+        <h4>Suggested WIP Limits</h4>
+        <div *ngFor="let stage of objectKeys(aiResponse)" class="wip-item">
+          <h5>Stage: {{ stage }}</h5>
+          <p><strong>Recommended Limit:</strong> {{ aiResponse[stage].recommendedLimit }}</p>
+          <p><strong>Current Limit:</strong> {{ aiResponse[stage].currentLimit || 'Not set' }}</p>
+          <p><strong>Reasoning:</strong> {{ aiResponse[stage].reasoning }}</p>
+        </div>
+        <button class="action-button">Apply Limits</button>
+      </div>
+
+      <div *ngIf="activeFeature === 'analyze-risk'" class="response-content">
+        <h4>Task Risk Analysis</h4>
+        <p><strong>Risk Score:</strong> {{ aiResponse.riskScore }}/10</p>
+        <h5>Risk Factors:</h5>
+        <div *ngFor="let factor of aiResponse.factors" class="risk-factor">
+          <p><strong>{{ factor.factor }}</strong> (Impact: {{ factor.impact }})</p>
+          <p>{{ factor.description }}</p>
+        </div>
+        <h5>Mitigation Suggestions:</h5>
+        <ul>
+          <li *ngFor="let suggestion of aiResponse.mitigationSuggestions">
+            {{ suggestion }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="activeFeature === 'project-summary'" class="response-content">
+        <h4>Project Summary</h4>
+        <p>{{ aiResponse.summary }}</p>
+        
+        <h5>Key Metrics:</h5>
+        <div class="metrics-grid">
+          <div *ngFor="let metric of objectKeys(aiResponse.keyMetrics)" class="metric-item">
+            <p><strong>{{ metric }}:</strong> {{ aiResponse.keyMetrics[metric] }}</p>
+          </div>
+        </div>
+        
+        <h5>Risks:</h5>
+        <div *ngFor="let risk of aiResponse.risks" class="risk-item">
+          <p><strong>{{ risk.description }}</strong> (Severity: {{ risk.severity }}/10)</p>
+        </div>
+        
+        <h5>Recommendations:</h5>
+        <ul>
+          <li *ngFor="let recommendation of aiResponse.recommendations">
+            {{ recommendation }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

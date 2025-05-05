@@ -1,0 +1,934 @@
+{
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "Implement user authentication",
+      "description": "Create login and registration forms with JWT authentication",
+      "stageId": "stage-002",
+      "priority": "high",
+      "dueDate": "2023-07-15T00:00:00Z",
+      "assignees": ["user-001", "user-003"],
+      "tags": ["frontend", "security"],
+      "checklists": [
+        {
+          "id": "checklist-001",
+          "title": "Authentication Implementation",
+          "items": [
+            {
+              "id": "item-001",
+              "content": "Create login form",
+              "isCompleted": true,
+              "assignee": "user-001"
+            },
+            {
+              "id": "item-002",
+              "content": "Implement JWT token storage",
+              "isCompleted": false,
+              "assignee": "user-003"
+            },
+            {
+              "id": "item-003",
+              "content": "Add password reset functionality",
+              "isCompleted": false
+            }
+          ]
+        }
+      ],
+      "attachments": [
+        {
+          "id": "attachment-001",
+          "name": "auth-flow-diagram.png",
+          "url": "/assets/attachments/auth-flow-diagram.png",
+          "type": "image/png",
+          "size": 245000,
+          "uploadedAt": "2023-06-28T14:30:00Z",
+          "uploadedBy": "user-001"
+        }
+      ],
+      "comments": [
+        {
+          "id": "comment-001",
+          "content": "I've started working on the login form",
+          "createdAt": "2023-06-28T15:00:00Z",
+          "createdBy": "user-001",
+          "mentions": [],
+          "attachments": [],
+          "isEdited": false
+        },
+        {
+          "id": "comment-002",
+          "content": "@user-003 can you review my implementation?",
+          "createdAt": "2023-06-29T10:15:00Z",
+          "createdBy": "user-001",
+          "mentions": ["user-003"],
+          "attachments": [],
+          "isEdited": false
+        }
+      ],
+      "createdAt": "2023-06-27T09:00:00Z",
+      "updatedAt": "2023-06-29T10:15:00Z",
+      "createdBy": "user-002",
+      "estimatedTime": 16,
+      "actualTime": 8,
+      "riskScore": 25,
+      "isBlocked": false
+    },
+    {
+      "id": "task-002",
+      "title": "Design database schema",
+      "description": "Create ERD and define relationships between entities",
+      "stageId": "stage-001",
+      "priority": "critical",
+      "dueDate": "2023-07-10T00:00:00Z",
+      "assignees": ["user-002"],
+      "tags": ["database", "architecture"],
+      "checklists": [
+        {
+          "id": "checklist-002",
+          "title": "Database Design Tasks",
+          "items": [
+            {
+              "id": "item-004",
+              "content": "Identify entities and relationships",
+              "isCompleted": true,
+              "assignee": "user-002"
+            },
+            {
+              "id": "item-005",
+              "content": "Create ERD diagram",
+              "isCompleted": true,
+              "assignee": "user-002"
+            },
+            {
+              "id": "item-006",
+              "content": "Define indexes and constraints",
+              "isCompleted": false,
+              "assignee": "user-002"
+            }
+          ]
+        }
+      ],
+      "attachments": [],
+      "comments": [],
+      "createdAt": "2023-06-25T11:30:00Z",
+      "updatedAt": "2023-06-28T16:45:00Z",
+      "createdBy": "user-001",
+      "estimatedTime": 24,
+      "actualTime": 18,
+      "riskScore": 40,
+      "isBlocked": false
+    },
+    {
+      "id": "task-003",
+      "title": "Implement API endpoints",
+      "description": "Create RESTful API endpoints for user management",
+      "stageId": "stage-003",
+      "priority": "medium",
+      "dueDate": "2023-07-20T00:00:00Z",
+      "assignees": ["user-003"],
+      "tags": ["backend", "api"],
+      "checklists": [],
+      "attachments": [],
+      "comments": [],
+      "createdAt": "2023-06-30T09:15:00Z",
+      "updatedAt": "2023-06-30T09:15:00Z",
+      "createdBy": "user-002",
+      "estimatedTime": 32,
+      "actualTime": 0,
+      "riskScore": 15,
+      "isBlocked": true,
+      "blockReason": "Waiting for database schema to be finalized"
+    }
+  ],
+  
+  "workflows": [
+    {
+      "id": "workflow-001",
+      "name": "Web Application Development",
+      "description": "Workflow for our main web application project",
+      "createdBy": "user-001",
+      "createdAt": "2023-06-15T08:00:00Z",
+      "updatedAt": "2023-06-28T14:20:00Z",
+      "isActive": true,
+      "stages": [
+        {
+          "id": "stage-001",
+          "name": "Backlog",
+          "description": "Tasks that are not yet started",
+          "order": 0,
+          "wipLimit": null,
+          "taskIds": ["task-002"]
+        },
+        {
+          "id": "stage-002",
+          "name": "In Progress",
+          "description": "Tasks currently being worked on",
+          "order": 1,
+          "wipLimit": 5,
+          "taskIds": ["task-001"]
+        },
+        {
+          "id": "stage-003",
+          "name": "Review",
+          "description": "Tasks awaiting review",
+          "order": 2,
+          "wipLimit": 3,
+          "taskIds": ["task-003"]
+        },
+        {
+          "id": "stage-004",
+          "name": "Done",
+          "description": "Completed tasks",
+          "order": 3,
+          "wipLimit": null,
+          "taskIds": []
+        }
+      ],
+      "tags": ["web", "development", "frontend", "backend"]
+    },
+    {
+      "id": "workflow-002",
+      "name": "Mobile App Development",
+      "description": "Workflow for our iOS and Android app",
+      "createdBy": "user-002",
+      "createdAt": "2023-06-20T10:30:00Z",
+      "updatedAt": "2023-06-25T16:45:00Z",
+      "isActive": true,
+      "stages": [
+        {
+          "id": "stage-005",
+          "name": "Backlog",
+          "description": "Tasks that are not yet started",
+          "order": 0,
+          "wipLimit": null,
+          "taskIds": []
+        },
+        {
+          "id": "stage-006",
+          "name": "Design",
+          "description": "UI/UX design tasks",
+          "order": 1,
+          "wipLimit": 3,
+          "taskIds": []
+        },
+        {
+          "id": "stage-007",
+          "name": "Development",
+          "description": "Implementation tasks",
+          "order": 2,
+          "wipLimit": 4,
+          "taskIds": []
+        },
+        {
+          "id": "stage-008",
+          "name": "Testing",
+          "description": "QA and testing tasks",
+          "order": 3,
+          "wipLimit": 2,
+          "taskIds": []
+        },
+        {
+          "id": "stage-009",
+          "name": "Done",
+          "description": "Completed tasks",
+          "order": 4,
+          "wipLimit": null,
+          "taskIds": []
+        }
+      ],
+      "tags": ["mobile", "ios", "android", "development"]
+    }
+  ],
+  
+  "ai": {
+    "process-task": {
+      "title": "Implement user profile page",
+      "description": "Create a user profile page that displays user information, allows editing of profile details, and shows user activity history.",
+      "priority": "medium",
+      "estimatedTime": 12,
+      "tags": ["frontend", "user-management"]
+    },
+    "generate-workflow": {
+      "name": "Software Development Workflow",
+      "description": "Standard software development workflow with agile methodology",
+      "stages": [
+        {
+          "name": "Backlog",
+          "description": "Tasks that are not yet scheduled",
+          "order": 0,
+          "wipLimit": null
+        },
+        {
+          "name": "Ready",
+          "description": "Tasks ready to be worked on",
+          "order": 1,
+          "wipLimit": 10
+        },
+        {
+          "name": "In Progress",
+          "description": "Tasks currently being worked on",
+          "order": 2,
+          "wipLimit": 5
+        },
+        {
+          "name": "Review",
+          "description": "Tasks awaiting code review",
+          "order": 3,
+          "wipLimit": 3
+        },
+        {
+          "name": "Testing",
+          "description": "Tasks in QA testing",
+          "order": 4,
+          "wipLimit": 4
+        },
+        {
+          "name": "Done",
+          "description": "Completed tasks",
+          "order": 5,
+          "wipLimit": null
+        }
+      ],
+      "tags": ["software", "development", "agile"]
+    },
+    "predict-completion": {
+      "task-001": {
+        "predictedDays": 4,
+        "confidence": 0.85,
+        "factors": [
+          {
+            "factor": "Task complexity",
+            "impact": 0.7
+          },
+          {
+            "factor": "Developer experience",
+            "impact": 0.5
+          },
+          {
+            "factor": "Similar tasks history",
+            "impact": 0.9
+          }
+        ]
+      },
+      "task-002": {
+        "predictedDays": 2,
+        "confidence": 0.92,
+        "factors": [
+          {
+            "factor": "Task complexity",
+            "impact": 0.4
+          },
+          {
+            "factor": "Developer experience",
+            "impact": 0.8
+          },
+          {
+            "factor": "Similar tasks history",
+            "impact": 0.7
+          }
+        ]
+      }
+    },
+    "suggest-assignee": {
+      "task-001": {
+        "userId": "user-003",
+        "confidence": 0.78,
+        "reasoning": "User has completed 5 similar authentication tasks in the past month with high quality and on time."
+      },
+      "task-002": {
+        "userId": "user-002",
+        "confidence": 0.92,
+        "reasoning": "User has expertise in database design and has worked on similar tasks recently."
+      }
+    },
+    "generate-checklist": {
+      "task-001": [
+        {
+          "content": "Create login form UI with email and password fields",
+          "confidence": 0.95
+        },
+        {
+          "content": "Implement form validation",
+          "confidence": 0.92
+        },
+        {
+          "content": "Add JWT token storage in local storage",
+          "confidence": 0.88
+        },
+        {
+          "content": "Implement authentication service",
+          "confidence": 0.90
+        },
+        {
+          "content": "Add error handling for failed login attempts",
+          "confidence": 0.85
+        },
+        {
+          "content": "Create registration form",
+          "confidence": 0.82
+        },
+        {
+          "content": "Implement password reset functionality",
+          "confidence": 0.75
+        }
+      ]
+    },
+    "analyze-bottlenecks": {
+      "workflow-001": [
+        {
+          "stageId": "stage-002",
+          "severity": 7,
+          "reason": "Tasks are spending an average of 5 days in this stage, which is 2 days longer than expected.",
+          "recommendation": "Consider reducing WIP limit or adding more resources to this stage."
+        },
+        {
+          "stageId": "stage-003",
+          "severity": 4,
+          "reason": "Review process is taking longer than expected for complex tasks.",
+          "recommendation": "Implement a more structured review process with checklists."
+        }
+      ]
+    },
+    "suggest-wip-limits": {
+      "workflow-001": {
+        "stage-001": {
+          "recommendedLimit": null,
+          "currentLimit": null,
+          "reasoning": "Backlog stages typically don't need WIP limits."
+        },
+        "stage-002": {
+          "recommendedLimit": 3,
+          "currentLimit": 5,
+          "reasoning": "Current limit is too high based on team capacity and task completion rate."
+        },
+        "stage-003": {
+          "recommendedLimit": 2,
+          "currentLimit": 3,
+          "reasoning": "Review process is becoming a bottleneck, reducing limit will help focus on completing reviews."
+        },
+        "stage-004": {
+          "recommendedLimit": null,
+          "currentLimit": null,
+          "reasoning": "Done stages don't need WIP limits."
+        }
+      }
+    },
+    "analyze-risk": {
+      "task-001": {
+        "riskScore": 25,
+        "factors": [
+          {
+            "factor": "Technical complexity",
+            "impact": 0.6,
+            "description": "Authentication implementation involves security considerations."
+          },
+          {
+            "factor": "Dependency risk",
+            "impact": 0.3,
+            "description": "Task has dependencies on external authentication services."
+          },
+          {
+            "factor": "Team experience",
+            "impact": 0.2,
+            "description": "Team has previous experience with similar tasks."
+          }
+        ],
+        "mitigationSuggestions": [
+          "Conduct a security review before implementation",
+          "Create detailed documentation for the authentication flow",
+          "Set up automated testing for authentication scenarios"
+        ]
+      },
+      "task-002": {
+        "riskScore": 40,
+        "factors": [
+          {
+            "factor": "Technical complexity",
+            "impact": 0.7,
+            "description": "Database schema design requires careful planning for future scalability."
+          },
+          {
+            "factor": "Impact on other tasks",
+            "impact": 0.8,
+            "description": "Many other tasks depend on this database schema."
+          },
+          {
+            "factor": "Team experience",
+            "impact": 0.4,
+            "description": "Team has moderate experience with database design."
+          }
+        ],
+        "mitigationSuggestions": [
+          "Conduct a design review with senior team members",
+          "Create a phased implementation plan",
+          "Document all design decisions and rationales"
+        ]
+      }
+    },
+    "project-summary": {
+      "workflow-001": {
+        "summary": "The Web Application Development project is progressing well overall, with 3 active tasks. The team is currently focused on authentication implementation and database design. There is one blocked task waiting for the database schema to be finalized.",
+        "keyMetrics": {
+          "totalTasks": 3,
+          "completedTasks": 0,
+          "blockedTasks": 1,
+          "averageCycleTime": 4.5,
+          "averageLeadTime": 6.2,
+          "taskCompletionRate": 2.3
+        },
+        "risks": [
+          {
+            "description": "Database schema design may delay dependent tasks",
+            "severity": 7
+          },
+          {
+            "description": "Authentication implementation has security implications",
+            "severity": 5
+          }
+        ],
+        "recommendations": [
+          "Prioritize completing the database schema design",
+          "Consider adding more resources to the In Progress stage",
+          "Schedule a security review for the authentication implementation"
+        ]
+      }
+    }
+  },
+  
+  "collaboration": {
+    "online-users": ["user-001", "user-002", "user-004"],
+    "presence": {
+      "user-001": {
+        "status": "online",
+        "lastActive": "2023-06-30T15:45:00Z"
+      },
+      "user-002": {
+        "status": "online",
+        "lastActive": "2023-06-30T15:42:00Z"
+      },
+      "user-003": {
+        "status": "away",
+        "lastActive": "2023-06-30T14:30:00Z"
+      },
+      "user-004": {
+        "status": "online",
+        "lastActive": "2023-06-30T15:40:00Z"
+      }
+    },
+    "task-viewers": {
+      "task-001": [
+        {
+          "id": "user-001",
+          "name": "John Smith",
+          "email": "john@example.com",
+          "avatarUrl": "/assets/avatars/john.png"
+        },
+        {
+          "id": "user-003",
+          "name": "Alice Johnson",
+          "email": "alice@example.com",
+          "avatarUrl": "/assets/avatars/alice.png"
+        }
+      ]
+    },
+    "activity": {
+      "workflow-001": [
+        {
+          "id": "activity-001",
+          "type": "task_created",
+          "entityId": "task-003",
+          "entityType": "task",
+          "userId": "user-002",
+          "timestamp": "2023-06-30T09:15:00Z",
+          "details": {
+            "taskTitle": "Implement API endpoints"
+          }
+        },
+        {
+          "id": "activity-002",
+          "type": "comment_added",
+          "entityId": "comment-002",
+          "entityType": "comment",
+          "userId": "user-001",
+          "timestamp": "2023-06-29T10:15:00Z",
+          "details": {
+            "taskId": "task-001",
+            "taskTitle": "Implement user authentication",
+            "commentContent": "@user-003 can you review my implementation?"
+          }
+        },
+        {
+          "id": "activity-003",
+          "type": "task_moved",
+          "entityId": "task-001",
+          "entityType": "task",
+          "userId": "user-001",
+          "timestamp": "2023-06-28T14:20:00Z",
+          "details": {
+            "taskTitle": "Implement user authentication",
+            "fromStage": "Backlog",
+            "toStage": "In Progress"
+          }
+        }
+      ]
+    },
+    "mentions": [
+      {
+        "id": "mention-001",
+        "taskId": "task-001",
+        "commentId": "comment-002",
+        "mentionedBy": "user-001",
+        "timestamp": "2023-06-29T10:15:00Z",
+        "content": "@user-003 can you review my implementation?",
+        "isRead": false
+      }
+    ],
+    "notifications": [
+      {
+        "id": "notification-001",
+        "type": "task_assigned",
+        "entityId": "task-001",
+        "entityType": "task",
+        "timestamp": "2023-06-27T09:00:00Z",
+        "content": "You have been assigned to task 'Implement user authentication'",
+        "isRead": true
+      },
+      {
+        "id": "notification-002",
+        "type": "comment_mention",
+        "entityId": "comment-002",
+        "entityType": "comment",
+        "timestamp": "2023-06-29T10:15:00Z",
+        "content": "John Smith mentioned you in a comment on 'Implement user authentication'",
+        "isRead": false
+      },
+      {
+        "id": "notification-003",
+        "type": "task_due_soon",
+        "entityId": "task-002",
+        "entityType": "task",
+        "timestamp": "2023-06-30T08:00:00Z",
+        "content": "Task 'Design database schema' is due in 10 days",
+        "isRead": false
+      }
+    ]
+  },
+  
+  "user-data": {
+    "xp": 1250,
+    "level": 3,
+    "badges": ["badge-001", "badge-003"]
+  },
+  
+  "system": {
+    "xpPerTask": 10,
+    "xpPerComment": 2,
+    "xpPerCompletedChecklist": 5,
+    "xpPerDayActive": 1,
+    "levelUpMultiplier": 1.5,
+    "streakBonus": true
+  },
+  
+  "levels": [
+    {
+      "level": 1,
+      "xpRequired": 0,
+      "badge": "newbie",
+      "reward": "profile-badge-1"
+    },
+    {
+      "level": 2,
+      "xpRequired": 500,
+      "badge": "contributor",
+      "reward": "custom-avatar"
+    },
+    {
+      "level": 3,
+      "xpRequired": 1200,
+      "badge": "expert",
+      "reward": "theme-pack"
+    }
+  ],
+  
+  "badges": [
+    {
+      "id": "badge-001",
+      "name": "Early Bird",
+      "description": "Complete 5 tasks before noon",
+      "iconUrl": "/assets/badges/early-bird.svg",
+      "rarity": "common"
+    },
+    {
+      "id": "badge-002",
+      "name": "Task Master",
+      "description": "Complete 50 tasks",
+      "iconUrl": "/assets/badges/task-master.svg",
+      "rarity": "rare"
+    },
+    {
+      "id": "badge-003",
+      "name": "Team Player",
+      "description": "Collaborate on 10 tasks",
+      "iconUrl": "/assets/badges/team-player.svg",
+      "rarity": "uncommon"
+    }
+  ],
+  
+  "challenges": {
+    "active": [
+      {
+        "id": "challenge-001",
+        "name": "Weekly Completionist",
+        "description": "Complete 10 tasks this week",
+        "xpReward": 100,
+        "badgeReward": "badge-002",
+        "startDate": "2023-06-19",
+        "endDate": "2023-06-25",
+        "participants": ["user-001", "user-002"],
+        "completionCriteria": {
+          "type": "taskCount",
+          "target": 10,
+          "timeframe": "7d"
+        }
+      }
+    ],
+    "completed": [
+      {
+        "id": "challenge-002",
+        "name": "Onboarding Challenge",
+        "completedAt": "2023-06-10",
+        "xpEarned": 50,
+        "badgesEarned": ["badge-001"]
+      }
+    ]
+  },
+  
+  "rewards": [
+    {
+      "id": "reward-001",
+      "name": "Custom Avatar",
+      "description": "Unlock a custom avatar for your profile",
+      "xpCost": 200,
+      "iconUrl": "/assets/rewards/avatar.png",
+      "type": "cosmetic"
+    },
+    {
+      "id": "reward-002",
+      "name": "Priority Support",
+      "description": "Get priority in the support queue",
+      "xpCost": 500,
+      "iconUrl": "/assets/rewards/support.png",
+      "type": "utility"
+    }
+  ],
+  
+  "leaderboards": [
+    {
+      "id": "lb-001",
+      "name": "Weekly Top Performers",
+      "timeframe": "7d",
+      "metric": "xpEarned",
+      "entries": [
+        {
+          "userId": "user-002",
+          "userName": "Jane Doe",
+          "avatar": "/assets/avatars/jane.png",
+          "score": 420,
+          "rank": 1
+        },
+        {
+          "userId": "user-001",
+          "userName": "John Smith",
+          "avatar": "/assets/avatars/john.png",
+          "score": 380,
+          "rank": 2
+        }
+      ]
+    }
+  ],
+  
+  "user-badges": [
+    {
+      "id": "badge-001",
+      "name": "Early Bird",
+      "description": "Complete 5 tasks before noon",
+      "iconUrl": "/assets/badges/early-bird.svg",
+      "earnedAt": "2023-06-05T08:30:00Z",
+      "rarity": "common"
+    },
+    {
+      "id": "badge-003",
+      "name": "Team Player",
+      "description": "Collaborate on 10 tasks",
+      "iconUrl": "/assets/badges/team-player.svg",
+      "earnedAt": "2023-06-15T14:15:00Z",
+      "rarity": "uncommon"
+    }
+  ],
+  
+  "user-xp-history": [
+    {
+      "date": "2023-06-20T09:00:00Z",
+      "xp": 10,
+      "source": "taskCompletion",
+      "description": "Completed task 'Implement auth'"
+    },
+    {
+      "date": "2023-06-20T10:30:00Z",
+      "xp": 5,
+      "source": "checklistCompletion",
+      "description": "Completed checklist items"
+    },
+    {
+      "date": "2023-06-19T16:45:00Z",
+      "xp": 50,
+      "source": "challengeReward",
+      "description": "Completed 'Onboarding Challenge'"
+    }
+  ],
+  
+  "user-leaderboard-ranks": {
+    "lb-001": {
+      "rank": 2,
+      "score": 380,
+      "totalParticipants": 15
+    },
+    "lb-002": {
+      "rank": 5,
+      "score": 1200,
+      "totalParticipants": 42
+    }
+  },
+  
+  "challenges-progress": {
+    "challenge-001": {
+      "progress": 7,
+      "isCompleted": false,
+      "completedItems": [
+        "task-001",
+        "task-002",
+        "task-003",
+        "task-004",
+        "task-005",
+        "task-006",
+        "task-007"
+      ],
+      "remainingItems": 3,
+      "daysRemaining": 2
+    }
+  },
+  
+  "analytics": {
+    "workflow-001": {
+      "cycleTime": {
+        "average": 4.5,
+        "byStage": {
+          "stage-001": 1.2,
+          "stage-002": 2.5,
+          "stage-003": 0.8
+        },
+        "trend": [
+          { "date": "2023-06-01", "value": 5.2 },
+          { "date": "2023-06-08", "value": 4.8 },
+          { "date": "2023-06-15", "value": 4.5 },
+          { "date": "2023-06-22", "value": 4.3 },
+          { "date": "2023-06-29", "value": 4.0 }
+        ]
+      },
+      "leadTime": {
+        "average": 6.2,
+        "trend": [
+          { "date": "2023-06-01", "value": 7.1 },
+          { "date": "2023-06-08", "value": 6.8 },
+          { "date": "2023-06-15", "value": 6.5 },
+          { "date": "2023-06-22", "value": 6.3 },
+          { "date": "2023-06-29", "value": 6.0 }
+        ]
+      },
+      "throughput": {
+        "weekly": 5,
+        "trend": [
+          { "date": "2023-06-01", "value": 4 },
+          { "date": "2023-06-08", "value": 5 },
+          { "date": "2023-06-15", "value": 6 },
+          { "date": "2023-06-22", "value": 5 },
+          { "date": "2023-06-29", "value": 5 }
+        ]
+      },
+      "taskDistribution": {
+        "Backlog": 1,
+        "In Progress": 1,
+        "Review": 1,
+        "Done": 0
+      },
+      "taskAging": [
+        {
+          "taskId": "task-001",
+          "stageId": "stage-002",
+          "daysInStage": 3,
+          "priority": "high",
+          "riskScore": 25
+        },
+        {
+          "taskId": "task-002",
+          "stageId": "stage-001",
+          "daysInStage": 5,
+          "priority": "critical",
+          "riskScore": 40
+        },
+        {
+          "taskId": "task-003",
+          "stageId": "stage-003",
+          "daysInStage": 1,
+          "priority": "medium",
+          "riskScore": 15
+        }
+      ],
+      "riskPredictions": [
+        {
+          "taskId": "task-001",
+          "title": "Implement user authentication",
+          "riskScore": 25,
+          "riskFactors": ["Technical complexity", "Security considerations"]
+        },
+        {
+          "taskId": "task-002",
+          "title": "Design database schema",
+          "riskScore": 40,
+          "riskFactors": ["Technical complexity", "Dependencies"]
+        }
+      ]
+    }
+  },
+  
+  "users": [
+    {
+      "id": "user-001",
+      "name": "John Smith",
+      "email": "john@example.com",
+      "avatarUrl": "/assets/avatars/john.png",
+      "role": "developer"
+    },
+    {
+      "id": "user-002",
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "avatarUrl": "/assets/avatars/jane.png",
+      "role": "architect"
+    },
+    {
+      "id": "user-003",
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "avatarUrl": "/assets/avatars/alice.png",
+      "role": "developer"
+    },
+    {
+      "id": "user-004",
+      "name": "Bob Williams",
+      "email": "bob@example.com",
+      "avatarUrl": "/assets/avatars/bob.png",
+      "role": "manager"
+    }
+  ]
+}

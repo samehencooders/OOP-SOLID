@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-title">
+      <h1>Task Planner Dashboard</h1>
+      <p>Manage your workflows and track progress</p>
+    </div>
+    <div class="user-stats">
+      <div class="xp-level">
+        <span class="level">Level {{ userLevel$ | async }}</span>
+        <div class="xp-bar">
+          <div class="xp-progress" [style.width.%]="((userXp$ | async) || 0) % 100"></div>
+        </div>
+        <span class="xp">{{ userXp$ | async }} XP</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <div class="sidebar">
+      <nav>
+        <ul>
+          <li><a routerLink="board" routerLinkActive="active">Task Board</a></li>
+          <li><a routerLink="workflow-editor" routerLinkActive="active">Workflow Editor</a></li>
+          <li><a routerLink="analytics" routerLinkActive="active">Analytics</a></li>
+          <li><a routerLink="integrations" routerLinkActive="active">Integrations</a></li>
+          <li><a routerLink="gamification" routerLinkActive="active">Gamification</a></li>
+        </ul>
+      </nav>
+
+      <div class="workflows-list">
+        <h3>Your Workflows</h3>
+        <ul>
+          <li *ngFor="let workflow of workflows$ | async">
+            <a (click)="navigateToWorkflow(workflow.id)">{{ workflow.name }}</a>
+          </li>
+        </ul>
+        <button mat-button color="primary">
+          <mat-icon>add</mat-icon> New Workflow
+        </button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="analytics-summary">
+        <div class="summary-card">
+          <h3>Total Tasks</h3>
+          <p class="summary-value">{{ analyticsSummary.totalTasks }}</p>
+        </div>
+        <div class="summary-card">
+          <h3>Completed Tasks</h3>
+          <p class="summary-value">{{ analyticsSummary.completedTasks }}</p>
+        </div>
+        <div class="summary-card">
+          <h3>Avg. Cycle Time</h3>
+          <p class="summary-value">{{ analyticsSummary.avgCycleTime | number:'1.1-1' }} days</p>
+        </div>
+        <div class="summary-card">
+          <h3>High Risk Tasks</h3>
+          <p class="summary-value">{{ analyticsSummary.riskTasks }}</p>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="ai-assistant-panel">
+      <app-ai-assistant></app-ai-assistant>
+    </div>
+  </div>
+</div>

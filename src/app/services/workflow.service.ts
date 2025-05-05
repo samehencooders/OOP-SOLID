@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class WorkflowService {
-  private apiUrl = `${environment.apiUrl}/workflows`;
+  private apiUrl = `${environment.apiUrl}`;
   private workflowsSubject = new BehaviorSubject<Workflow[]>([]);
   private currentWorkflowSubject = new BehaviorSubject<Workflow | null>(null);
   public workflows$ = this.workflowsSubject.asObservable();
@@ -21,7 +21,7 @@ export class WorkflowService {
   constructor(private http: HttpClient) {}
 
   getWorkflows(): Observable<Workflow[]> {
-    return this.http.get<Workflow[]>(this.apiUrl).pipe(
+    return this.http.get<Workflow[]>(`${this.apiUrl}/workflows`).pipe(
       tap((workflows) => this.workflowsSubject.next(workflows)),
       catchError(this.handleError)
     );

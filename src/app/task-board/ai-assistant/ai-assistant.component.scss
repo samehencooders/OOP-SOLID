@@ -1,0 +1,171 @@
+.ai-assistant {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-header {
+  margin-bottom: 20px;
+  
+  h2 {
+    margin: 0 0 5px;
+    color: #2c3e50;
+  }
+  
+  p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+}
+
+.ai-features {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.feature-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  
+  button {
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: #dee2e6;
+    }
+    
+    &.active {
+      background-color: #4e73df;
+      color: white;
+    }
+  }
+}
+
+.ai-input-form {
+  margin-bottom: 20px;
+  
+  h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  textarea, input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-family: inherit;
+  }
+  
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  button {
+    background-color: #4e73df;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #3a5ccc;
+    }
+    
+    &:disabled {
+      background-color: #b2bec3;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.ai-response {
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  flex: 1;
+  
+  h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 18px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+  }
+  
+  .response-content {
+    h4 {
+      color: #4e73df;
+      margin: 15px 0 10px;
+    }
+    
+    h5 {
+      color: #2c3e50;
+      margin: 12px 0 8px;
+    }
+    
+    p {
+      margin: 8px 0;
+    }
+    
+    ul {
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+    
+    .action-button {
+      background-color: #4e73df;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-top: 15px;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #3a5ccc;
+      }
+    }
+    
+    .workflow-stage, .bottleneck-item, .wip-item, .risk-factor, .risk-item {
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      
+      .metric-item {
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        padding: 10px;
+      }
+    }
+  }
+}

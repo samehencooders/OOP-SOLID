@@ -1,0 +1,14 @@
+{
+  "/workflow/:id": "/workflows?id=:id",
+  "/workflow/:id/cycle-time": "/cycleTimeMetrics?workflowId=:id",
+  "/workflow/:id/lead-time": "/leadTimeMetrics?workflowId=:id",
+  "/workflow/:id/flow-efficiency": "/flowEfficiencyMetrics?workflowId=:id",
+  "/workflow/:id/capacity": "/capacityMetrics?workflowId=:id",
+  "/workflow/:id/risk-predictions": "/riskPredictions?workflowId=:id",
+  "/workflow/:id/bottlenecks": "/bottlenecks?workflowId=:id",
+  "/workflow/:id/cumulative-flow": "/cumulativeFlow?workflowId=:id",
+  "/workflow/:id/time-series/:metric": "/timeSeries?workflowId=:id&metric=:metric",
+  "/:id/task-distribution": "/taskDistribution?workflowId=:id",
+  "/workflow/:id/task-aging": "/taskAging?workflowId=:id",
+  "/team/:id/performance": "/teamPerformance?teamId=:id"
+}

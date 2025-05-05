@@ -11,6 +11,13 @@ const routes: Routes = [
         (m) => m.KanbanBoardModule
       ),
   },
+  {
+    path: 'task-board-kanban',
+    loadChildren: () =>
+      import('./task-board/task-board.module').then(
+        (m) => m.TaskBoardModule
+      ),
+  },
   { 
     path: 'task/:id', 
     component: TaskDetailsComponent 
