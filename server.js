@@ -1,39 +1,43 @@
+// server.js
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('db-1.json');
+const router = jsonServer.router('mock-database.json');
 const middlewares = jsonServer.defaults();
-const routes = require('./routes.json');
 
-// Set up middleware
 server.use(middlewares);
 
-// Add CORS headers if needed
-server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  next();
+// Custom routes for AI endpoints
+server.get('/ai/predict-completion/:taskId', (req, res) => {
+  const taskId = req.params.taskId;
+  const prediction = router.db.get('ai.taskPredictions').get(taskId).value();
+  res.jsonp(prediction || { 
+    predictedDays: Math.floor(Math.random() * 10) + 1,
+    confidence: Math.floor(Math.random() * 30) + 60,
+    factors: [
+      { factor: "AI generated prediction", impact: 0 }
+    ]
+  });
 });
 
-// Rewrite routes
-server.use(jsonServer.rewriter(routes));
+server.get('/ai/analyze-risk/:taskId', (req, res) => {
+  const taskId = req.params.taskId;
+  const analysis = router.db.get('ai.riskAnalysis').get(taskId).value();
+  res.jsonp(analysis || {
+    riskScore: Math.floor(Math.random() * 100),
+    factors: [
+      { 
+        factor: "AI generated risk factor", 
+        impact: Math.floor(Math.random() * 10),
+        description: "This is an automatically generated risk factor"
+      }
+    ],
+    mitigationSuggestions: ["Consider reviewing this task carefully"]
+  });
+});
 
-// Custom behavior before responses
-router.render = (req, res) => {
-  if (req.method === 'GET' && req.url.includes('/user-data')) {
-    // You can modify the response here
-    res.jsonp(res.locals.data);
-  } else {
-    res.jsonp(res.locals.data);
-  }
-};
+// Add more custom AI endpoints as needed
 
-// Use the router
 server.use(router);
-
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on http://localhost:${PORT}`);
-  console.log(`Available routes:`);
-  console.log(`- http://localhost:${PORT}/api/gamification/user-data`);
-  console.log(`- http://localhost:${PORT}/api/gamification/system`);
+server.listen(3000, () => {
+  console.log('JSON Server is running');
 });

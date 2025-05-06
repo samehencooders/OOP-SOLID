@@ -1,0 +1,153 @@
+<div class="task-board-container">
+    <div class="task-board-header">
+      <div class="workflow-info" *ngIf="workflow">
+        <h1>{{ workflow.name }}</h1>
+        <p class="workflow-description">{{ workflow.description }}</p>
+      </div>
+      
+      <div class="task-board-actions">
+        <button mat-raised-button color="primary" (click)="openNewTaskForm(workflow?.stages?.[0]?.id || '')">
+          <mat-icon>add</mat-icon> New Task
+        </button>
+        
+        <button mat-button [matMenuTriggerFor]="aiMenu">
+          <mat-icon>smart_toy</mat-icon> AI Tools
+        </button>
+        <mat-menu #aiMenu="matMenu">
+          <button mat-menu-item (click)="analyzeWorkflowBottlenecks()">
+            <mat-icon>analytics</mat-icon> Analyze Bottlenecks
+          </button>
+          <button mat-menu-item (click)="suggestWipLimits()">
+            <mat-icon>tune</mat-icon> Suggest WIP Limits
+          </button>
+          <button mat-menu-item (click)="generateProjectSummary()">
+            <mat-icon>summarize</mat-icon> Generate Project Summary
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  
+    <div *ngIf="loading" class="loading-container">
+      <!-- <mat-spinner diameter="40"></mat-spinner> -->
+      <p>Loading workflow and tasks...</p>
+    </div>
+  
+    <div *ngIf="error" class="error-container">
+      <mat-icon color="warn">error</mat-icon>
+      <p>{{ error }}</p>
+      <button mat-button color="primary" (click)="loadWorkflowAndTasks(workflow?.id||'')">Retry</button>
+    </div>
+  
+    <div class="task-board" *ngIf="!loading && !error && workflow">
+      <div class="task-board-columns" cdkDropListGroup>
+        <div class="stage-column" *ngFor="let stage of workflow.stages">
+          <div class="stage-header" [style.borderTopColor]="stage.color">
+            <h2>{{ stage.name }}</h2>
+            <div class="stage-wip-limit" [class.exceeded]="isWipLimitExceeded(stage.id)">
+              {{ tasksByStage[stage.id]?.length || 0 }} 
+              <span *ngIf="stage.wipLimit !== null">/ {{ stage.wipLimit }}</span>
+            </div>
+          </div>
+          
+          <div class="stage-description" *ngIf="stage.description">
+            <p>{{ stage.description }}</p>
+          </div>
+          
+          <div
+            cdkDropList
+            [cdkDropListData]="tasksByStage[stage.id] || []"
+            [id]="stage.id"
+            class="task-list"
+            (cdkDropListDropped)="onTaskDrop($event)"
+          >
+            <div 
+              class="task-card" 
+              *ngFor="let task of tasksByStage[stage.id]" 
+              cdkDrag
+              [cdkDragDisabled]="task.isBlocked"
+              (click)="openTaskDetail(task)"
+            >
+              <div class="task-card-header">
+                <div class="task-priority" [class]="getPriorityClass(task.priority)"></div>
+                <div class="task-id">#{{ task.id.slice(-6) }}</div>
+                <div class="task-actions">
+                  <button mat-icon-button [matMenuTriggerFor]="taskMenu" (click)="$event.stopPropagation()">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #taskMenu="matMenu">
+                    <button mat-menu-item (click)="openTaskDetail(task)">
+                      <mat-icon>edit</mat-icon> Edit
+                    </button>
+                  </mat-menu>
+                </div>
+              </div>
+              
+              <div class="task-title">{{ task.title }}</div>
+              
+              <div class="task-metadata">
+                <div class="task-due-date" *ngIf="task.dueDate">
+                  <mat-icon>event</mat-icon>
+                  <span>{{ task.dueDate | date:'MMM d' }}</span>
+                </div>
+                
+                <div class="task-assignees" *ngIf="task.assignees?.length">
+                  <div class="assignee-avatars">
+                    <div class="assignee-avatar" *ngFor="let assignee of task.assignees.slice(0, 3)">
+                      {{ assignee.charAt(0) }}
+                    </div>
+                    <div class="assignee-more" *ngIf="task.assignees.length > 3">
+                      +{{ task.assignees.length - 3 }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="task-indicators">
+                <div class="task-checklist" *ngIf="task.checklists?.length">
+                  <mat-icon>checklist</mat-icon>
+                  <span>{{ getCompletedChecklistItems(task) }}/{{ getTotalChecklistItems(task) }}</span>
+                </div>
+                
+                <div class="task-comments" *ngIf="task.comments?.length">
+                  <mat-icon>comment</mat-icon>
+                  <span>{{ task.comments.length }}</span>
+                </div>
+                
+                <div class="task-attachments" *ngIf="task.attachments?.length">
+                  <mat-icon>attachment</mat-icon>
+                  <span>{{ task.attachments.length }}</span>
+                </div>
+                
+                <div class="task-blocked" *ngIf="task.isBlocked">
+                  <mat-icon color="warn">block</mat-icon>
+                </div>
+              </div>
+              
+              <div class="task-tags" *ngIf="task.tags?.length">
+                <div class="task-tag" *ngFor="let tag of task.tags.slice(0, 2)">{{ tag }}</div>
+                <div class="task-tag-more" *ngIf="task.tags.length > 2">+{{ task.tags.length - 2 }}</div>
+              </div>
+              
+              <!-- Drag preview template -->
+              <div *cdkDragPreview class="task-card-preview">
+                <div class="task-title">{{ task.title }}</div>
+              </div>
+            </div>
+            
+            <div class="empty-stage" *ngIf="!tasksByStage[stage.id]?.length">
+              <p>No tasks in this stage</p>
+              <button mat-button color="primary" (click)="openNewTaskForm(stage.id)">
+                <mat-icon>add</mat-icon> Add Task
+              </button>
+            </div>
+          </div>
+          
+          <div class="stage-footer">
+            <button mat-button (click)="openNewTaskForm(stage.id)">
+              <mat-icon>add</mat-icon> Add Task
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -29,10 +29,16 @@ import { TaskBoardRoutingModule } from './task-board-routing.module';
 
 import { TaskPlannerDashboardComponent } from './dashboard/dashboard.component';
 import { AiAssistantComponent } from './ai-assistant/ai-assistant.component';
+import { TaskBoardComponent } from './task-board/task-board.component';
+import { TaskDetailComponent } from './task-detail-component/task-detail.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TaskFormComponent } from './task-form/task-form.component';
 
 @NgModule({
   declarations: [
-    TaskPlannerDashboardComponent,AiAssistantComponent
+    TaskPlannerDashboardComponent,AiAssistantComponent,TaskBoardComponent,
+    TaskDetailComponent,
+    TaskFormComponent
   ],
   imports: [
     CommonModule,
@@ -59,6 +65,7 @@ import { AiAssistantComponent } from './ai-assistant/ai-assistant.component';
     MatDividerModule,
     MatToolbarModule,
     FormsModule,
+  MatTabsModule
 
   ],
   exports: [],

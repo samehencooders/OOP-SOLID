@@ -1,0 +1,32 @@
+.task-form-container {
+  padding: 16px;
+  
+  .natural-language-input {
+    margin-bottom: 16px;
+    
+    button {
+      margin-top: 8px;
+    }
+  }
+  
+  .section-divider {
+    margin: 24px 0;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+    
+    mat-form-field {
+      flex: 1;
+    }
+  }
+  
+  .blocked-section {
+    margin: 16px 0;
+  }
+}

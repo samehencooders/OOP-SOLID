@@ -1,0 +1,421 @@
+<div class="task-detail-container">
+  <div class="task-detail-header">
+    <div class="task-id">#{{ task.id.slice(-6) }}</div>
+    
+    <div class="task-actions">
+      <button mat-icon-button [matMenuTriggerFor]="aiMenu" matTooltip="AI Tools">
+        <mat-icon>smart_toy</mat-icon>
+      </button>
+      <mat-menu #aiMenu="matMenu">
+        <button mat-menu-item (click)="predictTaskCompletion()">
+          <mat-icon>schedule</mat-icon> Predict Completion Time
+        </button>
+        <button mat-menu-item (click)="analyzeTaskRisk()">
+          <mat-icon>warning</mat-icon> Analyze Risk
+        </button>
+        <button mat-menu-item (click)="generateAiChecklist()">
+          <mat-icon>checklist</mat-icon> Generate Checklist
+        </button>
+        <button mat-menu-item (click)="suggestAssignee()">
+          <mat-icon>person_add</mat-icon> Suggest Assignee
+        </button>
+      </mat-menu>
+      
+      <button mat-icon-button (click)="toggleEditMode()" *ngIf="!editMode" matTooltip="Edit Task">
+        <mat-icon>edit</mat-icon>
+      </button>
+      
+      <button mat-icon-button (click)="deleteTask()" matTooltip="Delete Task">
+        <mat-icon>delete</mat-icon>
+      </button>
+      
+      <button mat-icon-button mat-dialog-close matTooltip="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  <div class="task-detail-content">
+    <mat-tab-group [selectedIndex]="getSelectedTabIndex()" (selectedIndexChange)="setActiveTab(['details', 'checklists', 'comments', 'attachments'][$event])"
+                  (selectedIndexChange)="setActiveTab(['details', 'checklists', 'comments', 'attachments'][$event])">
+      <mat-tab label="Details">
+        <div class="tab-content">
+          <div *ngIf="!editMode" class="task-view-mode">
+            <h2 class="task-title">{{ task.title }}</h2>
+            
+            <div class="task-metadata">
+              <div class="metadata-item">
+                <span class="metadata-label">Stage:</span>
+                <span class="metadata-value stage-badge" [style.backgroundColor]="getStageById(task.stageId)?.color">
+                  {{ getStageById(task.stageId)?.name }}
+                </span>
+              </div>
+              
+              <div class="metadata-item">
+                <span class="metadata-label">Priority:</span>
+                <span class="metadata-value priority-badge" [ngClass]="'priority-' + task.priority.toLowerCase()">
+                  {{ task.priority }}
+                </span>
+              </div>
+              
+              <div class="metadata-item" *ngIf="task.dueDate">
+                <span class="metadata-label">Due Date:</span>
+                <span class="metadata-value">{{ task.dueDate | date:'mediumDate' }}</span>
+              </div>
+              
+              <div class="metadata-item" *ngIf="task.estimatedTime">
+                <span class="metadata-label">Estimated Time:</span>
+                <span class="metadata-value">{{ task.estimatedTime }} hours</span>
+              </div>
+              
+              <div class="metadata-item" *ngIf="task.actualTime">
+                <span class="metadata-label">Actual Time:</span>
+                <span class="metadata-value">{{ task.actualTime }} hours</span>
+              </div>
+              
+              <div class="metadata-item" *ngIf="task.riskScore">
+                <span class="metadata-label">Risk Score:</span>
+                <span class="metadata-value risk-score" [ngClass]="{
+                  'low-risk': task.riskScore < 30,
+                  'medium-risk': task.riskScore >= 30 && task.riskScore < 70,
+                  'high-risk': task.riskScore >= 70
+                }">
+                  {{ task.riskScore }}
+                </span>
+              </div>
+              
+              <div class="metadata-item" *ngIf="task.isBlocked">
+                <span class="metadata-label">Blocked:</span>
+                <span class="metadata-value blocked-badge">
+                  <mat-icon>block</mat-icon> {{ task.blockReason }}
+                </span>
+              </div>
+            </div>
+            
+            <div class="task-assignees" *ngIf="task.assignees?.length">
+              <h3>Assignees</h3>
+              <div class="assignee-list">
+                <div class="assignee-item" *ngFor="let assignee of task.assignees">
+                  <div class="assignee-avatar">{{ assignee.charAt(0) }}</div>
+                  <span class="assignee-name">{{ assignee }}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="task-tags" *ngIf="task.tags?.length">
+              <h3>Tags</h3>
+              <div class="tag-list">
+                <div class="tag-item" *ngFor="let tag of task.tags">{{ tag }}</div>
+              </div>
+            </div>
+            
+            <div class="task-description">
+              <h3>Description</h3>
+              <p *ngIf="task.description">{{ task.description }}</p>
+              <p *ngIf="!task.description" class="no-description">No description provided</p>
+            </div>
+            
+            <!-- AI Prediction Results -->
+            <div class="ai-prediction" *ngIf="prediction">
+              <h3>AI Completion Prediction</h3>
+              <div class="prediction-result">
+                <div class="prediction-value">
+                  <span class="value">{{ prediction.predictedDays }}</span>
+                  <span class="unit">days</span>
+                </div>
+                <div class="prediction-confidence">
+                  {{ prediction.confidence.toFixed(0) }}% confidence
+                </div>
+              </div>
+              
+              <div class="prediction-factors" *ngIf="prediction.factors?.length">
+                <h4>Key Factors</h4>
+                <ul>
+                  <li *ngFor="let factor of prediction.factors">
+                    {{ factor.factor }}: {{ factor.impact > 0 ? '+' : '' }}{{ factor.impact }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- AI Risk Analysis Results -->
+            <div class="ai-risk-analysis" *ngIf="riskAnalysis">
+              <h3>Risk Analysis</h3>
+              <div class="risk-score-display">
+                <div class="risk-gauge" [style.--risk-percentage]="riskAnalysis.riskScore + '%'">
+                  <div class="risk-value">{{ riskAnalysis.riskScore }}</div>
+                </div>
+              </div>
+              
+              <div class="risk-factors" *ngIf="riskAnalysis.factors?.length">
+                <h4>Risk Factors</h4>
+                <ul>
+                  <li *ngFor="let factor of riskAnalysis.factors">
+                    <div class="risk-factor">
+                      <span class="factor-name">{{ factor.factor }}</span>
+                      <span class="factor-impact" [ngClass]="{
+                        'low-impact': factor.impact < 3,
+                        'medium-impact': factor.impact >= 3 && factor.impact < 7,
+                        'high-impact': factor.impact >= 7
+                      }">Impact: {{ factor.impact }}</span>
+                    </div>
+                    <p class="factor-description">{{ factor.description }}</p>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="risk-mitigation" *ngIf="riskAnalysis.mitigationSuggestions?.length">
+                <h4>Mitigation Suggestions</h4>
+                <ul>
+                  <li *ngFor="let suggestion of riskAnalysis.mitigationSuggestions">
+                    {{ suggestion }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Loading indicators -->
+            <div class="loading-indicator" *ngIf="predictionLoading">
+              <!-- <mat-spinner diameter="40"></mat-spinner> -->
+              <p>Analyzing task and predicting completion time...</p>
+            </div>
+            
+            <div class="loading-indicator" *ngIf="riskAnalysisLoading">
+              <!-- <mat-spinner diameter="40"></mat-spinner> -->
+              <p>Analyzing task risks...</p>
+            </div>
+          </div>
+          
+          <form [formGroup]="taskForm" *ngIf="editMode" class="task-edit-form">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title" required>
+              <mat-error *ngIf="taskForm.get('title')?.hasError('required')">Title is required</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" rows="4"></textarea>
+            </mat-form-field>
+            
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Stage</mat-label>
+                <mat-select formControlName="stageId" required>
+                  <mat-option *ngFor="let stage of workflow.stages" [value]="stage.id">
+                    {{ stage.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="priority" required>
+                  <mat-option *ngFor="let priority of priorities" [value]="priority">
+                    {{ priority }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dueDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                <mat-label>Estimated Time (hours)</mat-label>
+                <input matInput type="number" formControlName="estimatedTime" min="0">
+              </mat-form-field>
+            </div>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Assignees</mat-label>
+              <mat-chip-list #assigneeList>
+                <mat-chip *ngFor="let assignee of taskForm.get('assignees')?.value" [removable]="true" (removed)="removeAssignee(assignee)">
+                  {{ assignee }}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Add assignee..."
+                       [matChipInputFor]="assigneeList"
+                       [matChipInputSeparatorKeyCodes]="[13, 188]"
+                       (matChipInputTokenEnd)="addAssignee($event)">
+              </mat-chip-list>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Tags</mat-label>
+              <mat-chip-list #tagList>
+                <mat-chip *ngFor="let tag of taskForm.get('tags')?.value" [removable]="true" (removed)="removeTag(tag)">
+                  {{ tag }}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Add tag..."
+                       [matChipInputFor]="tagList"
+                       [matChipInputSeparatorKeyCodes]="[13, 188]"
+                       (matChipInputTokenEnd)="addTag($event)">
+              </mat-chip-list>
+            </mat-form-field>
+            
+            <div class="blocked-section">
+              <mat-checkbox formControlName="isBlocked">Task is blocked</mat-checkbox>
+              
+              <mat-form-field appearance="outline" class="full-width" *ngIf="taskForm.get('isBlocked')?.value">
+                <mat-label>Block Reason</mat-label>
+                <input matInput formControlName="blockReason">
+              </mat-form-field>
+            </div>
+            
+            <div class="form-actions">
+              <button mat-button (click)="toggleEditMode()">Cancel</button>
+              <button mat-raised-button color="primary" (click)="saveTask()" [disabled]="taskForm.invalid || loading">
+                <mat-icon>save</mat-icon> Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Checklists">
+        <div class="tab-content">
+          <div class="checklists-container">
+            <div class="checklist" *ngFor="let checklist of task.checklists">
+              <div class="checklist-header">
+                <h3>{{ checklist.title }}</h3>
+                <div class="checklist-progress">
+                  {{ getChecklistProgress(checklist) }}
+                </div>
+              </div>
+              
+              <mat-divider></mat-divider>
+              
+              <div class="checklist-items">
+                <div class="checklist-item" *ngFor="let item of checklist.items">
+                  <mat-checkbox 
+                    [checked]="item.isCompleted"
+                    (change)="toggleChecklistItem(checklist.id, item.id, $event.checked)"
+                  >
+                    {{ item.content }}
+                  </mat-checkbox>
+                  
+                  <div class="checklist-item-assignee" *ngIf="item.assignee">
+                    <div class="assignee-avatar small">{{ item.assignee.charAt(0) }}</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="checklist-actions">
+                <button mat-button color="primary" (click)="addChecklistItem(checklist.id)">
+                  <mat-icon>add</mat-icon> Add Item
+                </button>
+              </div>
+            </div>
+            
+            <div class="no-checklists" *ngIf="!task.checklists?.length">
+              <p>No checklists for this task</p>
+              <button mat-raised-button color="primary" (click)="addChecklist()">
+                <mat-icon>add</mat-icon> Add Checklist
+              </button>
+              <button mat-raised-button color="accent" (click)="generateAiChecklist()">
+                <mat-icon>smart_toy</mat-icon> Generate AI Checklist
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Comments">
+        <div class="tab-content">
+          <div class="comments-container">
+            <div class="comment-list">
+              <div class="comment" *ngFor="let comment of task.comments">
+                <div class="comment-header">
+                  <div class="comment-author">
+                    <div class="author-avatar">{{ comment.createdBy.charAt(0) }}</div>
+                    <span class="author-name">{{ comment.createdBy }}</span>
+                  </div>
+                  <div class="comment-date">
+                    {{ comment.createdAt | date:'medium' }}
+                    <span *ngIf="comment.isEdited">(edited)</span>
+                  </div>
+                </div>
+                
+                <div class="comment-content">
+                  {{ comment.content }}
+                </div>
+                
+                <div class="comment-attachments" *ngIf="comment.attachments?.length">
+                  <div class="attachment" *ngFor="let attachment of comment.attachments">
+                    <mat-icon>attachment</mat-icon>
+                    <a [href]="attachment.url" target="_blank">{{ attachment.name }}</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="no-comments" *ngIf="!task.comments?.length">
+                <p>No comments yet</p>
+              </div>
+            </div>
+            
+            <div class="comment-form">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Add a comment</mat-label>
+                <textarea matInput #commentInput rows="3" placeholder="Type your comment here..."></textarea>
+              </mat-form-field>
+              
+              <div class="comment-form-actions">
+                <button mat-raised-button color="primary" (click)="addComment(commentInput.value); commentInput.value = ''">
+                  <mat-icon>send</mat-icon> Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Attachments">
+        <div class="tab-content">
+          <div class="attachments-container">
+            <div class="attachment-list">
+              <div class="attachment" *ngFor="let attachment of task.attachments">
+                <div class="attachment-icon">
+                  <mat-icon>{{ getAttachmentIcon(attachment.type) }}</mat-icon>
+                </div>
+                
+                <div class="attachment-details">
+                  <div class="attachment-name">{{ attachment.name }}</div>
+                  <div class="attachment-meta">
+                    {{ formatFileSize(attachment.size) }} • {{ attachment.uploadedAt | date:'medium' }}
+                  </div>
+                </div>
+                
+                <div class="attachment-actions">
+                  <button mat-icon-button matTooltip="Download" (click)="downloadAttachment(attachment)">
+                    <mat-icon>download</mat-icon>
+                  </button>
+                  <button mat-icon-button matTooltip="Delete" (click)="deleteAttachment(attachment.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="no-attachments" *ngIf="!task.attachments?.length">
+                <p>No attachments</p>
+              </div>
+            </div>
+            
+            <div class="attachment-upload">
+              <button mat-raised-button color="primary" (click)="fileInput.click()">
+                <mat-icon>attach_file</mat-icon> Add Attachment
+              </button>
+              <input type="file" #fileInput style="display: none" (change)="uploadAttachment($event)">
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
