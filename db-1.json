@@ -7,8 +7,14 @@
       "stageId": "stage-002",
       "priority": "high",
       "dueDate": "2023-07-15T00:00:00Z",
-      "assignees": ["user-001", "user-003"],
-      "tags": ["frontend", "security"],
+      "assignees": [
+        "user-001",
+        "user-003"
+      ],
+      "tags": [
+        "frontend",
+        "security"
+      ],
       "checklists": [
         {
           "id": "checklist-001",
@@ -60,7 +66,9 @@
           "content": "@user-003 can you review my implementation?",
           "createdAt": "2023-06-29T10:15:00Z",
           "createdBy": "user-001",
-          "mentions": ["user-003"],
+          "mentions": [
+            "user-003"
+          ],
           "attachments": [],
           "isEdited": false
         }
@@ -80,8 +88,13 @@
       "stageId": "stage-001",
       "priority": "critical",
       "dueDate": "2023-07-10T00:00:00Z",
-      "assignees": ["user-002"],
-      "tags": ["database", "architecture"],
+      "assignees": [
+        "user-002"
+      ],
+      "tags": [
+        "database",
+        "architecture"
+      ],
       "checklists": [
         {
           "id": "checklist-002",
@@ -125,8 +138,13 @@
       "stageId": "stage-003",
       "priority": "medium",
       "dueDate": "2023-07-20T00:00:00Z",
-      "assignees": ["user-003"],
-      "tags": ["backend", "api"],
+      "assignees": [
+        "user-003"
+      ],
+      "tags": [
+        "backend",
+        "api"
+      ],
       "checklists": [],
       "attachments": [],
       "comments": [],
@@ -138,9 +156,24 @@
       "riskScore": 15,
       "isBlocked": true,
       "blockReason": "Waiting for database schema to be finalized"
+    },
+    {
+      "id": "task-1746540738969",
+      "name": "Moen",
+      "description": "Vel ducimus ullam quia asperiores vitae dolores in.",
+      "status": "IN_PROGRESS",
+      "priority": "MEDIUM",
+      "assignedTo": "user-003",
+      "dueDate": null,
+      "tags": [],
+      "blocked": false,
+      "subtasks": [],
+      "dependencies": [],
+      "createdAt": "2025-05-06T14:12:18.969Z",
+      "updatedAt": "2025-05-06T14:13:15.141Z",
+      "entityId": "project1"
     }
   ],
-  
   "workflows": [
     {
       "id": "workflow-001",
@@ -157,7 +190,9 @@
           "description": "Tasks that are not yet started",
           "order": 0,
           "wipLimit": null,
-          "taskIds": ["task-002"]
+          "taskIds": [
+            "task-002"
+          ]
         },
         {
           "id": "stage-002",
@@ -165,7 +200,9 @@
           "description": "Tasks currently being worked on",
           "order": 1,
           "wipLimit": 5,
-          "taskIds": ["task-001"]
+          "taskIds": [
+            "task-001"
+          ]
         },
         {
           "id": "stage-003",
@@ -173,7 +210,9 @@
           "description": "Tasks awaiting review",
           "order": 2,
           "wipLimit": 3,
-          "taskIds": ["task-003"]
+          "taskIds": [
+            "task-003"
+          ]
         },
         {
           "id": "stage-004",
@@ -184,7 +223,12 @@
           "taskIds": []
         }
       ],
-      "tags": ["web", "development", "frontend", "backend"]
+      "tags": [
+        "web",
+        "development",
+        "frontend",
+        "backend"
+      ]
     },
     {
       "id": "workflow-002",
@@ -236,17 +280,24 @@
           "taskIds": []
         }
       ],
-      "tags": ["mobile", "ios", "android", "development"]
+      "tags": [
+        "mobile",
+        "ios",
+        "android",
+        "development"
+      ]
     }
   ],
-  
   "ai": {
     "process-task": {
       "title": "Implement user profile page",
       "description": "Create a user profile page that displays user information, allows editing of profile details, and shows user activity history.",
       "priority": "medium",
       "estimatedTime": 12,
-      "tags": ["frontend", "user-management"]
+      "tags": [
+        "frontend",
+        "user-management"
+      ]
     },
     "generate-workflow": {
       "name": "Software Development Workflow",
@@ -289,7 +340,11 @@
           "wipLimit": null
         }
       ],
-      "tags": ["software", "development", "agile"]
+      "tags": [
+        "software",
+        "development",
+        "agile"
+      ]
     },
     "predict-completion": {
       "task-001": {
@@ -357,7 +412,7 @@
         },
         {
           "content": "Implement authentication service",
-          "confidence": 0.90
+          "confidence": 0.9
         },
         {
           "content": "Add error handling for failed login attempts",
@@ -494,9 +549,12 @@
       }
     }
   },
-  
   "collaboration": {
-    "online-users": ["user-001", "user-002", "user-004"],
+    "online-users": [
+      "user-001",
+      "user-002",
+      "user-004"
+    ],
     "presence": {
       "user-001": {
         "status": "online",
@@ -613,13 +671,14 @@
       }
     ]
   },
-  
   "user-data": {
     "xp": 1250,
     "level": 3,
-    "badges": ["badge-001", "badge-003"]
+    "badges": [
+      "badge-001",
+      "badge-003"
+    ]
   },
-  
   "system": {
     "xpPerTask": 10,
     "xpPerComment": 2,
@@ -628,28 +687,29 @@
     "levelUpMultiplier": 1.5,
     "streakBonus": true
   },
-  
   "levels": [
     {
       "level": 1,
       "xpRequired": 0,
       "badge": "newbie",
-      "reward": "profile-badge-1"
+      "reward": "profile-badge-1",
+      "id": "796f"
     },
     {
       "level": 2,
       "xpRequired": 500,
       "badge": "contributor",
-      "reward": "custom-avatar"
+      "reward": "custom-avatar",
+      "id": "3ea1"
     },
     {
       "level": 3,
       "xpRequired": 1200,
       "badge": "expert",
-      "reward": "theme-pack"
+      "reward": "theme-pack",
+      "id": "5c14"
     }
   ],
-  
   "badges": [
     {
       "id": "badge-001",
@@ -673,7 +733,6 @@
       "rarity": "uncommon"
     }
   ],
-  
   "challenges": {
     "active": [
       {
@@ -684,7 +743,10 @@
         "badgeReward": "badge-002",
         "startDate": "2023-06-19",
         "endDate": "2023-06-25",
-        "participants": ["user-001", "user-002"],
+        "participants": [
+          "user-001",
+          "user-002"
+        ],
         "completionCriteria": {
           "type": "taskCount",
           "target": 10,
@@ -698,11 +760,12 @@
         "name": "Onboarding Challenge",
         "completedAt": "2023-06-10",
         "xpEarned": 50,
-        "badgesEarned": ["badge-001"]
+        "badgesEarned": [
+          "badge-001"
+        ]
       }
     ]
   },
-  
   "rewards": [
     {
       "id": "reward-001",
@@ -721,7 +784,6 @@
       "type": "utility"
     }
   ],
-  
   "leaderboards": [
     {
       "id": "lb-001",
@@ -746,7 +808,6 @@
       ]
     }
   ],
-  
   "user-badges": [
     {
       "id": "badge-001",
@@ -765,28 +826,29 @@
       "rarity": "uncommon"
     }
   ],
-  
   "user-xp-history": [
     {
       "date": "2023-06-20T09:00:00Z",
       "xp": 10,
       "source": "taskCompletion",
-      "description": "Completed task 'Implement auth'"
+      "description": "Completed task 'Implement auth'",
+      "id": "88d9"
     },
     {
       "date": "2023-06-20T10:30:00Z",
       "xp": 5,
       "source": "checklistCompletion",
-      "description": "Completed checklist items"
+      "description": "Completed checklist items",
+      "id": "be47"
     },
     {
       "date": "2023-06-19T16:45:00Z",
       "xp": 50,
       "source": "challengeReward",
-      "description": "Completed 'Onboarding Challenge'"
+      "description": "Completed 'Onboarding Challenge'",
+      "id": "dd37"
     }
   ],
-  
   "user-leaderboard-ranks": {
     "lb-001": {
       "rank": 2,
@@ -799,7 +861,6 @@
       "totalParticipants": 42
     }
   },
-  
   "challenges-progress": {
     "challenge-001": {
       "progress": 7,
@@ -817,7 +878,6 @@
       "daysRemaining": 2
     }
   },
-  
   "analytics": {
     "workflow-001": {
       "cycleTime": {
@@ -828,31 +888,76 @@
           "stage-003": 0.8
         },
         "trend": [
-          { "date": "2023-06-01", "value": 5.2 },
-          { "date": "2023-06-08", "value": 4.8 },
-          { "date": "2023-06-15", "value": 4.5 },
-          { "date": "2023-06-22", "value": 4.3 },
-          { "date": "2023-06-29", "value": 4.0 }
+          {
+            "date": "2023-06-01",
+            "value": 5.2
+          },
+          {
+            "date": "2023-06-08",
+            "value": 4.8
+          },
+          {
+            "date": "2023-06-15",
+            "value": 4.5
+          },
+          {
+            "date": "2023-06-22",
+            "value": 4.3
+          },
+          {
+            "date": "2023-06-29",
+            "value": 4
+          }
         ]
       },
       "leadTime": {
         "average": 6.2,
         "trend": [
-          { "date": "2023-06-01", "value": 7.1 },
-          { "date": "2023-06-08", "value": 6.8 },
-          { "date": "2023-06-15", "value": 6.5 },
-          { "date": "2023-06-22", "value": 6.3 },
-          { "date": "2023-06-29", "value": 6.0 }
+          {
+            "date": "2023-06-01",
+            "value": 7.1
+          },
+          {
+            "date": "2023-06-08",
+            "value": 6.8
+          },
+          {
+            "date": "2023-06-15",
+            "value": 6.5
+          },
+          {
+            "date": "2023-06-22",
+            "value": 6.3
+          },
+          {
+            "date": "2023-06-29",
+            "value": 6
+          }
         ]
       },
       "throughput": {
         "weekly": 5,
         "trend": [
-          { "date": "2023-06-01", "value": 4 },
-          { "date": "2023-06-08", "value": 5 },
-          { "date": "2023-06-15", "value": 6 },
-          { "date": "2023-06-22", "value": 5 },
-          { "date": "2023-06-29", "value": 5 }
+          {
+            "date": "2023-06-01",
+            "value": 4
+          },
+          {
+            "date": "2023-06-08",
+            "value": 5
+          },
+          {
+            "date": "2023-06-15",
+            "value": 6
+          },
+          {
+            "date": "2023-06-22",
+            "value": 5
+          },
+          {
+            "date": "2023-06-29",
+            "value": 5
+          }
         ]
       },
       "taskDistribution": {
@@ -889,18 +994,23 @@
           "taskId": "task-001",
           "title": "Implement user authentication",
           "riskScore": 25,
-          "riskFactors": ["Technical complexity", "Security considerations"]
+          "riskFactors": [
+            "Technical complexity",
+            "Security considerations"
+          ]
         },
         {
           "taskId": "task-002",
           "title": "Design database schema",
           "riskScore": 40,
-          "riskFactors": ["Technical complexity", "Dependencies"]
+          "riskFactors": [
+            "Technical complexity",
+            "Dependencies"
+          ]
         }
       ]
     }
   },
-  
   "users": [
     {
       "id": "user-001",

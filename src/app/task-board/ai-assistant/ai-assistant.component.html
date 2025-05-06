@@ -194,3 +194,11 @@
     </div>
   </div>
 </div>
+
+<div>
+  <h2>Project Prompt Suggestion</h2>
+  <textarea [(ngModel)]="prompt" placeholder="Enter your project prompt"></textarea>
+  <button (click)="getSuggestion()">Get Suggestion</button>
+  <p *ngIf="response">{{ response }}</p>
+  <p *ngIf="error">{{ error }}</p>
+</div>

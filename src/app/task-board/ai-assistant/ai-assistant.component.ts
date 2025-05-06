@@ -4,6 +4,7 @@ import { AiService } from '../../services/ai.service';
 import { Task } from '../../models/task.model';
 import { Workflow } from '../../models/workflow.model';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-ai-assistant',
@@ -19,7 +20,8 @@ export class AiAssistantComponent implements OnInit {
   
   constructor(
     private fb: FormBuilder,
-    private aiService: AiService
+    private aiService: AiService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -106,5 +108,33 @@ export class AiAssistantComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  prompt: string = '';
+  response: string = '';
+  error: string = '';
+  getSuggestion() {
+    const body = {
+      model: 'deepseek-r1:1.5b',
+      prompt: this.prompt,
+      stream: false,  // Disable streaming for a single response
+      options: {}
+    };
+  
+    // Add headers for JSON content
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  
+    this.http.post('http://localhost:11434/api/generate', body, { headers }).subscribe(
+      (data: any) => {
+        console.log('API Response:', data);
+        this.response = data.response || 'No response received';
+        this.error = '';
+      },
+      (error) => {
+        this.error = 'Error fetching suggestion: ' + error.message;
+        this.response = '';
+        console.error('API Error:', error);
+      }
+    );
   }
 }
