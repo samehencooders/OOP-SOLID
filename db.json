@@ -624,7 +624,7 @@
     {
       "name": "Task 1",
       "description": "Description for task 1",
-      "status": "ARCHIVED",
+      "status": "IN_PROGRESS",
       "priority": "HIGH",
       "assignedTo": "user4",
       "dueDate": "2025-03-20T23:58:03.178125",
@@ -636,7 +636,7 @@
       "dependencies": [],
       "id": "task1",
       "createdAt": "2025-03-11T23:58:03.178125",
-      "updatedAt": "2025-08-05T12:17:07.632Z",
+      "updatedAt": "2025-08-06T13:19:03.449Z",
       "entityId": "project1",
       "parentId": "task47"
     },
@@ -2110,7 +2110,7 @@
       "id": "task47",
       "name": "Task 47",
       "description": "Description for task 47",
-      "status": "DONE",
+      "status": "TODO",
       "priority": "MEDIUM",
       "assignedTo": "user2",
       "dueDate": "2025-04-28T23:58:03.179447",
@@ -2126,7 +2126,7 @@
         "task23"
       ],
       "createdAt": "2025-04-18T23:58:03.179447",
-      "updatedAt": "2025-08-05T12:16:44.623Z",
+      "updatedAt": "2025-08-06T13:23:10.982Z",
       "entityId": "project1"
     },
     {

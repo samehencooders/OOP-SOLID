@@ -313,4 +313,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     
     return diffDays >= 0 && diffDays <= 2; // Due within 2 days
   }
+  trackByFn(index: number, item: any): number | string {
+    return item.id; // Or any other unique property on the subtask
+  }
 }

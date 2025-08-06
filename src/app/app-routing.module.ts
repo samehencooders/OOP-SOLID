@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskDetailsComponent } from './kanban-board/pages/task-details/task-details.component';
 
 const routes: Routes = [
-
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
   {
     path: 'task-board',
     loadChildren: () =>
@@ -28,8 +32,8 @@ const routes: Routes = [
       import('./inventory/inventory.module').then((m) => m.InventoryModule),
   },
 
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
-  { path: '**', redirectTo: '/users' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard' },
 
 ];
 

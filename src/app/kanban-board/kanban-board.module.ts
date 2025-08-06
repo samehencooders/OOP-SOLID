@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { FormsModule } from '@angular/forms';
 
 // Angular Material Imports
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +22,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Routing
 import { KanbanBoardRoutingModule } from './kanban-board-routing.module';
@@ -33,7 +38,7 @@ import { WipLimitDialogComponent } from './modals/wip-limit-dialog/wip-limit-dia
 import { TaskDetailsComponent } from './pages/task-details/task-details.component';
 
 @NgModule({
-  declarations: [KanbanBoardComponent, TaskModalComponent,WipLimitDialogComponent,
+  declarations: [KanbanBoardComponent, TaskModalComponent, WipLimitDialogComponent,
     TaskDetailsComponent
 
   ],
@@ -61,9 +66,15 @@ import { TaskDetailsComponent } from './pages/task-details/task-details.componen
     MatProgressBarModule,
     MatDividerModule,
     MatToolbarModule,
+    MatTooltipModule,
+    MatListModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
     FormsModule,
 
+
   ],
-  exports: [KanbanBoardComponent,TaskDetailsComponent],
+  exports: [KanbanBoardComponent, TaskDetailsComponent],
 })
-export class KanbanBoardModule {}
+export class KanbanBoardModule { }

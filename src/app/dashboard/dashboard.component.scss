@@ -1,0 +1,13 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.widgets-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.widget {
+  flex: 1 1 300px;
+}
