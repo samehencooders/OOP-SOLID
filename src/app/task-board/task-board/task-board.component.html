@@ -44,7 +44,7 @@
           <div class="stage-header" [style.borderTopColor]="stage.color">
             <h2>{{ stage.name }}</h2>
             <div class="stage-wip-limit" [class.exceeded]="isWipLimitExceeded(stage.id)">
-              {{ tasksByStage[stage.id]?.length || 0 }} 
+              {{ tasksByStage[stage.id].length || 0 }} 
               <span *ngIf="stage.wipLimit !== null">/ {{ stage.wipLimit }}</span>
             </div>
           </div>

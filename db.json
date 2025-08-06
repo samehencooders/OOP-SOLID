@@ -622,10 +622,9 @@
   ],
   "tasks": [
     {
-      "id": "task1",
       "name": "Task 1",
       "description": "Description for task 1",
-      "status": "TODO",
+      "status": "ARCHIVED",
       "priority": "HIGH",
       "assignedTo": "user4",
       "dueDate": "2025-03-20T23:58:03.178125",
@@ -635,9 +634,11 @@
       "blocked": false,
       "subtasks": [],
       "dependencies": [],
+      "id": "task1",
       "createdAt": "2025-03-11T23:58:03.178125",
-      "updatedAt": "2025-03-13T23:58:03.178125",
-      "entityId": "project1"
+      "updatedAt": "2025-08-05T12:17:07.632Z",
+      "entityId": "project1",
+      "parentId": "task47"
     },
     {
       "id": "task2",
@@ -1190,7 +1191,6 @@
       "entityId": "project1"
     },
     {
-      "id": "task20",
       "name": "Task 20",
       "description": "Description for task 20",
       "status": "IN_PROGRESS",
@@ -1204,20 +1204,64 @@
       "blocked": true,
       "subtasks": [
         {
+          "id": "subtask-1754395681457-x1rcblsqm",
           "name": "Subtask 1",
-          "completed": true
+          "description": "",
+          "status": "TODO",
+          "priority": "MEDIUM",
+          "assignedTo": "user5",
+          "tags": [],
+          "blocked": false,
+          "dependencies": [],
+          "createdAt": "2025-08-05T12:08:01.457Z",
+          "updatedAt": "2025-08-05T12:08:01.457Z",
+          "entityId": "project1",
+          "parentId": "task20"
         },
         {
+          "id": "subtask-1754395681457-p79ufahlk",
           "name": "Subtask 2",
-          "completed": false
+          "description": "",
+          "status": "TODO",
+          "priority": "MEDIUM",
+          "assignedTo": "user5",
+          "tags": [],
+          "blocked": false,
+          "dependencies": [],
+          "createdAt": "2025-08-05T12:08:01.457Z",
+          "updatedAt": "2025-08-05T12:08:01.457Z",
+          "entityId": "project1",
+          "parentId": "task20"
         },
         {
+          "id": "subtask-1754395681457-lz2ootuut",
           "name": "Subtask 3",
-          "completed": false
+          "description": "",
+          "status": "TODO",
+          "priority": "MEDIUM",
+          "assignedTo": "user5",
+          "tags": [],
+          "blocked": false,
+          "dependencies": [],
+          "createdAt": "2025-08-05T12:08:01.457Z",
+          "updatedAt": "2025-08-05T12:08:01.457Z",
+          "entityId": "project1",
+          "parentId": "task20"
         },
         {
+          "id": "subtask-1754395681457-3wgey6uxl",
           "name": "Subtask 4",
-          "completed": true
+          "description": "",
+          "status": "TODO",
+          "priority": "MEDIUM",
+          "assignedTo": "user5",
+          "tags": [],
+          "blocked": false,
+          "dependencies": [],
+          "createdAt": "2025-08-05T12:08:01.457Z",
+          "updatedAt": "2025-08-05T12:08:01.457Z",
+          "entityId": "project1",
+          "parentId": "task20"
         }
       ],
       "dependencies": [
@@ -1225,8 +1269,9 @@
         "task4",
         "task3"
       ],
+      "id": "task20",
       "createdAt": "2025-04-19T23:58:03.178625",
-      "updatedAt": "2025-04-23T23:58:03.178625",
+      "updatedAt": "2025-08-05T12:08:01.457Z",
       "entityId": "project1"
     },
     {
@@ -1577,7 +1622,7 @@
         "task3"
       ],
       "createdAt": "2025-03-12T23:58:03.178895",
-      "updatedAt": "2025-04-08T23:58:03.178895",
+      "updatedAt": "2025-08-05T12:13:18.025Z",
       "entityId": "project1"
     },
     {
@@ -2073,7 +2118,7 @@
         "UI",
         "Research"
       ],
-      "blocked": true,
+      "blocked": false,
       "subtasks": [],
       "dependencies": [
         "task37",
@@ -2081,7 +2126,7 @@
         "task23"
       ],
       "createdAt": "2025-04-18T23:58:03.179447",
-      "updatedAt": "2025-04-29T23:58:03.179447",
+      "updatedAt": "2025-08-05T12:16:44.623Z",
       "entityId": "project1"
     },
     {
@@ -4384,7 +4429,7 @@
       "description": "Description for task 117",
       "status": "IN_PROGRESS",
       "priority": "LOW",
-      "assignedTo": "user4",
+      "assignedTo": "user5",
       "dueDate": "2025-04-23T23:58:03.181341",
       "tags": [
         "Urgent"
@@ -4402,7 +4447,7 @@
         "task81"
       ],
       "createdAt": "2025-04-21T23:58:03.181341",
-      "updatedAt": "2025-05-18T23:58:03.181341",
+      "updatedAt": "2025-08-05T12:20:52.696Z",
       "entityId": "project1"
     },
     {
