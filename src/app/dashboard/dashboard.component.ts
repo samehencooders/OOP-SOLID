@@ -21,9 +21,5 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.tasks$ = this.taskService.tasks$;
     this.totalInventoryValue$ = this.inventoryService.getTotalInventoryValue();
-    // You might need to load the data initially if it's not already loaded
-    // For example:
-    // this.taskService.getTaskByWorkflow('some-workflow-id').subscribe();
-    // this.inventoryService.loadInventoryItems().subscribe();
   }
 }

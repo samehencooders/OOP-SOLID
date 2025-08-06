@@ -697,7 +697,7 @@
       "id": "task4",
       "name": "Task 4",
       "description": "Description for task 4",
-      "status": "ARCHIVED",
+      "status": "DONE",
       "priority": "MEDIUM",
       "assignedTo": "user13",
       "dueDate": "2025-05-12T23:58:03.178248",
@@ -712,7 +712,7 @@
         "task3"
       ],
       "createdAt": "2025-04-25T23:58:03.178248",
-      "updatedAt": "2025-05-25T23:58:03.178248",
+      "updatedAt": "2025-08-06T13:28:17.296Z",
       "entityId": "project1"
     },
     {
@@ -2107,7 +2107,6 @@
       "entityId": "project1"
     },
     {
-      "id": "task47",
       "name": "Task 47",
       "description": "Description for task 47",
       "status": "TODO",
@@ -2118,15 +2117,16 @@
         "UI",
         "Research"
       ],
-      "blocked": false,
+      "blocked": true,
       "subtasks": [],
       "dependencies": [
         "task37",
         "task3",
         "task23"
       ],
+      "id": "task47",
       "createdAt": "2025-04-18T23:58:03.179447",
-      "updatedAt": "2025-08-06T13:23:10.982Z",
+      "updatedAt": "2025-08-06T13:42:55.663Z",
       "entityId": "project1"
     },
     {
@@ -2752,7 +2752,7 @@
         "UI",
         "Backend"
       ],
-      "blocked": true,
+      "blocked": false,
       "subtasks": [
         {
           "name": "Subtask 1",
@@ -2772,7 +2772,7 @@
         "task31"
       ],
       "createdAt": "2025-03-25T23:58:03.179932",
-      "updatedAt": "2025-04-04T23:58:03.179932",
+      "updatedAt": "2025-08-06T13:39:41.893Z",
       "entityId": "project1"
     },
     {
@@ -4674,7 +4674,7 @@
         "task51"
       ],
       "createdAt": "2025-04-11T23:58:03.181533",
-      "updatedAt": "2025-05-10T23:58:03.181533",
+      "updatedAt": "2025-08-06T13:39:33.045Z",
       "entityId": "project1"
     },
     {
@@ -4792,14 +4792,14 @@
       "id": "task130",
       "name": "Task 130",
       "description": "Description for task 130",
-      "status": "DONE",
+      "status": "ARCHIVED",
       "priority": "MEDIUM",
       "assignedTo": "user2",
       "dueDate": "2025-04-01T23:58:03.181677",
       "tags": [
         "Bug"
       ],
-      "blocked": true,
+      "blocked": false,
       "subtasks": [
         {
           "name": "Subtask 1",
@@ -4824,7 +4824,7 @@
         "task111"
       ],
       "createdAt": "2025-03-27T23:58:03.181677",
-      "updatedAt": "2025-04-12T23:58:03.181677",
+      "updatedAt": "2025-08-06T13:39:39.310Z",
       "entityId": "project1"
     },
     {

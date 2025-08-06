@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -13,7 +13,7 @@ import { TaskModalComponent } from '../../modals/task-modal/task-modal.component
   templateUrl: './task-details.component.html',
   styleUrls: ['./task-details.component.scss']
 })
-export class TaskDetailsComponent implements OnInit, OnDestroy {
+export class TaskDetailsComponent implements OnInit {
 
   taskId: string | null = null;
   task: Task | null = null;
@@ -33,9 +33,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     private kanbanService: KanbanBoardService,
     private dialog: MatDialog
   ) { }
-    ngOnDestroy(): void {
-        throw new Error('Method not implemented.');
-    }
+
 
   // Add this property to store dependency tasks
   dependencyTasks: Map<string, Task> = new Map();

@@ -1,159 +1,311 @@
-<div class="task-view-container" *ngIf="task; else loading">
-  <main class="task-main-content">
-    <header class="task-header">
-      <div class="task-title-wrapper">
-        <button mat-icon-button (click)="goBack()" matTooltip="Back to list">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-        <h1>{{ task.name }}</h1>
-      </div>
-      <div class="task-header-actions">
-        <button mat-stroked-button [matMenuTriggerFor]="statusMenu" class="status-dropdown" [ngClass]="'status-' + task.status.toLowerCase()">
-          {{ task.status | titlecase }}
-          <mat-icon>expand_more</mat-icon>
-        </button>
-        <mat-menu #statusMenu="matMenu">
-          <button mat-menu-item (click)="updateTaskStatus(TaskStatus.TODO)">To Do</button>
-          <button mat-menu-item (click)="updateTaskStatus(TaskStatus.IN_PROGRESS)">In Progress</button>
-          <button mat-menu-item (click)="updateTaskStatus(TaskStatus.DONE)">Done</button>
-          <button mat-menu-item (click)="updateTaskStatus(TaskStatus.ARCHIVED)">Archive</button>
-        </mat-menu>
-      </div>
-    </header>
-
-    <section class="metadata-bar">
-      <div class="metadata-item" *ngIf="assignedUser">
-        <mat-icon>person_outline</mat-icon>
-        <span>Assigned To</span>
-        <div class="user-info">
-          <div class="user-avatar" [style.background-color]="assignedUser.avatarColor">
-            {{ assignedUser.name.charAt(0) }}
-          </div>
-          <strong>{{ assignedUser.name }}</strong>
+<div class="task-details-container" *ngIf="task">
+  <!-- Enhanced Header with Glassmorphism -->
+  <header class="task-details-header">
+    <div class="header-nav">
+      <button mat-icon-button class="back-btn" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="task-title-section">
+        <h1 class="task-title">{{task.name}}</h1>
+        <div class="task-meta-quick">
+          <mat-chip class="status-chip" [ngClass]="'status-' + task.status.toLowerCase()">
+            {{task.status}}
+          </mat-chip>
+          <mat-chip class="priority-chip" [ngClass]="'priority-' + task.priority.toLowerCase()">
+            {{task.priority}}
+          </mat-chip>
         </div>
       </div>
-      <div class="metadata-item" *ngIf="task.dueDate">
-        <mat-icon>calendar_today</mat-icon>
-        <span>Due Date</span>
-        <strong [class.due-soon]="isDateNear(task.dueDate)">{{ task.dueDate | date:'mediumDate' }}</strong>
-      </div>
-    </section>
-
-    <section class="task-section">
-      <h2>Description</h2>
-      <p class="task-description">{{ task.description || 'No description provided.' }}</p>
-    </section>
-
-    <section class="task-section">
-      <div *ngIf="subtasks.length > 0; else noSubtasks">
-        <cdk-virtual-scroll-viewport itemSize="48" class="subtask-scroll-viewport">
-          <mat-list class="subtasks-list">
-            <mat-list-item *cdkVirtualFor="let subtask of subtasks; trackBy: trackByFn" class="subtask-item">
-              
-              <mat-checkbox [checked]="subtask.status === TaskStatus.DONE" (change)="updateSubtaskStatus(subtask, $event.checked)" class="subtask-checkbox"></mat-checkbox>
-              <span class="subtask-name" [class.completed]="subtask.status === TaskStatus.DONE">{{ subtask.name }}</span>
-              <span class="spacer"></span>
-              <button mat-icon-button [matMenuTriggerFor]="subtaskActions">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #subtaskActions="matMenu">
-                <button mat-menu-item (click)="editSubtask(subtask)">
-                  <mat-icon>edit</mat-icon>
-                  <span>Edit</span>
-                </button>
-                <button mat-menu-item (click)="deleteSubtask(subtask.id)">
-                  <mat-icon>delete</mat-icon>
-                  <span>Delete</span>
-                </button>
-              </mat-menu>
-    
-            </mat-list-item>
-          </mat-list>
-        </cdk-virtual-scroll-viewport>
-    
-      </div>
-      <ng-template #noSubtasks>
-        <p class="empty-state">No subtasks yet. Click the '+' to add one.</p>
-      </ng-template>
-    </section>
-  </main>
-
-  <aside class="task-sidebar">
-    <div class="sidebar-actions">
-        <button mat-stroked-button (click)="editTask()">
-            <mat-icon>edit</mat-icon>
-            Edit Task
-        </button>
-        <button mat-icon-button [matMenuTriggerFor]="moreActions" matTooltip="More actions">
-            <mat-icon>more_horiz</mat-icon>
-        </button>
-        <mat-menu #moreActions="matMenu">
-            <button mat-menu-item (click)="toggleTaskBlocked()">
-                <mat-icon>{{ task.blocked ? 'lock_open' : 'lock' }}</mat-icon>
-                <span>{{ task.blocked ? 'Unlock' : 'Lock' }} Task</span>
-            </button>
-            <button mat-menu-item>
-                <mat-icon>share</mat-icon>
-                <span>Share</span>
-            </button>
-        </mat-menu>
     </div>
-  
-    <mat-accordion>
-      <mat-expansion-panel [expanded]="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title>Details</mat-panel-title>
-        </mat-expansion-panel-header>
-        <ul class="details-list">
-          <li>
-            <span class="label">Priority</span>
-            <mat-chip [color]="getPriorityColor(task.priority)" selected>{{ task.priority }}</mat-chip>
-          </li>
-          <li *ngIf="task.tags?.length">
-            <span class="label">Tags</span>
-            <mat-chip-list>
-              <mat-chip *ngFor="let tag of task.tags" [color]="getTagColor(tag)" selected>{{ tag }}</mat-chip>
-            </mat-chip-list>
-          </li>
-          <li *ngIf="parentTask">
-            <span class="label">Parent Task</span>
-            <a [routerLink]="['/task', parentTask.id]">{{ parentTask.name }}</a>
-          </li>
-          <li>
-            <span class="label">Created</span>
-            <span>{{ task.createdAt | date:'short' }}</span>
-          </li>
-          <li>
-            <span class="label">Updated</span>
-            <span>{{ task.updatedAt | date:'relativeTime' }}</span>
-          </li>
-        </ul>
-      </mat-expansion-panel>
-    </mat-accordion>
+    
+    <div class="header-actions">
+      <button mat-mini-fab class="action-btn edit-btn" (click)="editTask()" matTooltip="Edit Task">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab 
+        class="action-btn" 
+        [ngClass]="task.blocked ? 'blocked-btn' : 'unblocked-btn'"
+        (click)="toggleTaskBlocked()" 
+        [matTooltip]="task.blocked ? 'Unblock Task' : 'Block Task'">
+        <mat-icon>{{task.blocked ? 'lock' : 'lock_open'}}</mat-icon>
+      </button>
+    </div>
+  </header>
 
-    <mat-tab-group class="activity-tabs">
-      <mat-tab label="Comments">
-        <div class="comment-section">
-          <div class="comment">...</div>
-          <mat-form-field appearance="outline" class="comment-input">
-            <mat-label>Add a comment</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>
-          <button mat-flat-button color="primary">Send</button>
+  <!-- Main Content Grid -->
+  <div class="task-details-content">
+    <!-- Primary Information Panel -->
+    <div class="primary-panel">
+      <!-- Task Overview Card -->
+      <div class="info-card task-overview">
+        <div class="card-header">
+          <h2>Overview</h2>
+          <mat-icon>info</mat-icon>
         </div>
-      </mat-tab>
-      <mat-tab label="History">
-        <div class="history-section">
-          <p>Activity history will be shown here.</p>
+        <div class="card-content">
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-icon">
+                <mat-icon>assignment</mat-icon>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Status</span>
+                <div class="status-indicator" [ngClass]="'status-' + task.status.toLowerCase()">
+                  <div class="status-dot"></div>
+                  <span>{{task.status}}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <mat-icon>flag</mat-icon>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Priority</span>
+                <div class="priority-badge" [ngClass]="'priority-' + task.priority.toLowerCase()">
+                  {{task.priority}}
+                </div>
+              </div>
+            </div>
+            
+            <div class="info-item" *ngIf="assignedUser">
+              <div class="info-icon">
+                <mat-icon>person</mat-icon>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Assigned To</span>
+                <div class="user-profile">
+                  <div class="avatar" [style.background]="assignedUser.avatarColor">
+                    {{assignedUser.name.charAt(0)}}
+                  </div>
+                  <span class="user-name">{{assignedUser.name}}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="info-item" *ngIf="task.dueDate">
+              <div class="info-icon">
+                <mat-icon [ngClass]="isDateNear(task.dueDate) ? 'warning' : ''">schedule</mat-icon>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Due Date</span>
+                <div class="due-date" [ngClass]="{'due-soon': isDateNear(task.dueDate)}">
+                  {{task.dueDate | date:'MMM dd, yyyy'}}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tags Section -->
+          <div class="tags-section" *ngIf="task.tags && task.tags.length">
+            <span class="section-label">Tags</span>
+            <div class="tags-container">
+              <span *ngFor="let tag of task.tags" class="tag" [style.--tag-color]="getTagColor(tag)">
+                {{tag}}
+              </span>
+            </div>
+          </div>
+          
+          <!-- Parent Task -->
+          <div class="parent-task-section" *ngIf="parentTask">
+            <span class="section-label">Parent Task</span>
+            <a [routerLink]="['/task', parentTask.id]" class="parent-task-link">
+              <mat-icon>launch</mat-icon>
+              {{parentTask.name}}
+            </a>
+          </div>
         </div>
-      </mat-tab>
-    </mat-tab-group>
-  </aside>
+      </div>
+
+      <!-- Description Card -->
+      <div class="info-card description-card">
+        <div class="card-header">
+          <h2>Description</h2>
+          <mat-icon>description</mat-icon>
+        </div>
+        <div class="card-content">
+          <p class="description-text">{{task.description || 'No description provided.'}}</p>
+        </div>
+      </div>
+
+      <!-- Quick Actions Card -->
+      <div class="info-card actions-card">
+        <div class="card-header">
+          <h2>Quick Actions</h2>
+          <mat-icon>flash_on</mat-icon>
+        </div>
+        <div class="card-content">
+          <div class="action-buttons">
+            <button mat-flat-button 
+              class="status-btn todo-btn"
+              [disabled]="task.status === TaskStatus.TODO"
+              (click)="updateTaskStatus(TaskStatus.TODO)">
+              <mat-icon>radio_button_unchecked</mat-icon>
+              To Do
+            </button>
+            <button mat-flat-button 
+              class="status-btn progress-btn"
+              [disabled]="task.status === TaskStatus.IN_PROGRESS"
+              (click)="updateTaskStatus(TaskStatus.IN_PROGRESS)">
+              <mat-icon>play_circle</mat-icon>
+              In Progress
+            </button>
+            <button mat-flat-button 
+              class="status-btn done-btn"
+              [disabled]="task.status === TaskStatus.DONE"
+              (click)="updateTaskStatus(TaskStatus.DONE)">
+              <mat-icon>check_circle</mat-icon>
+              Done
+            </button>
+            <button mat-flat-button 
+              class="status-btn archive-btn"
+              [disabled]="task.status === TaskStatus.ARCHIVED"
+              (click)="updateTaskStatus(TaskStatus.ARCHIVED)">
+              <mat-icon>archive</mat-icon>
+              Archive
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Panel -->
+    <div class="secondary-panel">
+      <!-- Subtasks Card -->
+      <div class="info-card subtasks-card">
+        <div class="card-header">
+          <div class="header-left">
+            <h2>Subtasks</h2>
+            <span class="count-badge" *ngIf="subtasks.length">{{subtasks.length}}</span>
+          </div>
+          <button mat-mini-fab class="add-btn" (click)="createSubtask()" matTooltip="Add Subtask">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        
+        <div class="card-content">
+          <!-- Progress Section -->
+          <div class="progress-section" *ngIf="subtasks.length">
+            <div class="progress-header">
+              <span class="progress-label">Progress</span>
+              <span class="progress-text">{{getCompletedSubtasksCount()}} of {{subtasks.length}}</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getSubtaskProgress()"></div>
+            </div>
+          </div>
+          
+          <!-- Subtasks List -->
+          <div class="subtasks-list" *ngIf="subtasks.length; else noSubtasks">
+            <div *ngFor="let subtask of subtasks; trackBy: trackByFn" class="subtask-item">
+              <div class="subtask-main">
+                <mat-checkbox 
+                  [checked]="subtask.status === TaskStatus.DONE"
+                  (change)="updateSubtaskStatus(subtask, $event.checked)"
+                  class="subtask-checkbox">
+                </mat-checkbox>
+                
+                <div class="subtask-info">
+                  <div class="subtask-name" [ngClass]="{'completed': subtask.status === TaskStatus.DONE}">
+                    {{subtask.name}}
+                  </div>
+                  <div class="subtask-badges">
+                    <span class="badge status-badge" [ngClass]="'status-' + subtask.status.toLowerCase()">
+                      {{subtask.status}}
+                    </span>
+                    <span class="badge priority-badge" [ngClass]="'priority-' + subtask.priority.toLowerCase()">
+                      {{subtask.priority}}
+                    </span>
+                    <span class="badge due-badge" *ngIf="subtask.dueDate">
+                      {{subtask.dueDate | date:'MMM dd'}}
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="subtask-actions">
+                  <button mat-icon-button class="edit-subtask-btn" (click)="editSubtask(subtask)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button class="delete-subtask-btn" (click)="deleteSubtask(subtask.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="subtask-description" *ngIf="subtask.description">
+                {{subtask.description}}
+              </div>
+            </div>
+          </div>
+          
+          <ng-template #noSubtasks>
+            <div class="empty-state">
+              <mat-icon>add_task</mat-icon>
+              <p>No subtasks yet</p>
+              <span>Break down this task into smaller steps</span>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- Dependencies Card -->
+      <div class="info-card dependencies-card" *ngIf="task.dependencies && task.dependencies.length">
+        <div class="card-header">
+          <h2>Dependencies</h2>
+          <mat-icon>device_hub</mat-icon>
+        </div>
+        <div class="card-content">
+          <div class="dependencies-list">
+            <div *ngFor="let dependencyId of task.dependencies" class="dependency-item">
+              <ng-container *ngIf="getDependencyTask(dependencyId) as dependency">
+                <a [routerLink]="['/task', dependencyId]" class="dependency-link">
+                  <div class="dependency-info">
+                    <span class="dependency-name">{{dependency.name}}</span>
+                    <span class="dependency-status" [ngClass]="'status-' + dependency.status.toLowerCase()">
+                      {{dependency.status}}
+                    </span>
+                  </div>
+                  <mat-icon>arrow_forward</mat-icon>
+                </a>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Timeline/Metadata -->
+      <div class="info-card metadata-card">
+        <div class="card-header">
+          <h2>Timeline</h2>
+          <mat-icon>schedule</mat-icon>
+        </div>
+        <div class="card-content">
+          <div class="timeline-item" *ngIf="task.createdAt">
+            <div class="timeline-dot create"></div>
+            <div class="timeline-content">
+              <span class="timeline-label">Created</span>
+              <span class="timeline-date">{{task.createdAt | date:'MMM dd, yyyy \'at\' HH:mm'}}</span>
+            </div>
+          </div>
+          
+          <div class="timeline-item" *ngIf="task.updatedAt && task.updatedAt !== task.createdAt">
+            <div class="timeline-dot update"></div>
+            <div class="timeline-content">
+              <span class="timeline-label">Last Updated</span>
+              <span class="timeline-date">{{task.updatedAt | date:'MMM dd, yyyy \'at\' HH:mm'}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<ng-template #loading>
-  <div class="loading-container">
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-    <p>Loading task...</p>
+<!-- Loading State -->
+<div class="loading-container" *ngIf="!task">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
   </div>
-</ng-template>
+  <p class="loading-text">Loading task details...</p>
+</div>
